@@ -12,10 +12,6 @@ namespace PogoMod.Survivors.Pogo.SkillStates
         public static float maxDistance = 80f;
 
         private RightHandTracker rightHandTracker;
-        private HurtBox target;
-        private BullseyeSearch search;
-        private Indicator indicator;
-
         public override InterruptPriority GetMinimumInterruptPriority()
         {
             return InterruptPriority.Death;
@@ -25,15 +21,8 @@ namespace PogoMod.Survivors.Pogo.SkillStates
         {
             base.OnEnter();
 
-            //rightHandTracker = GetComponent<RightHandTracker>();
-            //rightHandTracker.enabled = true;
-            //target = rightHandTracker.GetTrackingTarget();
-            if (isAuthority)
-            {
-                indicator = new Indicator(gameObject, LegacyResourcesAPI.Load<GameObject>("Prefabs/HuntressTrackingIndicator"));
-                indicator.active = false;
-                search = new BullseyeSearch();
-            }
+            rightHandTracker = GetComponent<RightHandTracker>();
+            rightHandTracker.enabled = false;
         }
 
         public override void FixedUpdate()
@@ -41,21 +30,16 @@ namespace PogoMod.Survivors.Pogo.SkillStates
             base.FixedUpdate();
             if (base.isAuthority)
             {
-                CleanTargetsList();
-                if (target == null)
+                DetermineTargetRemoval();
+                if (rightHandTracker.trackingTarget == null)
                 {
-                    indicator.active = false;
+                    rightHandTracker.enabled = true;
 
-                    HurtBox hurtBox;
-                    HealthComponent y;
-                    GetCurrentTargetInfo(out hurtBox, out y);
-
-                    target = hurtBox;
+                    rightHandTracker.TrackTarget();
                 }
                 else
                 {
-                    indicator.targetTransform = target.transform;
-                    indicator.active = true;
+                    rightHandTracker.enabled = true;
                 }
 
                 if (base.inputBank.skill2.justReleased)
@@ -68,60 +52,29 @@ namespace PogoMod.Survivors.Pogo.SkillStates
 
         public override void OnExit()
         {
-            //rightHandTracker.enabled = false;
-            if (indicator != null)
+            if (rightHandTracker != null)
             {
-                Debug.Log("Itasss");
-                indicator.active = false;
+                rightHandTracker.enabled = false;
+                rightHandTracker.trackingTarget = null;
             }
 
             base.OnExit();
         }
 
-        private void CleanTargetsList()
+        private void DetermineTargetRemoval()
         {
             // TODO: Remove target if line of sight is cut off or distance is too far
-            if (target != null) {
-                HurtBox hurtBox = target;
+            if (rightHandTracker.trackingTarget != null) {
+                HurtBox hurtBox = rightHandTracker.trackingTarget;
                 if (!hurtBox.healthComponent || !hurtBox.healthComponent.alive)
                 {
-                    target = null;
+                    rightHandTracker.trackingTarget = null;
                 }
             }
             else
             {
-                indicator.active = false;
+                rightHandTracker.enabled = false;
             }
-        }
-
-
-        private void GetCurrentTargetInfo(out HurtBox currentTargetHurtBox, out HealthComponent currentTargetHealthComponent)
-        {
-            Ray aimRay = base.GetAimRay();
-            this.search.filterByDistinctEntity = true;
-            this.search.filterByLoS = true;
-            this.search.minDistanceFilter = 0f;
-            this.search.maxDistanceFilter = maxDistance;
-            this.search.minAngleFilter = 0f;
-            this.search.maxAngleFilter = maxAngle;
-            this.search.viewer = base.characterBody;
-            this.search.searchOrigin = aimRay.origin;
-            this.search.searchDirection = aimRay.direction;
-            this.search.sortMode = BullseyeSearch.SortMode.DistanceAndAngle;
-            this.search.teamMaskFilter = TeamMask.GetUnprotectedTeams(base.GetTeam());
-            this.search.RefreshCandidates();
-            this.search.FilterOutGameObject(base.gameObject);
-            foreach (HurtBox hurtBox in this.search.GetResults())
-            {
-                if (hurtBox.healthComponent && hurtBox.healthComponent.alive)
-                {
-                    currentTargetHurtBox = hurtBox;
-                    currentTargetHealthComponent = hurtBox.healthComponent;
-                    return;
-                }
-            }
-            currentTargetHurtBox = null;
-            currentTargetHealthComponent = null;
         }
     }
 }

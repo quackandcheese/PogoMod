@@ -125,8 +125,7 @@ namespace PogoMod.Survivors.Pogo
             AddHitboxes();
             bodyPrefab.AddComponent<PogoWeaponComponent>();
 
-            //bodyPrefab.AddComponent<RightHandTracker>();
-            //bodyPrefab.GetComponent<RightHandTracker>().enabled = false;
+            bodyPrefab.AddComponent<RightHandTracker>();
         }
 
         public void AddHitboxes()

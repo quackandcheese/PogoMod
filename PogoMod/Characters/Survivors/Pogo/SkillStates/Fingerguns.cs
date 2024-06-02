@@ -20,7 +20,7 @@ namespace PogoMod.Survivors.Pogo.SkillStates
         public static GameObject tracerEffectPrefab = LegacyResourcesAPI.Load<GameObject>("Prefabs/Effects/Tracers/TracerGoldGat");
         public static float delayBetweenBulletsMax = 0.16f;
 
-        //private RightHandTracker rightHandTracker;
+        private RightHandTracker rightHandTracker;
         private float delayBetweenBullets = 0f;
         private float duration;
         private float fireTime;
@@ -29,7 +29,7 @@ namespace PogoMod.Survivors.Pogo.SkillStates
         public override void OnEnter()
         {
             base.OnEnter();
-            //rightHandTracker = GetComponent<RightHandTracker>();
+            rightHandTracker = GetComponent<RightHandTracker>();
 
             duration = baseDuration / attackSpeedStat;
             fireTime = firePercentTime * duration;
@@ -54,11 +54,13 @@ namespace PogoMod.Survivors.Pogo.SkillStates
             {
                 Ray leftAimRay = GetAimRay();
                 Ray rightAimRay = GetAimRay();
-/*                if (rightHandTracker.enabled)
+                if (rightHandTracker.enabled)
                 {
-                    HurtBox target = rightHandTracker.GetTrackingTarget();
-                    rightAimRay = new Ray(inputBank.aimOrigin, target.transform.position - inputBank.aimOrigin);
-                }*/
+                    HurtBox target = rightHandTracker.trackingTarget;
+
+                    if (target != null)
+                        rightAimRay = new Ray(inputBank.aimOrigin, target.transform.position - inputBank.aimOrigin);
+                }
 
                 Fire(leftAimRay);
                 Fire(rightAimRay);

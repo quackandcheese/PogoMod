@@ -21,7 +21,7 @@ namespace PogoMod.Characters.Survivors.Pogo.SkillDefs
         private static bool HasTarget([NotNull] GenericSkill skillSlot)
         {
             RightHandTracker rightHandTracker = ((InstanceData)skillSlot.skillInstanceData).rightHandTracker;
-            return (rightHandTracker != null) ? rightHandTracker.GetTrackingTarget() : null;
+            return (rightHandTracker != null) ? rightHandTracker.TrackTarget() : null;
         }
 
         public override bool CanExecute([NotNull] GenericSkill skillSlot)

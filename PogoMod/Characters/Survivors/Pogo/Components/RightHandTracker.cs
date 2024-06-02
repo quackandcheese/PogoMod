@@ -18,10 +18,10 @@ namespace PogoMod.Characters.Survivors.Pogo.Components
         public float maxTrackingAngle = 40f;
         public float trackerUpdateFrequency = 10f;
 
-        private HurtBox trackingTarget;
+        public HurtBox trackingTarget;
         private TeamComponent teamComponent;
         private InputBankTest inputBank;
-        private Indicator indicator;
+        public Indicator indicator;
         private float trackerUpdateStopwatch;
 
         private readonly BullseyeSearch search = new BullseyeSearch();
@@ -29,16 +29,18 @@ namespace PogoMod.Characters.Survivors.Pogo.Components
 
         private void Awake()
         {
-            indicator = new Indicator(gameObject, LegacyResourcesAPI.Load<GameObject>("Prefabs/HuntressTrackingIndicator"));
+            indicator = new Indicator(gameObject, LegacyResourcesAPI.Load<GameObject>("Prefabs/EngiMissileTrackingIndicator"));
         }
 
         private void Start()
         {
             inputBank = GetComponent<InputBankTest>();
             teamComponent = GetComponent<TeamComponent>();
+
+            enabled = false;
         }
 
-        public HurtBox GetTrackingTarget()
+        public HurtBox TrackTarget()
         {
             Ray aimRay = new Ray(inputBank.aimOrigin, inputBank.aimDirection);
             SearchForTarget(aimRay);
