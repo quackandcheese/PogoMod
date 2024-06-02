@@ -1,4 +1,6 @@
 ﻿using BepInEx.Configuration;
+using PogoMod.Characters.Survivors.Pogo.Components;
+using PogoMod.Characters.Survivors.Pogo.SkillDefs;
 using PogoMod.Modules;
 using PogoMod.Modules.Characters;
 using PogoMod.Survivors.Pogo.Components;
@@ -120,8 +122,9 @@ namespace PogoMod.Survivors.Pogo
         {
             AddHitboxes();
             bodyPrefab.AddComponent<PogoWeaponComponent>();
-            //bodyPrefab.AddComponent<HuntressTrackerComopnent>();
-            //anything else here
+
+            bodyPrefab.AddComponent<RightHandTracker>();
+            bodyPrefab.GetComponent<RightHandTracker>().enabled = false;
         }
 
         public void AddHitboxes()
@@ -218,19 +221,15 @@ namespace PogoMod.Survivors.Pogo
 
             //the primary skill is created using a constructor for a typical primary
             //it is also a SteppedSkillDef. Custom Skilldefs are very useful for custom behaviors related to casting a skill. see ror2's different skilldefs for reference
-            SteppedSkillDef primarySkillDef1 = Skills.CreateSkillDef<SteppedSkillDef>(new SkillDefInfo
-                (
-                    "PogoSlash",
-                    POGO_PREFIX + "PRIMARY_FINGERGUNS_NAME",
-                    POGO_PREFIX + "PRIMARY_FINGERGUNS_DESCRIPTION",
-                    assetBundle.LoadAsset<Sprite>("texPrimaryIcon"),
-                    new EntityStates.SerializableEntityStateType(typeof(SkillStates.SlashCombo)),
-                    "Weapon",
-                    true
-                ));
-            //custom Skilldefs can have additional fields that you can set manually
-            primarySkillDef1.stepCount = 2;
-            primarySkillDef1.stepGraceDuration = 0.5f;
+            SkillDef primarySkillDef1 = Skills.CreateSkillDef(new SkillDefInfo(
+                "PogoFingerguns",
+                POGO_PREFIX + "PRIMARY_FINGERGUNS_NAME",
+                POGO_PREFIX + "PRIMARY_FINGERGUNS_DESCRIPTION",
+                assetBundle.LoadAsset<Sprite>("texPrimaryIcon"),
+                new EntityStates.SerializableEntityStateType(typeof(SkillStates.Fingerguns)),
+                "Weapon",
+                true
+            ));
 
             Skills.AddPrimarySkills(bodyPrefab, primarySkillDef1);
         }
@@ -240,37 +239,16 @@ namespace PogoMod.Survivors.Pogo
             Skills.CreateGenericSkillWithSkillFamily(bodyPrefab, SkillSlot.Secondary);
 
             //here is a basic skill def with all fields accounted for
-            SkillDef secondarySkillDef1 = Skills.CreateSkillDef(new SkillDefInfo
-            {
-                skillName = "PogoGun",
-                skillNameToken = POGO_PREFIX + "SECONDARY_AMBIDEXTROUS_NAME",
-                skillDescriptionToken = POGO_PREFIX + "SECONDARY_AMBIDEXTROUS_DESCRIPTION",
-                keywordTokens = new string[] { "KEYWORD_AGILE" },
-                skillIcon = assetBundle.LoadAsset<Sprite>("texSecondaryIcon"),
+            SkillDef secondarySkillDef1 = Skills.CreateSkillDef<RightHandTrackerSkillDef>(new SkillDefInfo(
+                "PogoAmbidextrous",
+                POGO_PREFIX + "SECONDARY_AMBIDEXTROUS_NAME",
+                POGO_PREFIX + "SECONDARY_AMBIDEXTROUS_DESCRIPTION",
+                assetBundle.LoadAsset<Sprite>("texSecondaryIcon"),
 
-                activationState = new EntityStates.SerializableEntityStateType(typeof(SkillStates.Shoot)),
-                activationStateMachineName = "Weapon2",
-                interruptPriority = EntityStates.InterruptPriority.Skill,
-
-                baseRechargeInterval = 1f,
-                baseMaxStock = 1,
-
-                rechargeStock = 1,
-                requiredStock = 1,
-                stockToConsume = 1,
-
-                resetCooldownTimerOnUse = false,
-                fullRestockOnAssign = true,
-                dontAllowPastMaxStocks = false,
-                mustKeyPress = false,
-                beginSkillCooldownOnSkillEnd = false,
-
-                isCombatSkill = true,
-                canceledFromSprinting = false,
-                cancelSprintingOnActivation = false,
-                forceSprintDuringState = false,
-
-            });
+                new EntityStates.SerializableEntityStateType(typeof(SkillStates.Ambidextrous)),
+                "Weapon2",
+                true
+            ));
 
             Skills.AddSecondarySkills(bodyPrefab, secondarySkillDef1);
         }
@@ -282,7 +260,7 @@ namespace PogoMod.Survivors.Pogo
             //here's a skilldef of a typical movement skill.
             SkillDef utilitySkillDef1 = Skills.CreateSkillDef(new SkillDefInfo
             {
-                skillName = "PogoRoll",
+                skillName = "PogoBoomstick",
                 skillNameToken = POGO_PREFIX + "UTILITY_BOOMSTICK_NAME",
                 skillDescriptionToken = POGO_PREFIX + "UTILITY_BOOMSTICK_DESCRIPTION",
                 skillIcon = assetBundle.LoadAsset<Sprite>("texUtilityIcon"),
@@ -320,7 +298,7 @@ namespace PogoMod.Survivors.Pogo
             //a basic skill. some fields are omitted and will just have default values
             SkillDef specialSkillDef1 = Skills.CreateSkillDef(new SkillDefInfo
             {
-                skillName = "PogoBomb",
+                skillName = "PogoKick",
                 skillNameToken = POGO_PREFIX + "SPECIAL_KICK_NAME",
                 skillDescriptionToken = POGO_PREFIX + "SPECIAL_KICK_DESCRIPTION",
                 skillIcon = assetBundle.LoadAsset<Sprite>("texSpecialIcon"),

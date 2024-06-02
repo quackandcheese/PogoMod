@@ -62,7 +62,7 @@ namespace PogoMod.Survivors.Pogo.SkillStates
 
                 characterBody.AddSpreadBloom(1.5f);
                 EffectManager.SimpleMuzzleFlash(EntityStates.Commando.CommandoWeapon.FirePistol2.muzzleEffectPrefab, gameObject, muzzleString, false);
-                Util.PlaySound("PogoShootPistol", gameObject);
+                Util.PlaySound("HenryShootPistol", gameObject);
 
                 if (isAuthority)
                 {
