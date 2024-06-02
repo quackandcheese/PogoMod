@@ -6,9 +6,9 @@ namespace PogoMod.Survivors.Pogo
     {
         public static void Init()
         {
-            Modules.Content.AddEntityState(typeof(SlashCombo));
+            Modules.Content.AddEntityState(typeof(Fingerguns));
 
-            Modules.Content.AddEntityState(typeof(Shoot));
+            Modules.Content.AddEntityState(typeof(Ambidextrous));
 
             Modules.Content.AddEntityState(typeof(Roll));
 

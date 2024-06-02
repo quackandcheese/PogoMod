@@ -1,4 +1,5 @@
 ﻿using BepInEx.Configuration;
+using EntityStates;
 using PogoMod.Characters.Survivors.Pogo.Components;
 using PogoMod.Characters.Survivors.Pogo.SkillDefs;
 using PogoMod.Modules;
@@ -10,6 +11,7 @@ using RoR2.Skills;
 using System;
 using System.Collections.Generic;
 using UnityEngine;
+using static RoR2.TeleporterInteraction;
 
 namespace PogoMod.Survivors.Pogo
 {
@@ -123,8 +125,8 @@ namespace PogoMod.Survivors.Pogo
             AddHitboxes();
             bodyPrefab.AddComponent<PogoWeaponComponent>();
 
-            bodyPrefab.AddComponent<RightHandTracker>();
-            bodyPrefab.GetComponent<RightHandTracker>().enabled = false;
+            //bodyPrefab.AddComponent<RightHandTracker>();
+            //bodyPrefab.GetComponent<RightHandTracker>().enabled = false;
         }
 
         public void AddHitboxes()
@@ -239,16 +241,27 @@ namespace PogoMod.Survivors.Pogo
             Skills.CreateGenericSkillWithSkillFamily(bodyPrefab, SkillSlot.Secondary);
 
             //here is a basic skill def with all fields accounted for
-            SkillDef secondarySkillDef1 = Skills.CreateSkillDef<RightHandTrackerSkillDef>(new SkillDefInfo(
-                "PogoAmbidextrous",
-                POGO_PREFIX + "SECONDARY_AMBIDEXTROUS_NAME",
-                POGO_PREFIX + "SECONDARY_AMBIDEXTROUS_DESCRIPTION",
-                assetBundle.LoadAsset<Sprite>("texSecondaryIcon"),
+            SkillDef secondarySkillDef1 = Skills.CreateSkillDef(new SkillDefInfo
+            {
+                skillName = "PogoAmbidextrous",
+                skillNameToken = POGO_PREFIX + "SECONDARY_AMBIDEXTROUS_NAME",
+                skillDescriptionToken = POGO_PREFIX + "SECONDARY_AMBIDEXTROUS_DESCRIPTION",
+                skillIcon = assetBundle.LoadAsset<Sprite>("texSecondaryIcon"),
 
-                new EntityStates.SerializableEntityStateType(typeof(SkillStates.Ambidextrous)),
-                "Weapon2",
-                true
-            ));
+                activationState = new EntityStates.SerializableEntityStateType(typeof(Ambidextrous)),
+                activationStateMachineName = "Weapon2",
+
+                resetCooldownTimerOnUse = false,
+                fullRestockOnAssign = true,
+                dontAllowPastMaxStocks = false,
+                mustKeyPress = false,
+                beginSkillCooldownOnSkillEnd = false,
+
+                isCombatSkill = false,
+                canceledFromSprinting = false,
+                cancelSprintingOnActivation = false,
+                forceSprintDuringState = false,
+            });
 
             Skills.AddSecondarySkills(bodyPrefab, secondarySkillDef1);
         }

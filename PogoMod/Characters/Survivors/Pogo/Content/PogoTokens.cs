@@ -47,22 +47,22 @@ namespace PogoMod.Survivors.Pogo
 
             #region Primary
             Language.Add(prefix + "PRIMARY_FINGERGUNS_NAME", "Fingerguns");
-            Language.Add(prefix + "PRIMARY_FINGERGUNS_DESCRIPTION", Tokens.agilePrefix + $"Fire both fingerguns for <style=cIsDamage>{100f * PogoStaticValues.fingergunDamageCoefficient}% damage</style> each.");
+            Language.Add(prefix + "PRIMARY_FINGERGUNS_DESCRIPTION", Tokens.agilePrefix + $" Fire both fingerguns for <style=cIsDamage>{100f * PogoStaticValues.fingergunDamageCoefficient}% damage</style> each.");
             #endregion
 
             #region Secondary
             Language.Add(prefix + "SECONDARY_AMBIDEXTROUS_NAME", "Ambidextrous");
-            Language.Add(prefix + "SECONDARY_AMBIDEXTROUS_DESCRIPTION", Tokens.agilePrefix + $"Hold to lock onto a target. Right fingergun will shoot targeted enemy when primary is used.");
+            Language.Add(prefix + "SECONDARY_AMBIDEXTROUS_DESCRIPTION", Tokens.agilePrefix + $" Hold to lock onto a target. Right fingergun will shoot targeted enemy when primary is used.");
             #endregion
 
             #region Utility
             Language.Add(prefix + "UTILITY_BOOMSTICK_NAME", "Pogo-Boomstick");
-            Language.Add(prefix + "UTILITY_BOOMSTICK_DESCRIPTION", $"Shoot from both legs downwards, boosting you upwards and dealing <style=cIsDamage>8x{100f * PogoStaticValues.shotgunDamageCoefficient}% damage</style> to enemies underneath.");
+            Language.Add(prefix + "UTILITY_BOOMSTICK_DESCRIPTION", Tokens.agilePrefix + $" Shoot from both legs downwards, boosting you upwards and dealing <style=cIsDamage>8x{100f * PogoStaticValues.shotgunDamageCoefficient}% damage</style> to enemies underneath.");
             #endregion
 
             #region Special
             Language.Add(prefix + "SPECIAL_KICK_NAME", "Kick");
-            Language.Add(prefix + "SPECIAL_KICK_DESCRIPTION", $"Kick forward, dealing <style=cIsDamage>{100f * PogoStaticValues.kickDamageCoefficient}% damage</style>. Utility can be activated during kick to blast a shotgun shot forwards for <style=cIsDamage>{100f * PogoStaticValues.shotgunDamageCoefficient}% damage</style>.");
+            Language.Add(prefix + "SPECIAL_KICK_DESCRIPTION", Tokens.agilePrefix + $" Kick forward, dealing <style=cIsDamage>{100f * PogoStaticValues.kickDamageCoefficient}% damage</style>. Utility can be activated during kick to blast a shotgun shot forwards for <style=cIsDamage>{100f * PogoStaticValues.shotgunDamageCoefficient}% damage</style>.");
             #endregion
 
             #region Achievements
