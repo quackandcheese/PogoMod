@@ -27,12 +27,14 @@ namespace PogoMod.Survivors.Pogo
              + "< ! > Bomb can be used to wipe crowds with ease." + Environment.NewLine + Environment.NewLine;
 
             string outro = "..and so she left, taking one giant leap for mankind.";
-            string outroFailure = "..and so she vanished, as her luck ran out.";
+            string outroFailure = "..and so she vanished, unable to spring back.";
+            string lore = "PLACEHOLDER";
 
             Language.Add(prefix + "NAME", "Pogo");
-            Language.Add(prefix + "DESCRIPTION", desc);
             Language.Add(prefix + "SUBTITLE", "Cybernetic Piston");
-            Language.Add(prefix + "LORE", "sample lore");
+
+            Language.Add(prefix + "DESCRIPTION", desc);
+            Language.Add(prefix + "LORE", lore);
             Language.Add(prefix + "OUTRO_FLAVOR", outro);
             Language.Add(prefix + "OUTRO_FAILURE", outroFailure);
 
@@ -56,8 +58,8 @@ namespace PogoMod.Survivors.Pogo
             #endregion
 
             #region Utility
-            Language.Add(prefix + "UTILITY_BOOMSTICK_NAME", "Pogo-Boomstick");
-            Language.Add(prefix + "UTILITY_BOOMSTICK_DESCRIPTION", Tokens.agilePrefix + $" Shoot from both legs downwards, boosting you upwards and dealing <style=cIsDamage>8x{100f * PogoStaticValues.shotgunDamageCoefficient}% damage</style> to enemies underneath.");
+            Language.Add(prefix + "UTILITY_BOOMSTICK_NAME", "Pogo Boomstick");
+            Language.Add(prefix + "UTILITY_BOOMSTICK_DESCRIPTION", Tokens.agilePrefix + $" Shoot from both legs downwards, boosting you upwards and dealing <style=cIsDamage>10x{100f * PogoStaticValues.shotgunDamageCoefficient}% damage</style> to enemies underneath.");
             #endregion
 
             #region Special

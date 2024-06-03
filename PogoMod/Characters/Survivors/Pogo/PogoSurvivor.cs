@@ -2,10 +2,10 @@
 using EntityStates;
 using PogoMod.Characters.Survivors.Pogo.Components;
 using PogoMod.Characters.Survivors.Pogo.SkillDefs;
+using PogoMod.Survivors.Pogo.SkillStates;
 using PogoMod.Modules;
 using PogoMod.Modules.Characters;
 using PogoMod.Survivors.Pogo.Components;
-using PogoMod.Survivors.Pogo.SkillStates;
 using RoR2;
 using RoR2.Skills;
 using System;
@@ -53,6 +53,7 @@ namespace PogoMod.Survivors.Pogo
             armor = 0f,
 
             jumpCount = 1,
+            jumpPower = 18f,
         };
 
         public override CustomRendererInfo[] customRendererInfos => new CustomRendererInfo[]
@@ -126,6 +127,7 @@ namespace PogoMod.Survivors.Pogo
             bodyPrefab.AddComponent<PogoWeaponComponent>();
 
             bodyPrefab.AddComponent<RightHandTracker>();
+            bodyPrefab.GetComponent<CharacterBody>().bodyFlags = CharacterBody.BodyFlags.ImmuneToExecutes | CharacterBody.BodyFlags.IgnoreFallDamage;
         }
 
         public void AddHitboxes()
@@ -141,12 +143,18 @@ namespace PogoMod.Survivors.Pogo
             Prefabs.ClearEntityStateMachines(bodyPrefab);
 
             //the main "Body" state machine has some special properties
-            Prefabs.AddMainEntityStateMachine(bodyPrefab, "Body", typeof(EntityStates.GenericCharacterMain), typeof(EntityStates.SpawnTeleporterState));
+            Prefabs.AddMainEntityStateMachine(bodyPrefab, "Body", typeof(MainState), typeof(EntityStates.SpawnTeleporterState));
             //if you set up a custom main characterstate, set it up here
-                //don't forget to register custom entitystates in your PogoStates.cs
+            //don't forget to register custom entitystates in your PogoStates.cs
+
+            EntityStateMachine passiveController = bodyPrefab.AddComponent<EntityStateMachine>();
+            passiveController.initialStateType = new EntityStates.SerializableEntityStateType(typeof(SkillStates.PogoJump));
+            passiveController.mainStateType = new EntityStates.SerializableEntityStateType(typeof(SkillStates.PogoJump));
+            passiveController.customName = "Passive";
 
             Prefabs.AddEntityStateMachine(bodyPrefab, "Weapon");
-            Prefabs.AddEntityStateMachine(bodyPrefab, "Weapon2");
+            Prefabs.AddEntityStateMachine(bodyPrefab, "Target");
+            Prefabs.AddEntityStateMachine(bodyPrefab, "Boomstick");
         }
 
         #region skills
@@ -155,7 +163,7 @@ namespace PogoMod.Survivors.Pogo
             //remove the genericskills from the commando body we cloned
             Skills.ClearGenericSkills(bodyPrefab);
             //add our own
-            //AddPassiveSkill();
+            AddPassiveSkill();
             AddPrimarySkills();
             AddSecondarySkills();
             AddUtiitySkills();
@@ -172,11 +180,10 @@ namespace PogoMod.Survivors.Pogo
                 enabled = true,
                 skillNameToken = POGO_PREFIX + "PASSIVE_NAME",
                 skillDescriptionToken = POGO_PREFIX + "PASSIVE_DESCRIPTION",
-                keywordToken = "KEYWORD_STUNNING",
                 icon = assetBundle.LoadAsset<Sprite>("texPassiveIcon"),
             };
 
-            //option 2. a new SkillFamily for a passive, used if you want multiple selectable passives
+            /* option 2. a new SkillFamily for a passive, used if you want multiple selectable passives
             GenericSkill passiveGenericSkill = Skills.CreateGenericSkillWithSkillFamily(bodyPrefab, "PassiveSkill");
             SkillDef passiveSkillDef1 = Skills.CreateSkillDef(new SkillDefInfo
             {
@@ -212,7 +219,7 @@ namespace PogoMod.Survivors.Pogo
                 //forceSprintDuringState = false,
 
             });
-            Skills.AddSkillsToFamily(passiveGenericSkill.skillFamily, passiveSkillDef1);
+            Skills.AddSkillsToFamily(passiveGenericSkill.skillFamily, passiveSkillDef1);*/
         }
 
         //if this is your first look at skilldef creation, take a look at Secondary first
@@ -248,7 +255,7 @@ namespace PogoMod.Survivors.Pogo
                 skillIcon = assetBundle.LoadAsset<Sprite>("texSecondaryIcon"),
 
                 activationState = new EntityStates.SerializableEntityStateType(typeof(Ambidextrous)),
-                activationStateMachineName = "Weapon2",
+                activationStateMachineName = "Target",
 
                 resetCooldownTimerOnUse = false,
                 fullRestockOnAssign = true,
@@ -277,8 +284,8 @@ namespace PogoMod.Survivors.Pogo
                 skillDescriptionToken = POGO_PREFIX + "UTILITY_BOOMSTICK_DESCRIPTION",
                 skillIcon = assetBundle.LoadAsset<Sprite>("texUtilityIcon"),
 
-                activationState = new EntityStates.SerializableEntityStateType(typeof(Roll)),
-                activationStateMachineName = "Body",
+                activationState = new EntityStates.SerializableEntityStateType(typeof(PogoBoomstick)),
+                activationStateMachineName = "Boomstick",
                 interruptPriority = EntityStates.InterruptPriority.PrioritySkill,
 
                 baseRechargeInterval = 4f,
@@ -291,13 +298,13 @@ namespace PogoMod.Survivors.Pogo
                 resetCooldownTimerOnUse = false,
                 fullRestockOnAssign = true,
                 dontAllowPastMaxStocks = false,
-                mustKeyPress = false,
+                mustKeyPress = true,
                 beginSkillCooldownOnSkillEnd = false,
 
-                isCombatSkill = false,
+                isCombatSkill = true,
                 canceledFromSprinting = false,
                 cancelSprintingOnActivation = false,
-                forceSprintDuringState = true,
+                forceSprintDuringState = false,
             });
 
             Skills.AddUtilitySkills(bodyPrefab, utilitySkillDef1);
@@ -317,7 +324,7 @@ namespace PogoMod.Survivors.Pogo
 
                 activationState = new EntityStates.SerializableEntityStateType(typeof(SkillStates.ThrowBomb)),
                 //setting this to the "weapon2" EntityStateMachine allows us to cast this skill at the same time primary, which is set to the "weapon" EntityStateMachine
-                activationStateMachineName = "Weapon2", interruptPriority = EntityStates.InterruptPriority.Skill,
+                activationStateMachineName = "Target", interruptPriority = EntityStates.InterruptPriority.Skill,
 
                 baseMaxStock = 1,
                 baseRechargeInterval = 10f,

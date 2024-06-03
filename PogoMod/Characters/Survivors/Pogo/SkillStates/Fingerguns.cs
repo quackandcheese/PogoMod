@@ -17,7 +17,7 @@ namespace PogoMod.Survivors.Pogo.SkillStates
         public static float recoil = 0.8f;
         public static float range = 256f;
         public static float spreadBloomValue = 0.2f;
-        public static GameObject tracerEffectPrefab = LegacyResourcesAPI.Load<GameObject>("Prefabs/Effects/Tracers/TracerGoldGat");
+        public static GameObject tracerEffectPrefab = LegacyResourcesAPI.Load<GameObject>("Prefabs/Effects/Tracers/TracerCommandoShotgun");
         public static float delayBetweenBulletsMax = 0.16f;
 
         private RightHandTracker rightHandTracker;
