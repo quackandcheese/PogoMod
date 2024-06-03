@@ -19,6 +19,7 @@ namespace PogoMod.Survivors.Pogo.SkillStates
         {
             base.Update();
 
+            
             if (inputBank.jump.down)
             {
                 jumpHeldDuration = Mathf.Clamp(jumpHeldDuration + Time.deltaTime, 0, jumpHeldDurationMax);

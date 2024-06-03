@@ -30,13 +30,13 @@ namespace PogoMod.Survivors.Pogo.SkillStates
 
         private void CharacterMotor_onHitGroundServer(ref CharacterMotor.HitGroundInfo hitGroundInfo)
         {
-            Vector3 vector = hitGroundInfo.velocity;
+/*            Vector3 vector = hitGroundInfo.velocity;
             if (vector.y <= minimumYVelocityToBounce)
             {
                 vector.y = Mathf.Abs(vector.y / 2);
                 characterMotor.velocity = vector;
                 characterMotor.Motor.ForceUnground();
-            }
+            }*/
         }
     }
 }
