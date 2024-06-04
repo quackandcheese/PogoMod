@@ -3,11 +3,17 @@ using UnityEngine;
 using PogoMod.Modules;
 using System;
 using RoR2.Projectile;
+using UnityEngine.AddressableAssets;
+using UnityEngine.Networking;
+using R2API;
+using Rewired.ComponentControls.Effects;
 
 namespace PogoMod.Survivors.Pogo
 {
     public static class PogoAssets
     {
+        internal static AssetBundle mainAssetBundle;
+
         // particle effects
         public static GameObject swordSwingEffect;
         public static GameObject swordHitImpactEffect;
@@ -20,12 +26,15 @@ namespace PogoMod.Survivors.Pogo
         //projectiles
         public static GameObject bombProjectilePrefab;
 
-        private static AssetBundle _assetBundle;
+
+
+        public static GameObject leftFingergunIndicator;
+        public static GameObject rightFingergunIndicator;
 
         public static void Init(AssetBundle assetBundle)
         {
 
-            _assetBundle = assetBundle;
+            mainAssetBundle = assetBundle;
 
             swordHitSoundEvent = Content.CreateAndAddNetworkSoundEventDef("HenrySwordHit");
 
@@ -39,13 +48,27 @@ namespace PogoMod.Survivors.Pogo
         {
             CreateBombExplosionEffect();
 
-            swordSwingEffect = _assetBundle.LoadEffect("HenrySwordSwingEffect", true);
-            swordHitImpactEffect = _assetBundle.LoadEffect("ImpactHenrySlash");
+            swordSwingEffect = mainAssetBundle.LoadEffect("HenrySwordSwingEffect", true);
+            swordHitImpactEffect = mainAssetBundle.LoadEffect("ImpactHenrySlash");
+
+
+            leftFingergunIndicator = Addressables.LoadAssetAsync<GameObject>("RoR2/Base/Engi/EngiMissileTrackingIndicator.prefab").WaitForCompletion().InstantiateClone("LeftFingergunTrackingIndicator");
+            leftFingergunIndicator.AddComponent<NetworkIdentity>();
+            leftFingergunIndicator.transform.Find("Base Container").GetComponent<RotateAroundAxis>().enabled = false;
+            leftFingergunIndicator.transform.Find("Base Container/Base Core").GetComponent<SpriteRenderer>().sprite = mainAssetBundle.LoadAsset<Sprite>("texUIPogoLeftFingergunIndicator");
+            leftFingergunIndicator.transform.Find("Base Container/Base Core").GetComponent<SpriteRenderer>().color = new Color(0.969f, 0.482f, 0.651f, 0.702f);
+
+
+            rightFingergunIndicator = Addressables.LoadAssetAsync<GameObject>("RoR2/Base/Engi/EngiMissileTrackingIndicator.prefab").WaitForCompletion().InstantiateClone("RightFingergunTrackingIndicator");
+            rightFingergunIndicator.AddComponent<NetworkIdentity>();
+            rightFingergunIndicator.transform.Find("Base Container").GetComponent<RotateAroundAxis>().enabled = false;
+            rightFingergunIndicator.transform.Find("Base Container/Base Core").GetComponent<SpriteRenderer>().sprite = mainAssetBundle.LoadAsset<Sprite>("texUIPogoRightFingergunIndicator");
+            rightFingergunIndicator.transform.Find("Base Container/Base Core").GetComponent<SpriteRenderer>().color = new Color(0.573f, 0.482f, 0.969f, 0.702f);
         }
 
         private static void CreateBombExplosionEffect()
         {
-            bombExplosionEffect = _assetBundle.LoadEffect("BombExplosionEffect", "HenryBombExplosion");
+            bombExplosionEffect = mainAssetBundle.LoadEffect("BombExplosionEffect", "HenryBombExplosion");
 
             if (!bombExplosionEffect)
                 return;
@@ -94,8 +117,8 @@ namespace PogoMod.Survivors.Pogo
 
             ProjectileController bombController = bombProjectilePrefab.GetComponent<ProjectileController>();
 
-            if (_assetBundle.LoadAsset<GameObject>("HenryBombGhost") != null)
-                bombController.ghostPrefab = _assetBundle.CreateProjectileGhostPrefab("HenryBombGhost");
+            if (mainAssetBundle.LoadAsset<GameObject>("HenryBombGhost") != null)
+                bombController.ghostPrefab = mainAssetBundle.CreateProjectileGhostPrefab("HenryBombGhost");
             
             bombController.startSound = "";
         }

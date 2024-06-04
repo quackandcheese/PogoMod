@@ -153,7 +153,7 @@ namespace PogoMod.Survivors.Pogo
             passiveController.customName = "Passive";
 
             Prefabs.AddEntityStateMachine(bodyPrefab, "Weapon");
-            Prefabs.AddEntityStateMachine(bodyPrefab, "Target");
+            Prefabs.AddEntityStateMachine(bodyPrefab, "Weapon2");
             Prefabs.AddEntityStateMachine(bodyPrefab, "Boomstick");
         }
 
@@ -230,11 +230,11 @@ namespace PogoMod.Survivors.Pogo
             //the primary skill is created using a constructor for a typical primary
             //it is also a SteppedSkillDef. Custom Skilldefs are very useful for custom behaviors related to casting a skill. see ror2's different skilldefs for reference
             SkillDef primarySkillDef1 = Skills.CreateSkillDef(new SkillDefInfo(
-                "PogoFingerguns",
-                POGO_PREFIX + "PRIMARY_FINGERGUNS_NAME",
-                POGO_PREFIX + "PRIMARY_FINGERGUNS_DESCRIPTION",
+                "PogoLeftFingergun",
+                POGO_PREFIX + "PRIMARY_LEFTFINGERGUN_NAME",
+                POGO_PREFIX + "PRIMARY_FINGERGUN_DESCRIPTION",
                 assetBundle.LoadAsset<Sprite>("texPrimaryIcon"),
-                new EntityStates.SerializableEntityStateType(typeof(SkillStates.Fingerguns)),
+                new EntityStates.SerializableEntityStateType(typeof(SkillStates.LeftFingergun)),
                 "Weapon",
                 true
             ));
@@ -249,13 +249,14 @@ namespace PogoMod.Survivors.Pogo
             //here is a basic skill def with all fields accounted for
             SkillDef secondarySkillDef1 = Skills.CreateSkillDef(new SkillDefInfo
             {
-                skillName = "PogoAmbidextrous",
-                skillNameToken = POGO_PREFIX + "SECONDARY_AMBIDEXTROUS_NAME",
-                skillDescriptionToken = POGO_PREFIX + "SECONDARY_AMBIDEXTROUS_DESCRIPTION",
+                skillName = "PogoRightFingergun",
+                skillNameToken = POGO_PREFIX + "SECONDARY_RIGHTFINGERGUN_NAME",
+                skillDescriptionToken = POGO_PREFIX + "PRIMARY_FINGERGUN_DESCRIPTION",
                 skillIcon = assetBundle.LoadAsset<Sprite>("texSecondaryIcon"),
 
-                activationState = new EntityStates.SerializableEntityStateType(typeof(Ambidextrous)),
-                activationStateMachineName = "Target",
+                activationState = new EntityStates.SerializableEntityStateType(typeof(RightFingergun)),
+                activationStateMachineName = "Weapon2",
+                keywordTokens = new string[] { "KEYWORD_AGILE" },
 
                 resetCooldownTimerOnUse = false,
                 fullRestockOnAssign = true,
@@ -263,7 +264,7 @@ namespace PogoMod.Survivors.Pogo
                 mustKeyPress = false,
                 beginSkillCooldownOnSkillEnd = false,
 
-                isCombatSkill = false,
+                isCombatSkill = true,
                 canceledFromSprinting = false,
                 cancelSprintingOnActivation = false,
                 forceSprintDuringState = false,

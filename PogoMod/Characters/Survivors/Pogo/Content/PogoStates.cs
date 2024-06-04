@@ -6,11 +6,11 @@ namespace PogoMod.Survivors.Pogo
     {
         public static void Init()
         {
-            Modules.Content.AddEntityState(typeof(Fingerguns));
+            Modules.Content.AddEntityState(typeof(LeftFingergun));
+
+            Modules.Content.AddEntityState(typeof(RightFingergun));
 
             Modules.Content.AddEntityState(typeof(PogoJump));
-
-            Modules.Content.AddEntityState(typeof(Ambidextrous));
 
             Modules.Content.AddEntityState(typeof(PogoBoomstick));
 

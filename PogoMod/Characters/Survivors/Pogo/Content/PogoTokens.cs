@@ -43,28 +43,28 @@ namespace PogoMod.Survivors.Pogo
             #endregion
 
             #region Passive
-            Language.Add(prefix + "PASSIVE_NAME", "Spring");
-            Language.Add(prefix + "PASSIVE_DESCRIPTION", "Jumping as you land increases the height of the jump. Jumps can be charged for extra height and can be redirected.");
+            Language.Add(prefix + "PASSIVE_NAME", "Pogostick");
+            // Not putting it in the description, but when fall damage would have been taken, the jump "combo" is auto-set to max and maximum height is reached immediately.
+            Language.Add(prefix + "PASSIVE_DESCRIPTION", "Jump as you hit the ground to <style=cIsUtility>jump higher and further</style>. Height and speed maxes out after 3 consecutive successful <style=cIsUtility>pogos</style>. A successful <style=cIsUtility>pogo</style> negates fall damage and <style=cIsDamage>stuns/deals damage</style> to an enemy if they are landed on.");
             #endregion
 
             #region Primary
-            Language.Add(prefix + "PRIMARY_FINGERGUNS_NAME", "Fingerguns");
-            Language.Add(prefix + "PRIMARY_FINGERGUNS_DESCRIPTION", Tokens.agilePrefix + $" Fire both fingerguns for <style=cIsDamage>{100f * PogoStaticValues.fingergunDamageCoefficient}% damage</style> each.");
+            Language.Add(prefix + "PRIMARY_LEFTFINGERGUN_NAME", "Lefty");
+            Language.Add(prefix + "PRIMARY_FINGERGUN_DESCRIPTION", Tokens.agilePrefix + $" Lock onto a target and shoot them for <style=cIsDamage>{100f * PogoStaticValues.fingergunDamageCoefficient}% damage</style> per bullet. You can still <style=cIsDamage>look around use other abilities while enemy is targeted</style>.");
             #endregion
 
             #region Secondary
-            Language.Add(prefix + "SECONDARY_AMBIDEXTROUS_NAME", "Ambidextrous");
-            Language.Add(prefix + "SECONDARY_AMBIDEXTROUS_DESCRIPTION", Tokens.agilePrefix + $" Hold to lock onto a target. Right fingergun will shoot targeted enemy when primary is used.");
+            Language.Add(prefix + "SECONDARY_RIGHTFINGERGUN_NAME", "Righty");
             #endregion
 
             #region Utility
-            Language.Add(prefix + "UTILITY_BOOMSTICK_NAME", "Pogo Boomstick");
-            Language.Add(prefix + "UTILITY_BOOMSTICK_DESCRIPTION", Tokens.agilePrefix + $" Shoot from both legs downwards, boosting you upwards and dealing <style=cIsDamage>10x{100f * PogoStaticValues.shotgunDamageCoefficient}% damage</style> to enemies underneath.");
+            Language.Add(prefix + "UTILITY_BOOMSTICK_NAME", "Blast Off");
+            Language.Add(prefix + "UTILITY_BOOMSTICK_DESCRIPTION", $"Charge up an <style=cIsDamage>explosive</style> shotgun blast from both legs downwards that <style=cIsUtility>launches you up upwards</style> and deals <style=cIsDamage>9x{100f * PogoStaticValues.shotgunDamageCoefficient}%-{100f * PogoStaticValues.shotgunDamageCoefficientMax}% damage</style> to enemies underneath.");
             #endregion
 
             #region Special
-            Language.Add(prefix + "SPECIAL_KICK_NAME", "Kick");
-            Language.Add(prefix + "SPECIAL_KICK_DESCRIPTION", Tokens.agilePrefix + $" Kick forward, dealing <style=cIsDamage>{100f * PogoStaticValues.kickDamageCoefficient}% damage</style>. Utility can be activated during kick to blast a shotgun shot forwards for <style=cIsDamage>{100f * PogoStaticValues.shotgunDamageCoefficient}% damage</style>.");
+            Language.Add(prefix + "SPECIAL_KICK_NAME", "Kickback Flip");
+            Language.Add(prefix + "SPECIAL_KICK_DESCRIPTION", $"Perform a <style=cIsUtility>backflip</style> and fire explosive shotgun shells out of each leg mid-air at aimed location for <style=cIsDamage>9x{100f * PogoStaticValues.shotgunDamageCoefficient}% damage</style>.");
             #endregion
 
             #region Achievements
