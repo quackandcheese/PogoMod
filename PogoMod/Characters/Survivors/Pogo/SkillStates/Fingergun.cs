@@ -1,13 +1,13 @@
 ﻿using EntityStates;
 using PogoMod.Characters.Survivors.Pogo.Components;
+using PogoMod.Modules.BaseContent.BaseStates;
 using PogoMod.Survivors.Pogo;
 using RoR2;
 using UnityEngine;
-using static UnityEngine.ParticleSystem.PlaybackState;
 
 namespace PogoMod.Survivors.Pogo.SkillStates
 {
-    public class Fingergun : BaseSkillState
+    public class Fingergun : BasePogoSkillState
     {
         public string side;
         public string muzzleString;
@@ -199,7 +199,7 @@ namespace PogoMod.Survivors.Pogo.SkillStates
                     bulletCount = 1,
                     aimVector = aimRay.direction,
                     origin = aimRay.origin,
-                    damage = damageCoefficient * damageStat,
+                    damage = damageCoefficient * damageStat * pogoController.currentPogoDamageCoefficient,
                     damageColorIndex = DamageColorIndex.Default,
                     damageType = DamageType.Generic,
                     falloffModel = BulletAttack.FalloffModel.None,

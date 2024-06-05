@@ -1,11 +1,13 @@
 ﻿using EntityStates;
+using PogoMod.Modules.BaseContent.BaseStates;
 using PogoMod.Survivors.Pogo;
+using PogoMod.Survivors.Pogo.Components;
 using RoR2;
 using UnityEngine;
 
 namespace PogoMod.Survivors.Pogo.SkillStates
 {
-    public class PogoBoomstick : BaseSkillState
+    public class PogoBoomstick : BasePogoSkillState
     {
         public static float damageCoefficient = PogoStaticValues.shotgunDamageCoefficient;
         public static float procCoefficient = 1f;
@@ -74,7 +76,7 @@ namespace PogoMod.Survivors.Pogo.SkillStates
                 owner = base.gameObject,
                 weapon = null,
                 bulletCount = (uint)bulletCount,
-                damage = this.damageStat * damageCoefficient,
+                damage = this.damageStat * damageCoefficient * pogoController.currentPogoDamageCoefficient,
                 damageColorIndex = DamageColorIndex.Default,
                 damageType = DamageType.Generic,
                 falloffModel = BulletAttack.FalloffModel.Buckshot,

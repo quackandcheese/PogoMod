@@ -63,7 +63,7 @@ namespace PogoMod.Survivors.Pogo.SkillStates
                     blastAttack.radius = radius;
                     blastAttack.baseForce = 100f * damageCoefficient;
                     blastAttack.bonusForce = Vector3.up * 500f;
-                    blastAttack.baseDamage = characterBody.damage * damageCoefficient;
+                    blastAttack.baseDamage = characterBody.damage * damageCoefficient * pogoController.currentPogoDamageCoefficient;
                     blastAttack.falloffModel = BlastAttack.FalloffModel.SweetSpot;
                     blastAttack.crit = Util.CheckRoll(characterBody.crit, characterBody.master);
                     blastAttack.damageColorIndex = DamageColorIndex.Item;
@@ -86,7 +86,7 @@ namespace PogoMod.Survivors.Pogo.SkillStates
 
                 if (isGrounded)
                 {
-                    pogoController.withinPerfectJumpTiming = true;
+                    //pogoController.withinPerfectJumpTiming = true;
                     pogoController.jumpQueued = true;
                     jumpBufferTimer = 0;
                 }
@@ -100,6 +100,12 @@ namespace PogoMod.Survivors.Pogo.SkillStates
                 if (perfectJumpBufferTimer <= 0.0f)
                 {
                     pogoController.withinPerfectJumpTiming = false;
+
+                    if (isGrounded)
+                    {
+                        // Only reset coefficient after perfect jump timing passes while still on ground
+                        pogoController.currentPogoDamageCoefficient = 1f;
+                    }
                 }
             }
         }

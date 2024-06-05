@@ -56,6 +56,11 @@ namespace PogoMod.Survivors.Pogo.SkillStates
                         float bonus = 1f + (pogoController.extraBoostPerPogo * pogoController.pogoCounter);
                         horizontalBonus = bonus;
                         verticalBonus = bonus;
+
+                        if (pogoController.pogoCounter == pogoController.pogoCounterMax)
+                        {
+                            pogoController.currentPogoDamageCoefficient = pogoController.pogoDamageCoefficient;
+                        }
                     }
                     else
                     {
