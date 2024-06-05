@@ -24,7 +24,7 @@ namespace PogoMod.Survivors.Pogo.SkillStates
         public static float spreadBloomValue = 0.2f;
         public static GameObject tracerEffectPrefab = LegacyResourcesAPI.Load<GameObject>("Prefabs/Effects/Tracers/TracerCommandoShotgun");
 
-        public static float baseDelayBetweenBulletsMax = 0.16f;
+        public static float baseDelayBetweenBulletsMax = 0.18f;
         public static float delayBetweenBulletsMax;
         private float delayBetweenBullets = 0f;
         private float duration;

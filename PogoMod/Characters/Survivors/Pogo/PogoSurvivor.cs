@@ -54,6 +54,8 @@ namespace PogoMod.Survivors.Pogo
 
             jumpCount = 1,
             jumpPower = 18f,
+            moveSpeed = 10f,
+            acceleration = 100f
         };
 
         public override CustomRendererInfo[] customRendererInfos => new CustomRendererInfo[]

@@ -14,7 +14,7 @@ namespace PogoMod.Survivors.Pogo.Components
         public int pogoCounter = 0;
         public float extraBoostPerPogo = 0.25f;
 
-        public float pogoDamageCoefficient = 1.2f;
+        public float pogoDamageCoefficient = 1.125f;
         public float currentPogoDamageCoefficient = 1.0f;
     }
 }
