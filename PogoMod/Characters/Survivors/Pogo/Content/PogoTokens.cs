@@ -49,12 +49,12 @@ namespace PogoMod.Survivors.Pogo
             #endregion
 
             #region Primary
-            Language.Add(prefix + "PRIMARY_LEFTFINGERGUN_NAME", "Lefty");
+            Language.Add(prefix + "PRIMARY_FINGERGUN_NAME", "Fingergun");
             Language.Add(prefix + "PRIMARY_FINGERGUN_DESCRIPTION", Tokens.agilePrefix + $" Lock onto a target and shoot them for <style=cIsDamage>{100f * PogoStaticValues.fingergunDamageCoefficient}% damage</style> per bullet. You can still <style=cIsDamage>look around use other abilities while enemy is targeted</style>.");
             #endregion
 
             #region Secondary
-            Language.Add(prefix + "SECONDARY_RIGHTFINGERGUN_NAME", "Righty");
+            // Is the same as primary
             #endregion
 
             #region Utility

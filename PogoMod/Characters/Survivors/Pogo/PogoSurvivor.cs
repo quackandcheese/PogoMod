@@ -231,7 +231,7 @@ namespace PogoMod.Survivors.Pogo
             //it is also a SteppedSkillDef. Custom Skilldefs are very useful for custom behaviors related to casting a skill. see ror2's different skilldefs for reference
             SkillDef primarySkillDef1 = Skills.CreateSkillDef(new SkillDefInfo(
                 "PogoLeftFingergun",
-                POGO_PREFIX + "PRIMARY_LEFTFINGERGUN_NAME",
+                POGO_PREFIX + "PRIMARY_FINGERGUN_NAME",
                 POGO_PREFIX + "PRIMARY_FINGERGUN_DESCRIPTION",
                 assetBundle.LoadAsset<Sprite>("texPrimaryIcon"),
                 new EntityStates.SerializableEntityStateType(typeof(SkillStates.LeftFingergun)),
@@ -247,28 +247,15 @@ namespace PogoMod.Survivors.Pogo
             Skills.CreateGenericSkillWithSkillFamily(bodyPrefab, SkillSlot.Secondary);
 
             //here is a basic skill def with all fields accounted for
-            SkillDef secondarySkillDef1 = Skills.CreateSkillDef(new SkillDefInfo
-            {
-                skillName = "PogoRightFingergun",
-                skillNameToken = POGO_PREFIX + "SECONDARY_RIGHTFINGERGUN_NAME",
-                skillDescriptionToken = POGO_PREFIX + "PRIMARY_FINGERGUN_DESCRIPTION",
-                skillIcon = assetBundle.LoadAsset<Sprite>("texSecondaryIcon"),
-
-                activationState = new EntityStates.SerializableEntityStateType(typeof(RightFingergun)),
-                activationStateMachineName = "Weapon2",
-                keywordTokens = new string[] { "KEYWORD_AGILE" },
-
-                resetCooldownTimerOnUse = false,
-                fullRestockOnAssign = true,
-                dontAllowPastMaxStocks = false,
-                mustKeyPress = false,
-                beginSkillCooldownOnSkillEnd = false,
-
-                isCombatSkill = true,
-                canceledFromSprinting = false,
-                cancelSprintingOnActivation = false,
-                forceSprintDuringState = false,
-            });
+            SkillDef secondarySkillDef1 = Skills.CreateSkillDef(new SkillDefInfo(
+                "PogoRightFingergun",
+                POGO_PREFIX + "PRIMARY_FINGERGUN_NAME",
+                POGO_PREFIX + "PRIMARY_FINGERGUN_DESCRIPTION",
+                assetBundle.LoadAsset<Sprite>("texPrimaryIcon"),
+                new EntityStates.SerializableEntityStateType(typeof(SkillStates.RightFingergun)),
+                "Weapon2",
+                true
+            ));
 
             Skills.AddSecondarySkills(bodyPrefab, secondarySkillDef1);
         }
