@@ -17,22 +17,28 @@ namespace PogoMod.Survivors.Pogo.SkillStates
         public static float force = 200f;
         public static float range = 1000f;
         public static float radius = 0.3f;
-        public static float spreadBloomValue = 0.2f;
+        public static float spreadBloomValue = 1f;
         public const float recoilJumpForce = 20.0f;
         public static int bulletCount = 8;
-        public static GameObject tracerEffectPrefab = LegacyResourcesAPI.Load<GameObject>("Prefabs/Effects/Tracers/TracerGoldGat");
-        public static GameObject hitEffectPrefab = LegacyResourcesAPI.Load<GameObject>("Prefabs/Effects/ImpactEffects/HitsparkCaptainShotgun");
+        public static GameObject hitEffectPrefab = LegacyResourcesAPI.Load<GameObject>("prefabs/effects/impacteffects/MissileExplosionVFX");
+        public static GameObject tracerEffectPrefab = LegacyResourcesAPI.Load<GameObject>("prefabs/effects/tracers/tracerembers");
+        public static GameObject smokeEffectPrefab = LegacyResourcesAPI.Load<GameObject>("prefabs/effects/muzzleflashes/muzzleflashLoader");
+        public static GameObject flashEffectPrefab = LegacyResourcesAPI.Load<GameObject>("prefabs/effects/muzzleflashes/muzzleflashfire");
 
         private float duration;
         private float fireTime;
         private bool hasFired;
         private string muzzleString = "Muzzle";
 
+
+        private Quaternion major = Quaternion.FromToRotation(Vector3.forward, Vector3.down);
+
+
         public override void OnEnter()
         {
             base.OnEnter();
             this.duration = baseDuration / this.attackSpeedStat;
-            this.FireBullet(new Ray(inputBank.aimOrigin, Vector3.down));
+            this.Fire();
             base.characterBody.AddSpreadBloom(spreadBloomValue);
 
             if (base.characterMotor)
@@ -53,51 +59,65 @@ namespace PogoMod.Survivors.Pogo.SkillStates
             }
         }
 
-        protected virtual void FireBullet(Ray aimRay)
+        public void Fire()
         {
             if (base.isAuthority)
             {
-                BulletAttack bulletAttack = this.GenerateBulletAttack(aimRay);
-                bulletAttack.Fire();
-            }
-        }
+                //Ray aimRay = base.GetAimRay();
 
-        protected BulletAttack GenerateBulletAttack(Ray aimRay)
-        {
-            float num = 0f;
-            if (base.characterBody)
-            {
-                num = base.characterBody.spreadBloomAngle;
-            }
-            return new BulletAttack
-            {
-                aimVector = aimRay.direction,
-                origin = aimRay.origin,
-                owner = base.gameObject,
-                weapon = null,
-                bulletCount = (uint)bulletCount,
-                damage = this.damageStat * damageCoefficient * pogoController.currentPogoDamageCoefficient,
-                damageColorIndex = DamageColorIndex.Default,
-                damageType = DamageType.Generic,
-                falloffModel = BulletAttack.FalloffModel.Buckshot,
-                force = force,
-                HitEffectNormal = false,
-                procChainMask = default(ProcChainMask),
-                procCoefficient = procCoefficient,
-                maxDistance = range,
-                radius = radius,
-                isCrit = base.RollCrit(),
-                muzzleName = muzzleString,
-                minSpread = 0,
-                maxSpread = 1 + num,
-                hitEffectPrefab = hitEffectPrefab,
-                smartCollision = true,
-                sniper = false,
-                tracerEffectPrefab = tracerEffectPrefab,
+                Vector3 aimer = Vector3.down;
 
-                spreadPitchScale = 2f,
-                spreadYawScale = 2f,
-            };
+                BulletAttack bulletAttack = new BulletAttack
+                {
+                    owner = base.gameObject,
+                    weapon = base.gameObject,
+                    // TODO: Change muzzle name (for other abilities too)
+                    muzzleName = "Muzzle",
+                    origin = characterBody.footPosition,
+                    aimVector = aimer,
+                    minSpread = 0f,
+                    maxSpread = base.characterBody.spreadBloomAngle,
+                    radius = 0.5f,  //was 0.35
+                    bulletCount = 1U,
+                    procCoefficient = .7f,
+                    damage = base.characterBody.damage * PogoStaticValues.shotgunDamageCoefficient,
+                    force = 3,
+                    falloffModel = BulletAttack.FalloffModel.None,
+                    tracerEffectPrefab = tracerEffectPrefab,
+                    hitEffectPrefab = hitEffectPrefab,
+                    isCrit = base.RollCrit(),
+                    HitEffectNormal = false,
+                    stopperMask = LayerIndex.world.mask,
+                    smartCollision = true,
+                    maxDistance = 300f
+                };
+
+                for (int j = 0; j < 3; j++)
+                {
+                    for (int i = 0; i <= 4; i++)    //was 9
+                    {
+                        float theta = Random.Range(0.0f, 6.28f);
+                        float x = Mathf.Cos(theta);
+                        float z = Mathf.Sin(theta);
+                        float c = i * 0.7555f; //0.3777f * 10/5
+                        c *= (1f / 12f);
+                        aimer.x += c * x;
+                        aimer.z += c * z;
+                        bulletAttack.aimVector = aimer;
+                        bulletAttack.Fire();
+                        aimer = Vector3.down;
+                    }
+                }
+
+                EffectData effectData = new EffectData();
+                effectData.origin = characterBody.footPosition + (1 * Vector3.down);
+                effectData.scale = 8;
+                effectData.rotation = major;
+
+                EffectManager.SpawnEffect(smokeEffectPrefab, effectData, true);
+                effectData.scale = 16;
+                EffectManager.SpawnEffect(flashEffectPrefab, effectData, true);
+            }
         }
     }
 }
