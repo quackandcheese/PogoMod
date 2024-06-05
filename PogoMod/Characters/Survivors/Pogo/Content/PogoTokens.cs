@@ -45,7 +45,7 @@ namespace PogoMod.Survivors.Pogo
             #region Passive
             Language.Add(prefix + "PASSIVE_NAME", "Pogostick");
             // Not putting it in the description, but when fall damage would have been taken, the jump "combo" is auto-set to max and maximum height is reached immediately.
-            Language.Add(prefix + "PASSIVE_DESCRIPTION", "Jump as you hit the ground to <style=cIsUtility>jump higher and further</style>. Height and speed maxes out after 3 consecutive successful <style=cIsUtility>pogos</style>. A successful <style=cIsUtility>pogo</style> negates fall damage and <style=cIsDamage>stuns/deals damage</style> to an enemy if they are landed on.");
+            Language.Add(prefix + "PASSIVE_DESCRIPTION", $"Jump as you hit the ground to <style=cIsUtility>jump higher and further</style>. Height and speed maxes out after 3 consecutive successful <style=cIsUtility>pogos</style>. A successful <style=cIsUtility>pogo</style> negates fall damage and deals <style=cIsDamage>{100f * PogoStaticValues.stompDamageCoefficient}% damage</style> to an enemy if they are landed on.");
             #endregion
 
             #region Primary
