@@ -1,42 +1,66 @@
 ﻿using EntityStates;
 using PogoMod.Characters.Survivors.Pogo.Components;
+using PogoMod.Modules.BaseContent.BaseStates;
 using PogoMod.Survivors.Pogo;
 using RoR2;
 using UnityEngine;
 
 namespace PogoMod.Survivors.Pogo.SkillStates
 {
-    public class PogoJump : BaseState
+    public class PogoJump : BasePogoState
     {
-        public static float minimumYVelocityToBounce = -10f;
+        public float jumpBuffer = 0.1f;
+        public float jumpBufferTimer = 0.0f;
+
+        public float perfectJumpBuffer = 0.1f;
+        public float perfectJumpBufferTimer = 0.0f;
+
 
         public override void OnEnter()
         {
             base.OnEnter();
 
-            if (characterMotor != null)
-                characterMotor.onHitGroundServer += CharacterMotor_onHitGroundServer;
+            characterMotor.onHitGroundAuthority += CharacterMotor_onHitGroundAuthority;
+        }
+
+        private void CharacterMotor_onHitGroundAuthority(ref CharacterMotor.HitGroundInfo hitGroundInfo)
+        {
+            perfectJumpBufferTimer = perfectJumpBuffer;
+            pogoController.withinPerfectJumpTiming = true;
         }
 
         public override void FixedUpdate()
         {
             base.FixedUpdate();
 
-            if (base.inputBank.jump.justPressed && base.isGrounded)
+            if (base.inputBank.jump.justPressed && !base.isGrounded)
             {
-                Debug.Log("JUMPED!");
+                Debug.Log("JUMPED in air!");
+                jumpBufferTimer = jumpBuffer;
             }
-        }
 
-        private void CharacterMotor_onHitGroundServer(ref CharacterMotor.HitGroundInfo hitGroundInfo)
-        {
-/*            Vector3 vector = hitGroundInfo.velocity;
-            if (vector.y <= minimumYVelocityToBounce)
+            if (jumpBufferTimer > 0.0f)
             {
-                vector.y = Mathf.Abs(vector.y / 2);
-                characterMotor.velocity = vector;
-                characterMotor.Motor.ForceUnground();
-            }*/
+                jumpBufferTimer -= Time.fixedDeltaTime;
+
+                if (isGrounded)
+                {
+                    pogoController.withinPerfectJumpTiming = true;
+                    pogoController.jumpQueued = true;
+                    jumpBufferTimer = 0;
+                }
+            }
+
+            if (pogoController.withinPerfectJumpTiming)
+            {
+                perfectJumpBufferTimer -= Time.fixedDeltaTime;
+
+
+                if (perfectJumpBufferTimer <= 0.0f)
+                {
+                    pogoController.withinPerfectJumpTiming = false;
+                }
+            }
         }
     }
 }

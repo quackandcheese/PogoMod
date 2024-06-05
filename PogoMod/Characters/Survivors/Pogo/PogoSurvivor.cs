@@ -124,6 +124,8 @@ namespace PogoMod.Survivors.Pogo
         private void AdditionalBodySetup()
         {
             AddHitboxes();
+
+            bodyPrefab.AddComponent<PogoController>();
             bodyPrefab.AddComponent<PogoWeaponComponent>();
 
             bodyPrefab.AddComponent<RightHandTracker>();
