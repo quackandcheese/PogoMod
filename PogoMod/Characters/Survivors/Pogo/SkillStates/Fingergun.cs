@@ -31,7 +31,7 @@ namespace PogoMod.Survivors.Pogo.SkillStates
         private float fireTime;
 
         /// Targeting
-        public static float maxAngle = 10f;
+        public static float maxAngle = 15f;
         public static float maxDistance = 200f;
 
         private HurtBox target;
@@ -39,6 +39,7 @@ namespace PogoMod.Survivors.Pogo.SkillStates
         private Indicator indicator;
 
         private bool hasKilledTarget = false;
+        private bool foundTarget;
 
         public override InterruptPriority GetMinimumInterruptPriority()
         {
@@ -81,9 +82,10 @@ namespace PogoMod.Survivors.Pogo.SkillStates
 
             if (base.isAuthority)
             {
+                DetermineTargetRemoval();
+
                 if (!hasKilledTarget)
                 {
-                    DetermineTargetRemoval();
                     if (target == null)
                     {
                         indicator.active = false;
@@ -93,6 +95,7 @@ namespace PogoMod.Survivors.Pogo.SkillStates
                         GetCurrentTargetInfo(out hurtBox, out y);
 
                         target = hurtBox;
+                        foundTarget = target != null;
                     }
                     else
                     {
@@ -114,7 +117,7 @@ namespace PogoMod.Survivors.Pogo.SkillStates
                 }
 
 
-                if ((inputBank.skill1.justReleased && side == "Left") || (inputBank.skill2.justReleased && side == "Right"))
+                if (!IsKeyDownAuthority())
                 {
                     Debug.Log("released " + side);
                     outer.SetNextStateToMain();
@@ -151,6 +154,11 @@ namespace PogoMod.Survivors.Pogo.SkillStates
             }
             else
             {
+                if (foundTarget)
+                {
+                    hasKilledTarget = true;
+                }
+
                 indicator.active = false;
             }
         }
