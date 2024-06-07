@@ -1,4 +1,6 @@
-﻿using System;
+﻿using PogoMod.Characters.Survivors.Pogo.Components;
+using RoR2;
+using System;
 using System.Collections.Generic;
 using System.Text;
 using UnityEngine;
@@ -7,6 +9,9 @@ namespace PogoMod.Survivors.Pogo.Components
 {
     public class PogoController : MonoBehaviour
     {
+        public Animator animator;
+        public ArmAimAnimator armAimAnimator;
+
         public bool withinPerfectJumpTiming = false;
         public bool jumpQueued = false;
 
@@ -19,16 +24,9 @@ namespace PogoMod.Survivors.Pogo.Components
 
         private void Start()
         {
-            Animator animator = GetComponent<Animator>();
-            int layerIndex = animator.GetLayerIndex("LeftArmPitch");
-            animator.Play("PitchControl", layerIndex);
-            int layerIndex2 = animator.GetLayerIndex("LeftArmYaw");
-            animator.Play("YawControl", layerIndex2);
-            int layerIndex3 = animator.GetLayerIndex("RightArmPitch");
-            animator.Play("PitchControl", layerIndex3);
-            int layerIndex4 = animator.GetLayerIndex("RightArmYaw");
-            animator.Play("YawControl", layerIndex4);
-            animator.Update(0f);
+            ModelLocator modelLocator = GetComponent<ModelLocator>();
+            animator = modelLocator.modelTransform.GetComponent<Animator>();
+            armAimAnimator = animator.gameObject.AddComponent<ArmAimAnimator>();
         }
     }
 }

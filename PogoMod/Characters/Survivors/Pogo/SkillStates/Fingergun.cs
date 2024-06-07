@@ -43,12 +43,6 @@ namespace PogoMod.Survivors.Pogo.SkillStates
         private bool foundTarget;
 
 
-        private float pitchRangeMax = 90.0f;
-        private float pitchRangeMin = -90.0f;
-
-        private float yawRangeMax = 90.0f;
-        private float yawRangeMin = -90.0f;
-
         public override InterruptPriority GetMinimumInterruptPriority()
         {
             return InterruptPriority.Death;
@@ -126,9 +120,11 @@ namespace PogoMod.Survivors.Pogo.SkillStates
             indicator.targetTransform = target.transform;
             indicator.active = true;
 
-            Animator animator = GetModelAnimator();
+            pogoController.armAimAnimator.AimImmediate(side, (target.transform.position - inputBank.aimOrigin).normalized);
 
+/*            Animator animator = GetModelAnimator();
 
+            // TODO: Make the arms pitch and yaw floats 0 unless ability is active
 
             Vector3 direction = target.transform.position - inputBank.aimOrigin;
 
@@ -145,8 +141,8 @@ namespace PogoMod.Survivors.Pogo.SkillStates
             float yawClipCycleEnd = 0.999f;
 
 
-            animator.SetFloat(Animator.StringToHash("aimPitchCycle"), Remap(pitch, pitchRangeMin, pitchRangeMax, pitchClipCycleEnd, 0f));
-            animator.SetFloat(Animator.StringToHash("aimYawCycle"), Remap(yaw, yawRangeMin, yawRangeMax, 0f, yawClipCycleEnd));
+            animator.SetFloat(side.ToLower() + "ArmPitchCycle", Remap(pitch, pitchRangeMin, pitchRangeMax, pitchClipCycleEnd, 0f));
+            animator.SetFloat(side.ToLower() + "ArmYawCycle", Remap(yaw, yawRangeMin, yawRangeMax, 0f, yawClipCycleEnd));*/
 
             // Firing
             delayBetweenBullets += Time.fixedDeltaTime;
@@ -161,6 +157,7 @@ namespace PogoMod.Survivors.Pogo.SkillStates
             }
         }
 
+/*        // TODO: Make this work \/
         void GetPitchYaw(Vector3 direction, out float pitch, out float yaw)
         {
             // Normalize the direction vector
@@ -172,7 +169,7 @@ namespace PogoMod.Survivors.Pogo.SkillStates
             // Calculate pitch
             float magnitude = new Vector2(direction.x, direction.z).magnitude;
             pitch = Mathf.Atan2(direction.y, magnitude) * Mathf.Rad2Deg;
-        }
+        }*/
 
         public override void OnExit()
         {

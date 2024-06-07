@@ -8,7 +8,7 @@ namespace PogoMod.Survivors.Pogo.SkillStates
     {
         public override void SetupFingergun()
         {
-            muzzleString = "Muzzle";
+            muzzleString = "RightMuzzle";
             side = "Right";
             indicatorPrefab = PogoAssets.rightFingergunIndicator;
         }
