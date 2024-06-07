@@ -7,10 +7,14 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 325302049, guid: f91301084c03a4a47a2f664b246995d8, type: 3}
+      propertyPath: m_Controller
+      value: 
+      objectReference: {fileID: 9100000, guid: 345470bde2e8c414a88fe0be8d2cf02d, type: 2}
     - target: {fileID: 4961354216607780317, guid: f91301084c03a4a47a2f664b246995d8,
         type: 3}
       propertyPath: m_Name
-      value: mdlPogo
+      value: PogoDisplay
       objectReference: {fileID: 0}
     - target: {fileID: 5733528672593991527, guid: f91301084c03a4a47a2f664b246995d8,
         type: 3}
