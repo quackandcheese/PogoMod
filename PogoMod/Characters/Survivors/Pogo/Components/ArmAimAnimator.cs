@@ -11,8 +11,8 @@ namespace PogoMod.Characters.Survivors.Pogo.Components
     {
         private Animator animatorComponent;
 
-        private float pitchRangeMax = 90.0f;
-        private float pitchRangeMin = -90.0f;
+        private float pitchRangeMax = 80.0f;
+        private float pitchRangeMin = -80.0f;
 
         private float yawRangeMax = 0.0f;
         private float yawRangeMin = -180.0f;
@@ -79,15 +79,15 @@ namespace PogoMod.Characters.Survivors.Pogo.Components
                 return;
             }
             this.UpdateLocalAnglesToAimVector(transform.forward);
-            //this.UpdateGiveup();
-           // this.ApproachDesiredAngles();
+            this.UpdateGiveup();
+            this.ApproachDesiredAngles();
             this.UpdateAnimatorParameters(this.animatorComponent, this.pitchRangeMin, this.pitchRangeMax, this.yawRangeMin, this.yawRangeMax);
         }
 
         public void AimImmediate(string side, Vector3 directionVector)
         {
             this.UpdateLocalAnglesToAimVector(directionVector);
-            //this.ResetGiveup();
+            this.ResetGiveup();
             this.currentLocalAngles = this.clampedLocalAnglesToAimVector;
             this.smoothingVelocity = new AimAnimator.AimAngles
             {
@@ -104,6 +104,12 @@ namespace PogoMod.Characters.Survivors.Pogo.Components
             {
                 pitch = NormalizeAngle(eulerAngles.x),
                 yaw = NormalizeAngle(eulerAngles.y)
+            };
+
+            this.overshootAngles = new AimAnimator.AimAngles
+            {
+                pitch = Mathf.Max(this.pitchRangeMin - this.localAnglesToAimVector.pitch, this.localAnglesToAimVector.pitch - this.pitchRangeMax),
+                yaw = Mathf.Max(Mathf.DeltaAngle(this.localAnglesToAimVector.yaw, this.yawRangeMin), Mathf.DeltaAngle(this.yawRangeMax, this.localAnglesToAimVector.yaw))
             };
 
             this.clampedLocalAnglesToAimVector = new AimAnimator.AimAngles
