@@ -14,8 +14,8 @@ namespace PogoMod.Characters.Survivors.Pogo.Components
         private float pitchRangeMax = 90.0f;
         private float pitchRangeMin = -90.0f;
 
-        private float yawRangeMax = 90.0f;
-        private float yawRangeMin = -90.0f;
+        private float yawRangeMax = 0.0f;
+        private float yawRangeMin = -180.0f;
 
 
         private float pitchClipCycleEnd;
@@ -79,15 +79,15 @@ namespace PogoMod.Characters.Survivors.Pogo.Components
                 return;
             }
             this.UpdateLocalAnglesToAimVector(transform.forward);
-            this.UpdateGiveup();
-            this.ApproachDesiredAngles();
+            //this.UpdateGiveup();
+           // this.ApproachDesiredAngles();
             this.UpdateAnimatorParameters(this.animatorComponent, this.pitchRangeMin, this.pitchRangeMax, this.yawRangeMin, this.yawRangeMax);
         }
 
         public void AimImmediate(string side, Vector3 directionVector)
         {
             this.UpdateLocalAnglesToAimVector(directionVector);
-            this.ResetGiveup();
+            //this.ResetGiveup();
             this.currentLocalAngles = this.clampedLocalAnglesToAimVector;
             this.smoothingVelocity = new AimAnimator.AimAngles
             {
@@ -115,10 +115,8 @@ namespace PogoMod.Characters.Survivors.Pogo.Components
 
         public void UpdateAnimatorParameters(Animator animator, float pitchRangeMin, float pitchRangeMax, float yawRangeMin, float yawRangeMax)
         {
-            float num = 1f;
-
-            animator.SetFloat("leftArmPitchCycle", Remap(this.currentLocalAngles.pitch * num, pitchRangeMin, pitchRangeMax, this.pitchClipCycleEnd, 0f));
-            animator.SetFloat("leftArmYawCycle", Remap(this.currentLocalAngles.yaw * num, yawRangeMin, yawRangeMax, 0f, this.yawClipCycleEnd));
+            animator.SetFloat("leftArmPitchCycle", Remap(this.currentLocalAngles.pitch, pitchRangeMin, pitchRangeMax, this.pitchClipCycleEnd, 0f));
+            animator.SetFloat("leftArmYawCycle", Remap(this.currentLocalAngles.yaw, yawRangeMin, yawRangeMax, 0f, this.yawClipCycleEnd));
         }
 
         public void OnDeathStart()
@@ -159,7 +157,7 @@ namespace PogoMod.Characters.Survivors.Pogo.Components
 
         // Token: 0x040020E5 RID: 8421
         [Tooltip("Whether or not the character can do full 360 yaw turns.")]
-        public bool fullYaw = true;
+        public bool fullYaw = false;
         private float giveupTimer;
         public bool isOutsideOfRange { get; private set; }
         private AimAnimator.AimAngles overshootAngles;
