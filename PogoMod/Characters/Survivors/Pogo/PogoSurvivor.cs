@@ -27,8 +27,8 @@ namespace PogoMod.Survivors.Pogo
         public override string masterName => "PogoMonsterMaster"; //if you do not
 
         //the names of the prefabs you set up in unity that we will use to build your character
-        public override string modelPrefabName => "mdlHenry";
-        public override string displayPrefabName => "HenryDisplay";
+        public override string modelPrefabName => "mdlPogo";
+        public override string displayPrefabName => "PogoDisplay";
 
         public const string POGO_PREFIX = PogoPlugin.DEVELOPER_PREFIX + "_POGO_";
 
@@ -62,16 +62,18 @@ namespace PogoMod.Survivors.Pogo
         {
                 new CustomRendererInfo
                 {
-                    childName = "SwordModel",
-                    material = assetBundle.LoadMaterial("matHenry"),
+                    childName = "AccessoriesModel",
+                    dontHotpoo = true,
                 },
                 new CustomRendererInfo
                 {
-                    childName = "GunModel",
+                    childName = "ClothingModel",
+                    dontHotpoo = true,
                 },
                 new CustomRendererInfo
                 {
                     childName = "Model",
+                    dontHotpoo = true,
                 }
         };
 
@@ -110,7 +112,6 @@ namespace PogoMod.Survivors.Pogo
             PogoStates.Init();
             PogoTokens.Init();
 
-            PogoAssets.Init(assetBundle);
             PogoBuffs.Init(assetBundle);
 
             InitializeEntityStateMachines();

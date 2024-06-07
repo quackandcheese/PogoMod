@@ -79,11 +79,11 @@ MonoBehaviour:
   transformPairs:
   - name: MainHurtbox
     transform: {fileID: 1363712736}
-  - name: Accessories
+  - name: AccessoriesModel
     transform: {fileID: 5792104770694299305}
-  - name: TorsoClothing
+  - name: ClothingModel
     transform: {fileID: 8749157420549329541}
-  - name: PilotFemaleMesh
+  - name: Model
     transform: {fileID: 1676292693206223700}
   - name: Root
     transform: {fileID: 8652282033092933751}

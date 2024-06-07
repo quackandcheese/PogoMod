@@ -3,6 +3,7 @@ using PogoMod.Characters.Survivors.Pogo.Components;
 using PogoMod.Modules.BaseContent.BaseStates;
 using PogoMod.Survivors.Pogo;
 using RoR2;
+using System;
 using UnityEngine;
 
 namespace PogoMod.Survivors.Pogo.SkillStates
@@ -40,6 +41,13 @@ namespace PogoMod.Survivors.Pogo.SkillStates
 
         private bool hasKilledTarget = false;
         private bool foundTarget;
+
+
+        private float pitchRangeMax = 90.0f;
+        private float pitchRangeMin = -90.0f;
+
+        private float yawRangeMax = 90.0f;
+        private float yawRangeMin = -90.0f;
 
         public override InterruptPriority GetMinimumInterruptPriority()
         {
@@ -99,20 +107,7 @@ namespace PogoMod.Survivors.Pogo.SkillStates
                     }
                     else
                     {
-                        indicator.targetTransform = target.transform;
-                        indicator.active = true;
-
-                        // Firing
-                        delayBetweenBullets += Time.fixedDeltaTime;
-                        if (delayBetweenBullets >= delayBetweenBulletsMax)
-                        {
-                            Ray aimRay = new Ray(inputBank.aimOrigin, target.transform.position - inputBank.aimOrigin);
-
-                            PlayAnimation("LeftArm, Override", "ShootGun", "ShootGun.playbackRate", 1.8f);
-                            Fire(aimRay);
-
-                            delayBetweenBullets = 0f;
-                        }
+                        HasTargetFixedUpdate();
                     }
                 }
 
@@ -124,6 +119,59 @@ namespace PogoMod.Survivors.Pogo.SkillStates
                     return;
                 }
             }
+        }
+
+        public void HasTargetFixedUpdate()
+        {
+            indicator.targetTransform = target.transform;
+            indicator.active = true;
+
+            Animator animator = GetModelAnimator();
+
+
+
+            Vector3 direction = target.transform.position - inputBank.aimOrigin;
+
+            float pitch, yaw;
+            GetPitchYaw(direction, out pitch, out yaw);
+
+
+            int layerIndex = animator.GetLayerIndex(side + "ArmPitch");
+            AnimatorClipInfo[] currentAnimatorClipInfo = animator.GetCurrentAnimatorClipInfo(layerIndex);
+            AnimationClip clip = currentAnimatorClipInfo[0].clip;
+            double timeInSeconds = (double)(clip.length * clip.frameRate);
+
+            float pitchClipCycleEnd = (float)((timeInSeconds - 1.0) / timeInSeconds);
+            float yawClipCycleEnd = 0.999f;
+
+
+            animator.SetFloat(Animator.StringToHash("aimPitchCycle"), Remap(pitch, pitchRangeMin, pitchRangeMax, pitchClipCycleEnd, 0f));
+            animator.SetFloat(Animator.StringToHash("aimYawCycle"), Remap(yaw, yawRangeMin, yawRangeMax, 0f, yawClipCycleEnd));
+
+            // Firing
+            delayBetweenBullets += Time.fixedDeltaTime;
+            if (delayBetweenBullets >= delayBetweenBulletsMax)
+            {
+                Ray aimRay = new Ray(inputBank.aimOrigin, target.transform.position - inputBank.aimOrigin);
+
+                PlayAnimation(side + "Hand", "Shoot", $"Shoot{side}.playbackRate", 1.8f);
+                Fire(aimRay);
+
+                delayBetweenBullets = 0f;
+            }
+        }
+
+        void GetPitchYaw(Vector3 direction, out float pitch, out float yaw)
+        {
+            // Normalize the direction vector
+            direction.Normalize();
+
+            // Calculate yaw
+            yaw = Mathf.Atan2(direction.x, direction.z) * Mathf.Rad2Deg;
+
+            // Calculate pitch
+            float magnitude = new Vector2(direction.x, direction.z).magnitude;
+            pitch = Mathf.Atan2(direction.y, magnitude) * Mathf.Rad2Deg;
         }
 
         public override void OnExit()
@@ -233,6 +281,11 @@ namespace PogoMod.Survivors.Pogo.SkillStates
                     hitEffectPrefab = EntityStates.Commando.CommandoWeapon.FireShotgun.hitEffectPrefab,
                 }.Fire();
             }
+        }
+
+        private static float Remap(float value, float inMin, float inMax, float outMin, float outMax)
+        {
+            return outMin + (value - inMin) / (inMax - inMin) * (outMax - outMin);
         }
     }
 }

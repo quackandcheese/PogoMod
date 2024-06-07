@@ -5,6 +5,8 @@ using RoR2;
 using System.Collections.Generic;
 using System.Security;
 using System.Security.Permissions;
+using ShaderSwapper;
+using PogoMod.Modules;
 
 [module: UnverifiableCode]
 [assembly: SecurityPermission(SecurityAction.RequestMinimum, SkipVerification = true)]
@@ -38,6 +40,9 @@ namespace PogoMod
 
             // used when you want to properly set up language folders
             Modules.Language.Init();
+
+            PogoAssets.Init(Assets.LoadAssetBundle("pogobundle"));
+            StartCoroutine(PogoAssets.mainAssetBundle.UpgradeStubbedShadersAsync());
 
             // character initialization
             new PogoSurvivor().Initialize();

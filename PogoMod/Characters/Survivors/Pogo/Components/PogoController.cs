@@ -16,5 +16,19 @@ namespace PogoMod.Survivors.Pogo.Components
 
         public float pogoDamageCoefficient = 1.125f;
         public float currentPogoDamageCoefficient = 1.0f;
+
+        private void Start()
+        {
+            Animator animator = GetComponent<Animator>();
+            int layerIndex = animator.GetLayerIndex("LeftArmPitch");
+            animator.Play("PitchControl", layerIndex);
+            int layerIndex2 = animator.GetLayerIndex("LeftArmYaw");
+            animator.Play("YawControl", layerIndex2);
+            int layerIndex3 = animator.GetLayerIndex("RightArmPitch");
+            animator.Play("PitchControl", layerIndex3);
+            int layerIndex4 = animator.GetLayerIndex("RightArmYaw");
+            animator.Play("YawControl", layerIndex4);
+            animator.Update(0f);
+        }
     }
 }
