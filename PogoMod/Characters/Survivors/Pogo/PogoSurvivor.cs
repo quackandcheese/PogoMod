@@ -185,7 +185,7 @@ namespace PogoMod.Survivors.Pogo
                 enabled = true,
                 skillNameToken = POGO_PREFIX + "PASSIVE_NAME",
                 skillDescriptionToken = POGO_PREFIX + "PASSIVE_DESCRIPTION",
-                icon = assetBundle.LoadAsset<Sprite>("texPassiveIcon"),
+                icon = assetBundle.LoadAsset<Sprite>("texPogostickIcon"),
             };
 
             /* option 2. a new SkillFamily for a passive, used if you want multiple selectable passives
@@ -238,7 +238,7 @@ namespace PogoMod.Survivors.Pogo
                 "PogoLeftFingergun",
                 POGO_PREFIX + "PRIMARY_FINGERGUN_NAME",
                 POGO_PREFIX + "PRIMARY_FINGERGUN_DESCRIPTION",
-                assetBundle.LoadAsset<Sprite>("texPrimaryIcon"),
+                assetBundle.LoadAsset<Sprite>("texLeftFingergunIcon"),
                 new EntityStates.SerializableEntityStateType(typeof(SkillStates.LeftFingergun)),
                 "Weapon",
                 true
@@ -256,7 +256,7 @@ namespace PogoMod.Survivors.Pogo
                 "PogoRightFingergun",
                 POGO_PREFIX + "PRIMARY_FINGERGUN_NAME",
                 POGO_PREFIX + "PRIMARY_FINGERGUN_DESCRIPTION",
-                assetBundle.LoadAsset<Sprite>("texPrimaryIcon"),
+                assetBundle.LoadAsset<Sprite>("texLeftFingergunIcon"),
                 new EntityStates.SerializableEntityStateType(typeof(SkillStates.RightFingergun)),
                 "Weapon2",
                 true
