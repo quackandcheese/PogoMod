@@ -13,6 +13,6 @@ namespace PogoMod.Survivors.Pogo
         public const float minimumStompDamageCoefficient = 10.0f;
         public const float maximumStompDamageCoefficient = 100.0f;
 
-        public const float kickDamageCoefficient = 3.0f;
+        public const float kickDamageCoefficient = 5.0f;
     }
 }

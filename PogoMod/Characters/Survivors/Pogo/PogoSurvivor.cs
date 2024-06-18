@@ -138,7 +138,7 @@ namespace PogoMod.Survivors.Pogo
         public void AddHitboxes()
         {
             //example of how to create a HitBoxGroup. see summary for more details
-            Prefabs.SetupHitBoxGroup(characterModelObject, "SwordGroup", "SwordHitbox");
+            Prefabs.SetupHitBoxGroup(characterModelObject, "KickHitboxGroup", "KickHitbox");
         }
 
         public override void InitializeEntityStateMachines() 
@@ -313,7 +313,7 @@ namespace PogoMod.Survivors.Pogo
                 skillName = "PogoKick",
                 skillNameToken = POGO_PREFIX + "SPECIAL_KICK_NAME",
                 skillDescriptionToken = POGO_PREFIX + "SPECIAL_KICK_DESCRIPTION",
-                skillIcon = assetBundle.LoadAsset<Sprite>("texSpecialIcon"),
+                skillIcon = assetBundle.LoadAsset<Sprite>("texDropkickIcon"),
 
                 activationState = new EntityStates.SerializableEntityStateType(typeof(Dropkick)),
                 //setting this to the "weapon2" EntityStateMachine allows us to cast this skill at the same time primary, which is set to the "weapon" EntityStateMachine
@@ -321,7 +321,7 @@ namespace PogoMod.Survivors.Pogo
                 interruptPriority = EntityStates.InterruptPriority.Skill,
 
                 baseMaxStock = 1,
-                baseRechargeInterval = 10f,
+                baseRechargeInterval = 5f,
 
                 isCombatSkill = true,
                 mustKeyPress = false,

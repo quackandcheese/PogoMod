@@ -3039,7 +3039,7 @@ AnimatorState:
   m_MirrorParameterActive: 0
   m_CycleOffsetParameterActive: 0
   m_TimeParameterActive: 0
-  m_Motion: {fileID: 7400000, guid: fe47ef4d8897df44c9f0bd3c3c3a1ca1, type: 2}
+  m_Motion: {fileID: 7400000, guid: 529c5ec51052b11429a3618468b24bc1, type: 2}
   m_Tag: 
   m_SpeedParameter: Dropkick.playbackRate
   m_MirrorParameter: 

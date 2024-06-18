@@ -21,10 +21,10 @@ namespace PogoMod.Survivors.Pogo
             string prefix = PogoSurvivor.POGO_PREFIX;
 
             string desc = "Pogo is a fast-paced cyborg combatant focused on verticality and movement, wielding cybernetic fingerguns and shotgun-pogosticks for legs.<color=#CCD3E0>" + Environment.NewLine + Environment.NewLine
-             + "< ! > Sword is a good all-rounder while Boxing Gloves are better for laying a beatdown on more powerful foes." + Environment.NewLine + Environment.NewLine
-             + "< ! > Pistol is a powerful anti air, with its low cooldown and high damage." + Environment.NewLine + Environment.NewLine
+             + "< ! > Pogostick can be comboed to gain big height and stomp on enemies." + Environment.NewLine + Environment.NewLine
+             + "< ! > Fingerguns let you shoot at two separate enemies whilst kicking or jumping on any other enemies in your path." + Environment.NewLine + Environment.NewLine
              + "< ! > Roll has a lingering armor buff that helps to use it aggressively." + Environment.NewLine + Environment.NewLine
-             + "< ! > Bomb can be used to wipe crowds with ease." + Environment.NewLine + Environment.NewLine;
+             + "< ! > Dropkick can be used to swiftly change direction in midair and reach enemies that are slightly too far away." + Environment.NewLine + Environment.NewLine;
 
             string outro = "..and so she left, taking one giant leap for mankind.";
             string outroFailure = "..and so she vanished, unable to spring back.";
@@ -63,8 +63,8 @@ namespace PogoMod.Survivors.Pogo
             #endregion
 
             #region Special
-            Language.Add(prefix + "SPECIAL_KICK_NAME", "Kickback Flip");
-            Language.Add(prefix + "SPECIAL_KICK_DESCRIPTION", $"Perform a <style=cIsUtility>backflip</style> and fire explosive shotgun shells out of each leg mid-air at aimed location for <style=cIsDamage>9x{100f * PogoStaticValues.shotgunDamageCoefficient}% damage</style>.");
+            Language.Add(prefix + "SPECIAL_KICK_NAME", "Dropkick");
+            Language.Add(prefix + "SPECIAL_KICK_DESCRIPTION", $"Perform a <style=cIsUtility>dropkick</style> in the direction you are looking, knocking back and dealing <style=cIsDamage>{100f * PogoStaticValues.kickDamageCoefficient}% damage</style> to enemies in path.");
             #endregion
 
             #region Achievements
