@@ -19,7 +19,7 @@ namespace PogoMod.Survivors.Pogo
 
             Modules.Content.AddEntityState(typeof(PogoBoomstick));
 
-            Modules.Content.AddEntityState(typeof(ThrowBomb));
+            Modules.Content.AddEntityState(typeof(Dropkick));
         }
     }
 }

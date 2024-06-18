@@ -13,7 +13,7 @@ namespace PogoMod.Survivors.Pogo.SkillStates
         protected float chargeDuration { get; private set; }
         protected float charge { get; private set; }
 
-        public float baseChargeDuration = 2.5f;
+        public float baseChargeDuration = 1.5f;
         public static float minChargeForChargedAttack = 0;
 
         public static string startChargeLoopSFXString = "Play_loader_shift_charge_loop";
