@@ -155,18 +155,18 @@ namespace PogoMod.Survivors.Pogo
                 ));
             itemDisplayRules.Add(ItemDisplays.CreateDisplayRuleGroupWithRules(ItemDisplays.KeyAssets["BossDamageBonus"],
                 ItemDisplays.CreateDisplayRule(ItemDisplays.LoadDisplay("DisplayAPRound"),
-                    "Chest",
-                    new Vector3(-0.00306F, 0.0305F, -0.10267F),
-                    new Vector3(328.1755F, 357.2168F, 356.2018F),
-                    new Vector3(0.4F, 0.4F, 0.4F)
+                    "CalfR",
+                    new Vector3(0.14483F, 0.04333F, -0.00831F),
+                    new Vector3(275.4995F, 51.30243F, 39.29582F),
+                    new Vector3(0.7F, 0.7F, 0.7F)
                     )
                 ));
             itemDisplayRules.Add(ItemDisplays.CreateDisplayRuleGroupWithRules(ItemDisplays.KeyAssets["BounceNearby"],
                 ItemDisplays.CreateDisplayRule(ItemDisplays.LoadDisplay("DisplayHook"),
                     "Chest",
-                    new Vector3(0.19872F, 0.39747F, -0.05928F),
-                    new Vector3(0F, 0F, 340.2585F),
-                    new Vector3(0.24562F, 0.24562F, 0.24562F)
+                    new Vector3(0.00973F, 0.07502F, -0.12599F),
+                    new Vector3(325.8474F, 358.639F, 353.9168F),
+                    new Vector3(0.4F, 0.4F, 0.4F)
                     )
                 ));
             itemDisplayRules.Add(ItemDisplays.CreateDisplayRuleGroupWithRules(ItemDisplays.KeyAssets["ChainLightning"],
@@ -212,9 +212,15 @@ namespace PogoMod.Survivors.Pogo
             itemDisplayRules.Add(ItemDisplays.CreateDisplayRuleGroupWithRules(ItemDisplays.KeyAssets["CritDamage"],
                 ItemDisplays.CreateDisplayRule(ItemDisplays.LoadDisplay("DisplayLaserSight"),
                     "LeftMuzzle",
-                    new Vector3(0.00627F, -0.02597F, -0.07375F),
-                    new Vector3(353.4776F, 269.7848F, 269.7679F),
-                    new Vector3(0.07F, 0.07F, 0.07F)
+                    new Vector3(0.00867F, -0.03353F, -0.00507F),
+                    new Vector3(2.85582F, 8.62536F, 255.4125F),
+                    new Vector3(0.04F, 0.04F, 0.04F)
+                    ),
+                ItemDisplays.CreateDisplayRule(ItemDisplays.LoadDisplay("DisplayLaserSight"),
+                    "RightMuzzle",
+                    new Vector3(-0.01611F, -0.0308F, -0.00342F),
+                    new Vector3(353.7731F, 178.924F, 264.5021F),
+                    new Vector3(0.04F, 0.04F, 0.04F)
                     )
                 ));
             itemDisplayRules.Add(ItemDisplays.CreateDisplayRuleGroupWithRules(ItemDisplays.KeyAssets["CritGlasses"],
@@ -299,8 +305,8 @@ namespace PogoMod.Survivors.Pogo
             itemDisplayRules.Add(ItemDisplays.CreateDisplayRuleGroupWithRules(ItemDisplays.KeyAssets["EquipmentMagazineVoid"],
                 ItemDisplays.CreateDisplayRule(ItemDisplays.LoadDisplay("DisplayFuelCellVoid"),
                     "Chest",
-                    new Vector3(-0.0319F, -0.11096F, -0.09321F),
-                    new Vector3(359.2515F, 88.51431F, 98.19724F),
+                    new Vector3(0.04648F, -0.11042F, -0.08784F),
+                    new Vector3(8.22137F, 356.1381F, 90.40149F),
                     new Vector3(0.2F, 0.2F, 0.2F)
                     )
                 ));
@@ -515,9 +521,9 @@ namespace PogoMod.Survivors.Pogo
                 ));
             itemDisplayRules.Add(ItemDisplays.CreateDisplayRuleGroupWithRules(ItemDisplays.KeyAssets["Icicle"],
                 ItemDisplays.CreateDisplayRule(ItemDisplays.LoadDisplay("DisplayFrostRelic"),
-                    "Chest",
-                    new Vector3(0.32419F, 0.45696F, -0.0838F),
-                    new Vector3(62.26155F, 80.99998F, 180F),
+                    "Base",
+                    new Vector3(-0.659F, 0.394F, -0.787F),
+                    new Vector3(-0.0003F, 180.079F, 180.4018F),
                     new Vector3(1F, 1F, 1F)
                     )
                 ));
@@ -618,9 +624,9 @@ namespace PogoMod.Survivors.Pogo
             itemDisplayRules.Add(ItemDisplays.CreateDisplayRuleGroupWithRules(ItemDisplays.KeyAssets["LunarPrimaryReplacement"],
                 ItemDisplays.CreateDisplayRule(ItemDisplays.LoadDisplay("DisplayBirdEye"),
                     "Head",
-                    new Vector3(-0.05274F, 0.15872F, 0.13211F),
-                    new Vector3(275.7973F, 319.6146F, 357.8147F),
-                    new Vector3(0.13369F, 0.13369F, 0.13369F)
+                    new Vector3(-0.00183F, 0.15902F, 0.11914F),
+                    new Vector3(273.1185F, 198.608F, 158.0697F),
+                    new Vector3(0.4F, 0.4F, 0.4F)
                     )
                 ));
             itemDisplayRules.Add(ItemDisplays.CreateDisplayRuleGroupWithRules(ItemDisplays.KeyAssets["LunarSecondaryReplacement"],
@@ -666,7 +672,7 @@ namespace PogoMod.Survivors.Pogo
             itemDisplayRules.Add(ItemDisplays.CreateDisplayRuleGroupWithRules(ItemDisplays.KeyAssets["MinorConstructOnKill"],
                 ItemDisplays.CreateDisplayRule(ItemDisplays.LoadDisplay("DisplayDefenseNucleus"),
                     "Base",
-                    new Vector3(0.55F, -0.53F, -1.31F),
+                    new Vector3(0.73675F, 0.95619F, 1.10098F),
                     new Vector3(270F, 0.32262F, 0F),
                     new Vector3(0.4F, 0.4F, 0.4F)
                     )
@@ -749,13 +755,12 @@ namespace PogoMod.Survivors.Pogo
                     new Vector3(0.8F, 0.8F, 0.8F)
                     )
                 ));
-            // CONTINUE FROM HERE
             itemDisplayRules.Add(ItemDisplays.CreateDisplayRuleGroupWithRules(ItemDisplays.KeyAssets["NovaOnLowHealth"],
                 ItemDisplays.CreateDisplayRule(ItemDisplays.LoadDisplay("DisplayJellyGuts"),
-                    "UpperArmL",
-                    new Vector3(-0.03174F, 0.01256F, -0.01002F),
-                    new Vector3(7.43732F, 26.7055F, 7.51749F),
-                    new Vector3(0.12972F, 0.12972F, 0.12972F)
+                    "Head",
+                    new Vector3(-0.03174F, 0.14282F, -0.0579F),
+                    new Vector3(7.58213F, 356.8672F, 6.81687F),
+                    new Vector3(0.15F, 0.15F, 0.15F)
                     )
                 ));
             itemDisplayRules.Add(ItemDisplays.CreateDisplayRuleGroupWithRules(ItemDisplays.KeyAssets["OutOfCombatArmor"],
@@ -769,65 +774,71 @@ namespace PogoMod.Survivors.Pogo
             itemDisplayRules.Add(ItemDisplays.CreateDisplayRuleGroupWithRules(ItemDisplays.KeyAssets["ParentEgg"],
                 ItemDisplays.CreateDisplayRule(ItemDisplays.LoadDisplay("DisplayParentEgg"),
                     "Chest",
-                    new Vector3(0.32548F, -0.21432F, 0.03154F),
+                    new Vector3(0.15168F, 0.3255F, 0.14684F),
                     new Vector3(0F, 0F, 10.80585F),
                     new Vector3(0.06853F, 0.06853F, 0.06853F)
                     )
                 ));
             itemDisplayRules.Add(ItemDisplays.CreateDisplayRuleGroupWithRules(ItemDisplays.KeyAssets["Pearl"],
                 ItemDisplays.CreateDisplayRule(ItemDisplays.LoadDisplay("DisplayPearl"),
-                    "Chest",
-                    new Vector3(0F, 0F, 0F),
-                    new Vector3(90F, 0F, 0F),
-                    new Vector3(0.30283F, 0.30283F, 0.30283F)
+                    "LowerArmL",
+                    new Vector3(0.00001F, 0.15093F, -0.00001F),
+                    new Vector3(270F, 0F, 0F),
+                    new Vector3(0.07F, 0.07F, 0.07F)
                     )
                 ));
             itemDisplayRules.Add(ItemDisplays.CreateDisplayRuleGroupWithRules(ItemDisplays.KeyAssets["PermanentDebuffOnHit"],
                 ItemDisplays.CreateDisplayRule(ItemDisplays.LoadDisplay("DisplayScorpion"),
                     "UpperArmR",
-                    new Vector3(0F, 0F, 0F),
-                    new Vector3(316.3237F, 39.42264F, 94.26131F),
+                    new Vector3(0.40172F, 0.23208F, 0.24758F),
+                    new Vector3(6.92331F, 321.7478F, 129.8595F),
                     new Vector3(0.7299F, 0.7299F, 0.7299F)
                     )
                 ));
             itemDisplayRules.Add(ItemDisplays.CreateDisplayRuleGroupWithRules(ItemDisplays.KeyAssets["PersonalShield"],
                 ItemDisplays.CreateDisplayRule(ItemDisplays.LoadDisplay("DisplayShieldGenerator"),
-                    "ThighR",
-                    new Vector3(0.02663F, 0.26137F, 0.04122F),
-                    new Vector3(273.0673F, 227.1822F, 161.4063F),
+                    "Chest",
+                    new Vector3(0.00561F, 0.25008F, 0.1612F),
+                    new Vector3(276.9266F, 181.0562F, 179.5026F),
                     new Vector3(0.19646F, 0.19646F, 0.19646F)
                     )
                 ));
             itemDisplayRules.Add(ItemDisplays.CreateDisplayRuleGroupWithRules(ItemDisplays.KeyAssets["Phasing"],
                 ItemDisplays.CreateDisplayRule(ItemDisplays.LoadDisplay("DisplayStealthkit"),
-                    "HandR",
-                    new Vector3(-0.02613F, -0.05109F, 0.00004F),
-                    new Vector3(283.0133F, 270.1691F, -0.00008F),
-                    new Vector3(0.14103F, 0.16558F, 0.13319F)
+                    "Chest",
+                    new Vector3(-0.0003F, 0.19641F, 0.20137F),
+                    new Vector3(283.87F, 187.1017F, 172.0406F),
+                    new Vector3(0.3F, 0.3F, 0.3F)
                     )
                 ));
             itemDisplayRules.Add(ItemDisplays.CreateDisplayRuleGroupWithRules(ItemDisplays.KeyAssets["Plant"],
                 ItemDisplays.CreateDisplayRule(ItemDisplays.LoadDisplay("DisplayInterstellarDeskPlant"),
                     "Head",
-                    new Vector3(0F, 0.38934F, 0.09732F),
+                    new Vector3(0F, 0.3574F, 0.02561F),
                     new Vector3(270F, 0F, 0F),
                     new Vector3(0.07318F, 0.07318F, 0.07318F)
                     )
                 ));
             itemDisplayRules.Add(ItemDisplays.CreateDisplayRuleGroupWithRules(ItemDisplays.KeyAssets["PrimarySkillShuriken"],
                 ItemDisplays.CreateDisplayRule(ItemDisplays.LoadDisplay("DisplayShuriken"),
-                    "Chest",
-                    new Vector3(0F, 0.24774F, -0.29413F),
-                    new Vector3(0F, 0F, 0F),
-                    new Vector3(1F, 1F, 1F)
+                    "HandL",
+                    new Vector3(0.06945F, 0.12256F, -0.00042F),
+                    new Vector3(5.48174F, 89.06695F, 354.9421F),
+                    new Vector3(0.3F, 0.3F, 0.3F)
+                    ),
+                ItemDisplays.CreateDisplayRule(ItemDisplays.LoadDisplay("DisplayShuriken"),
+                    "HandR",
+                    new Vector3(-0.06861F, 0.13584F, -0.00268F),
+                    new Vector3(5.48174F, 89.06694F, 354.9421F),
+                    new Vector3(0.3F, 0.3F, 0.3F)
                     )
                 ));
             itemDisplayRules.Add(ItemDisplays.CreateDisplayRuleGroupWithRules(ItemDisplays.KeyAssets["RandomDamageZone"],
                 ItemDisplays.CreateDisplayRule(ItemDisplays.LoadDisplay("DisplayRandomDamageZone"),
-                    "Chest",
-                    new Vector3(0F, 0.23193F, -0.23779F),
-                    new Vector3(0F, 0F, 0F),
-                    new Vector3(0.14503F, 0.14503F, 0.14503F)
+                    "HandR",
+                    new Vector3(-0.06699F, 0.06489F, -0.01583F),
+                    new Vector3(8.51908F, 86.9767F, 258.3855F),
+                    new Vector3(0.03F, 0.03F, 0.03F)
                     )
                 ));
             itemDisplayRules.Add(ItemDisplays.CreateDisplayRuleGroupWithRules(ItemDisplays.KeyAssets["RandomEquipmentTrigger"],
@@ -840,8 +851,8 @@ namespace PogoMod.Survivors.Pogo
                 ));
             itemDisplayRules.Add(ItemDisplays.CreateDisplayRuleGroupWithRules(ItemDisplays.KeyAssets["RandomlyLunar"],
                 ItemDisplays.CreateDisplayRule(ItemDisplays.LoadDisplay("DisplayDomino"),
-                    "Chest",
-                    new Vector3(-0.81269F, 0.52026F, -0.13413F),
+                    "Base",
+                    new Vector3(0.52899F, -0.91221F, 0.9409F),
                     new Vector3(0F, 0F, 0F),
                     new Vector3(1F, 1F, 1F)
                     )
@@ -849,7 +860,7 @@ namespace PogoMod.Survivors.Pogo
             itemDisplayRules.Add(ItemDisplays.CreateDisplayRuleGroupWithRules(ItemDisplays.KeyAssets["RegeneratingScrap"],
                 ItemDisplays.CreateDisplayRule(ItemDisplays.LoadDisplay("DisplayRegeneratingScrap"),
                     "Base",
-                    new Vector3(-0.39015F, 0.21397F, 0.00993F),
+                    new Vector3(-0.3427F, 0.14125F, -0.00136F),
                     new Vector3(356.7812F, 276.3944F, 265.1483F),
                     new Vector3(0.21911F, 0.21911F, 0.21911F)
                     )
@@ -857,17 +868,17 @@ namespace PogoMod.Survivors.Pogo
             itemDisplayRules.Add(ItemDisplays.CreateDisplayRuleGroupWithRules(ItemDisplays.KeyAssets["RepeatHeal"],
                 ItemDisplays.CreateDisplayRule(ItemDisplays.LoadDisplay("DisplayCorpseflower"),
                     "Chest",
-                    new Vector3(-0.27556F, -0.13433F, -0.01425F),
-                    new Vector3(54.54063F, 5.57165F, 64.82538F),
+                    new Vector3(0.00698F, 0.18602F, 0.15103F),
+                    new Vector3(72.07514F, 2.08503F, 0.70319F),
                     new Vector3(0.44177F, 0.44177F, 0.44177F)
                     )
                 ));
             itemDisplayRules.Add(ItemDisplays.CreateDisplayRuleGroupWithRules(ItemDisplays.KeyAssets["SecondarySkillMagazine"],
                 ItemDisplays.CreateDisplayRule(ItemDisplays.LoadDisplay("DisplayDoubleMag"),
-                    "Chest",
-                    new Vector3(0F, 0.21663F, 0.01896F),
-                    new Vector3(270F, 180F, 0F),
-                    new Vector3(0.03565F, 0.03565F, 0.03565F)
+                    "Head",
+                    new Vector3(0.00035F, 0.04584F, -0.14374F),
+                    new Vector3(48.7375F, 3.91532F, 5.20242F),
+                    new Vector3(0.05F, 0.05F, 0.05F)
                     )
                 ));
             itemDisplayRules.Add(ItemDisplays.CreateDisplayRuleGroupWithRules(ItemDisplays.KeyAssets["Seed"],
@@ -881,29 +892,29 @@ namespace PogoMod.Survivors.Pogo
             itemDisplayRules.Add(ItemDisplays.CreateDisplayRuleGroupWithRules(ItemDisplays.KeyAssets["ShieldOnly"],
                 ItemDisplays.CreateDisplayRule(ItemDisplays.LoadDisplay("DisplayShieldBug"),
                     "Head",
-                    new Vector3(-0.07012F, 0.3751F, 0.07925F),
+                    new Vector3(-0.07012F, 0.29556F, 0.07925F),
                     new Vector3(-0.00001F, 270F, 180F),
                     new Vector3(-0.2F, -0.2F, -0.2F)
                     ),
                 ItemDisplays.CreateDisplayRule(ItemDisplays.LoadDisplay("DisplayShieldBug"),
                     "Head",
-                    new Vector3(0.07012F, 0.37511F, 0.07911F),
+                    new Vector3(0.07012F, 0.29163F, 0.07911F),
                     new Vector3(0F, 270F, 0F),
                     new Vector3(0.2F, 0.2F, 0.2F)
                     )
                 ));
             itemDisplayRules.Add(ItemDisplays.CreateDisplayRuleGroupWithRules(ItemDisplays.KeyAssets["ShinyPearl"],
                 ItemDisplays.CreateDisplayRule(ItemDisplays.LoadDisplay("DisplayShinyPearl"),
-                    "Chest",
-                    new Vector3(0F, 0F, 0F),
-                    new Vector3(90F, 0F, 0F),
-                    new Vector3(0.30283F, 0.30283F, 0.30283F)
+                    "LowerArmR",
+                    new Vector3(0F, 0.14627F, 0F),
+                    new Vector3(270F, 0F, 0F),
+                    new Vector3(0.07F, 0.07F, 0.07F)
                     )
                 ));
             itemDisplayRules.Add(ItemDisplays.CreateDisplayRuleGroupWithRules(ItemDisplays.KeyAssets["ShockNearby"],
                 ItemDisplays.CreateDisplayRule(ItemDisplays.LoadDisplay("DisplayTeslaCoil"),
                     "Chest",
-                    new Vector3(0F, 0.28457F, -0.19648F),
+                    new Vector3(0F, 0.28457F, -0.13087F),
                     new Vector3(270F, 0F, 0F),
                     new Vector3(0.53835F, 0.53835F, 0.53835F)
                     )
@@ -918,32 +929,32 @@ namespace PogoMod.Survivors.Pogo
                 ));
             itemDisplayRules.Add(ItemDisplays.CreateDisplayRuleGroupWithRules(ItemDisplays.KeyAssets["SlowOnHit"],
                 ItemDisplays.CreateDisplayRule(ItemDisplays.LoadDisplay("DisplayBauble"),
-                    "Chest",
-                    new Vector3(0F, 0F, 0F),
-                    new Vector3(0F, 0F, 0F),
-                    new Vector3(0F, 0F, 0F)
+                    "ThighR",
+                    new Vector3(-0.10888F, 0.51713F, 0.28689F),
+                    new Vector3(358.8084F, 112.663F, 182.8512F),
+                    new Vector3(0.3F, 0.3F, 0.3F)
                     )
                 ));
             itemDisplayRules.Add(ItemDisplays.CreateDisplayRuleGroupWithRules(ItemDisplays.KeyAssets["SlowOnHitVoid"],
                 ItemDisplays.CreateDisplayRule(ItemDisplays.LoadDisplay("DisplayBaubleVoid"),
-                    "Chest",
-                    new Vector3(0F, 0F, 0F),
-                    new Vector3(0F, 0F, 0F),
-                    new Vector3(0F, 0F, 0F)
+                    "ThighR",
+                    new Vector3(-0.10888F, 0.51713F, 0.28689F),
+                    new Vector3(358.8084F, 112.663F, 182.8512F),
+                    new Vector3(0.3F, 0.3F, 0.3F)
                     )
                 ));
             itemDisplayRules.Add(ItemDisplays.CreateDisplayRuleGroupWithRules(ItemDisplays.KeyAssets["SprintArmor"],
                 ItemDisplays.CreateDisplayRule(ItemDisplays.LoadDisplay("DisplayBuckler"),
                     "LowerArmL",
-                    new Vector3(-0.00246F, 0.06145F, 0.00224F),
-                    new Vector3(0F, 272.9158F, 0F),
-                    new Vector3(0.17913F, 0.17913F, 0.22066F)
+                    new Vector3(-0.00162F, 0.19126F, 0.05183F),
+                    new Vector3(0F, 0.95302F, 0F),
+                    new Vector3(0.25F, 0.25F, 0.25F)
                     )
                 ));
             itemDisplayRules.Add(ItemDisplays.CreateDisplayRuleGroupWithRules(ItemDisplays.KeyAssets["SprintBonus"],
                 ItemDisplays.CreateDisplayRule(ItemDisplays.LoadDisplay("DisplaySoda"),
                     "Base",
-                    new Vector3(-0.23992F, 0.00851F, 0.13479F),
+                    new Vector3(-0.18967F, 0.00851F, 0.01389F),
                     new Vector3(0F, 19.63885F, 0F),
                     new Vector3(0.28406F, 0.28406F, 0.28406F)
                     )
@@ -959,65 +970,65 @@ namespace PogoMod.Survivors.Pogo
             itemDisplayRules.Add(ItemDisplays.CreateDisplayRuleGroupWithRules(ItemDisplays.KeyAssets["SprintWisp"],
                 ItemDisplays.CreateDisplayRule(ItemDisplays.LoadDisplay("DisplayBrokenMask"),
                     "UpperArmL",
-                    new Vector3(-0.00752F, -0.02743F, -0.00199F),
-                    new Vector3(3.7307F, 151.9851F, 195.2243F),
-                    new Vector3(0.18229F, 0.18229F, 0.18229F)
+                    new Vector3(0.06376F, 0.05978F, -0.03774F),
+                    new Vector3(8.23342F, 134.366F, 193.3722F),
+                    new Vector3(0.25F, 0.25F, 0.25F)
                     )
                 ));
             itemDisplayRules.Add(ItemDisplays.CreateDisplayRuleGroupWithRules(ItemDisplays.KeyAssets["Squid"],
                 ItemDisplays.CreateDisplayRule(ItemDisplays.LoadDisplay("DisplaySquidTurret"),
-                    "Chest",
-                    new Vector3(0F, 0F, 0F),
-                    new Vector3(0F, 0F, 0F),
-                    new Vector3(0F, 0F, 0F)
+                    "ThighR",
+                    new Vector3(-0.0362F, 0.16265F, -0.09384F),
+                    new Vector3(288.2866F, 13.30656F, 2.51238F),
+                    new Vector3(0.05F, 0.05F, 0.05F)
                     )
                 ));
             itemDisplayRules.Add(ItemDisplays.CreateDisplayRuleGroupWithRules(ItemDisplays.KeyAssets["StickyBomb"],
                 ItemDisplays.CreateDisplayRule(ItemDisplays.LoadDisplay("DisplayStickyBomb"),
-                    "Chest",
-                    new Vector3(0.04208F, -0.22255F, 0.14066F),
-                    new Vector3(6.83458F, 6.25651F, 181.4485F),
-                    new Vector3(0.21205F, 0.21205F, 0.21205F)
+                    "ThighL",
+                    new Vector3(0.159F, 0.18236F, 0.01305F),
+                    new Vector3(6.83458F, 6.25651F, 186.0579F),
+                    new Vector3(0.3F, 0.3F, 0.3F)
                     )
                 ));
             itemDisplayRules.Add(ItemDisplays.CreateDisplayRuleGroupWithRules(ItemDisplays.KeyAssets["StrengthenBurn"],
                 ItemDisplays.CreateDisplayRule(ItemDisplays.LoadDisplay("DisplayGasTank"),
-                    "Chest",
-                    new Vector3(-0.16429F, 0.28743F, -0.23413F),
+                    "CalfL",
+                    new Vector3(-0.16489F, 0.16676F, -0.00392F),
                     new Vector3(0F, 0F, 0F),
-                    new Vector3(0.25374F, 0.25374F, 0.25374F)
+                    new Vector3(0.24F, 0.24F, 0.24F)
                     )
                 ));
             itemDisplayRules.Add(ItemDisplays.CreateDisplayRuleGroupWithRules(ItemDisplays.KeyAssets["StunChanceOnHit"],
                 ItemDisplays.CreateDisplayRule(ItemDisplays.LoadDisplay("DisplayStunGrenade"),
-                    "Base",
-                    new Vector3(-0.01112F, -0.14963F, 0.02578F),
-                    new Vector3(0F, 0F, 0F),
-                    new Vector3(0.4014F, 0.4014F, 0.4014F)
+                    "Pelvis",
+                    new Vector3(-0.17483F, -0.00225F, 0.01479F),
+                    new Vector3(55.42948F, 120.6572F, 179.1134F),
+                    new Vector3(0.8F, 0.8F, 0.8F)
                     )
                 ));
             itemDisplayRules.Add(ItemDisplays.CreateDisplayRuleGroupWithRules(ItemDisplays.KeyAssets["Syringe"],
                 ItemDisplays.CreateDisplayRule(ItemDisplays.LoadDisplay("DisplaySyringeCluster"),
-                    "UpperArmR",
-                    new Vector3(0.0175F, -0.01663F, 0.03199F),
-                    new Vector3(332.2023F, 180F, 180F),
+                    "ThighR",
+                    new Vector3(-0.07448F, 0.14176F, 0.01707F),
+                    new Vector3(349.752F, 206.5508F, 243.8433F),
                     new Vector3(0.21584F, 0.21584F, 0.21584F)
                     )
                 ));
             itemDisplayRules.Add(ItemDisplays.CreateDisplayRuleGroupWithRules(ItemDisplays.KeyAssets["TPHealingNova"],
                 ItemDisplays.CreateDisplayRule(ItemDisplays.LoadDisplay("DisplayGlowFlower"),
                     "Chest",
-                    new Vector3(0.0752F, 0.30443F, 0.11042F),
-                    new Vector3(340.2215F, 0F, 0F),
-                    new Vector3(0.15092F, 0.15092F, 0.15092F)
+                    new Vector3(0.10632F, 0.34855F, 0.09456F),
+                    new Vector3(318.4038F, 0F, 342.7366F),
+                    new Vector3(0.4F, 0.4F, 0.4F)
                     )
                 ));
             itemDisplayRules.Add(ItemDisplays.CreateDisplayRuleGroupWithRules(ItemDisplays.KeyAssets["Talisman"],
                 ItemDisplays.CreateDisplayRule(ItemDisplays.LoadDisplay("DisplayTalisman"),
-                    "Chest",
-                    new Vector3(0.93072F, 0.16602F, 0.0963F),
-                    new Vector3(0F, 0F, 0F),
-                    new Vector3(0.97727F, 0.97727F, 0.97727F)
+                    "Base",
+                    new Vector3(0.65799F, -1.09896F, 1.10461F),
+                    new Vector3(87.90875F, 0.00038F, 0.32302F),
+                    new Vector3(1F, 1F, 1F)
                     )
                 ));
             itemDisplayRules.Add(ItemDisplays.CreateDisplayRuleGroupWithRules(ItemDisplays.KeyAssets["Thorns"],
@@ -1031,7 +1042,7 @@ namespace PogoMod.Survivors.Pogo
             itemDisplayRules.Add(ItemDisplays.CreateDisplayRuleGroupWithRules(ItemDisplays.KeyAssets["TitanGoldDuringTP"],
                 ItemDisplays.CreateDisplayRule(ItemDisplays.LoadDisplay("DisplayGoldHeart"),
                     "Base",
-                    new Vector3(0.31111F, -0.02173F, -0.00004F),
+                    new Vector3(0.22382F, -0.02173F, -0.00004F),
                     new Vector3(0F, 90F, 0F),
                     new Vector3(0.18704F, 0.18704F, 0.18704F)
                     )
@@ -1094,76 +1105,76 @@ namespace PogoMod.Survivors.Pogo
                 ItemDisplays.CreateDisplayRule(ItemDisplays.LoadDisplay("DisplayAfterburnerShoulderRing"),
                     "UpperArmL",
                     new Vector3(0F, 0F, 0F),
-                    new Vector3(41.31011F, 125.3208F, 81.3366F),
+                    new Vector3(27.90346F, 134.9909F, 95.18579F),
                     new Vector3(1F, 1F, 1F)
                     ),
                 ItemDisplays.CreateDisplayRule(ItemDisplays.LoadDisplay("DisplayAfterburnerShoulderRing"),
                     "UpperArmR",
                     new Vector3(0F, 0F, 0F),
-                    new Vector3(41.31012F, 234.6792F, 278.6634F),
+                    new Vector3(38.3644F, 193.0413F, 225.9187F),
                     new Vector3(1F, 1F, 1F)
                     )
                 ));
             itemDisplayRules.Add(ItemDisplays.CreateDisplayRuleGroupWithRules(ItemDisplays.KeyAssets["VoidMegaCrabItem"],
                 ItemDisplays.CreateDisplayRule(ItemDisplays.LoadDisplay("DisplayMegaCrabItem"),
-                    "ThighL",
-                    new Vector3(0.06351F, 0.14294F, 0.01091F),
-                    new Vector3(0F, 90F, 90F),
+                    "Pelvis",
+                    new Vector3(-0.01028F, 0.13059F, -0.14611F),
+                    new Vector3(4.50174F, 180.5975F, 180.0469F),
                     new Vector3(0.14306F, 0.14306F, 0.14306F)
                     )
                 ));
             itemDisplayRules.Add(ItemDisplays.CreateDisplayRuleGroupWithRules(ItemDisplays.KeyAssets["WarCryOnMultiKill"],
                 ItemDisplays.CreateDisplayRule(ItemDisplays.LoadDisplay("DisplayPauldron"),
                     "UpperArmL",
-                    new Vector3(-0.029F, 0.011F, -0.01382F),
-                    new Vector3(79.56982F, 276.2222F, 124.705F),
-                    new Vector3(0.69F, 0.69F, 0.69F)
+                    new Vector3(0.06998F, 0.06659F, -0.04845F),
+                    new Vector3(70.50645F, 116.4982F, 341.8174F),
+                    new Vector3(0.8F, 0.8F, 0.8F)
                     )
                 ));
             itemDisplayRules.Add(ItemDisplays.CreateDisplayRuleGroupWithRules(ItemDisplays.KeyAssets["WardOnLevel"],
                 ItemDisplays.CreateDisplayRule(ItemDisplays.LoadDisplay("DisplayWarbanner"),
                     "Chest",
-                    new Vector3(0F, 0.4059F, -0.17063F),
+                    new Vector3(-0.02672F, -0.17388F, -0.05571F),
                     new Vector3(270F, 270F, 0F),
-                    new Vector3(0.45863F, 0.45863F, 0.45863F)
+                    new Vector3(0.4F, 0.4F, 0.4F)
                     )
                 ));
             itemDisplayRules.Add(ItemDisplays.CreateDisplayRuleGroupWithRules(ItemDisplays.KeyAssets["BFG"],
                 ItemDisplays.CreateDisplayRule(ItemDisplays.LoadDisplay("DisplayBFG"),
                     "Chest",
-                    new Vector3(0.25664F, 0.43825F, -0.07175F),
-                    new Vector3(4.42367F, 0.98583F, 293.2273F),
+                    new Vector3(0.10379F, 0.34969F, -0.00221F),
+                    new Vector3(320.1385F, 2.49748F, 309.7993F),
                     new Vector3(0.29733F, 0.29733F, 0.29733F)
                     )
                 ));
             itemDisplayRules.Add(ItemDisplays.CreateDisplayRuleGroupWithRules(ItemDisplays.KeyAssets["Blackhole"],
                 ItemDisplays.CreateDisplayRule(ItemDisplays.LoadDisplay("DisplayGravCube"),
                     "Base",
-                    new Vector3(1.09716F, 0.35362F, 1.10406F),
-                    new Vector3(0F, 0F, 0F),
+                    new Vector3(-0.65985F, 0.04181F, 0.77701F),
+                    new Vector3(270F, 0.32262F, 0F),
                     new Vector3(1F, 1F, 1F)
                     )
                 ));
             itemDisplayRules.Add(ItemDisplays.CreateDisplayRuleGroupWithRules(ItemDisplays.KeyAssets["BossHunter"],
                 ItemDisplays.CreateDisplayRule(ItemDisplays.LoadDisplay("DisplayTricornGhost"),
                     "Head",
-                    new Vector3(0F, 0.47715F, 0.00001F),
+                    new Vector3(0F, 0.28803F, -0.05475F),
                     new Vector3(0F, 0F, 0F),
-                    new Vector3(1F, 1F, 1F)
+                    new Vector3(0.8F, 0.8F, 0.8F)
                     ),
                 ItemDisplays.CreateDisplayRule(ItemDisplays.LoadDisplay("DisplayBlunderbuss"),
                     "Base",
-                    new Vector3(0.82867F, 0.46427F, 0.7149F),
-                    new Vector3(-0.00001F, 180F, 180F),
+                    new Vector3(0.98663F, -0.45197F, 0.38909F),
+                    new Vector3(0.30344F, 184.4128F, 181.5068F),
                     new Vector3(1F, 1F, 1F)
                     )
                 ));
             itemDisplayRules.Add(ItemDisplays.CreateDisplayRuleGroupWithRules(ItemDisplays.KeyAssets["BossHunterConsumed"],
                 ItemDisplays.CreateDisplayRule(ItemDisplays.LoadDisplay("DisplayTricornUsed"),
                     "Head",
-                    new Vector3(0F, 0.47715F, 0.00001F),
+                    new Vector3(0F, 0.28803F, -0.05475F),
                     new Vector3(0F, 0F, 0F),
-                    new Vector3(1F, 1F, 1F)
+                    new Vector3(0.8F, 0.8F, 0.8F)
                     )
                 ));
             itemDisplayRules.Add(ItemDisplays.CreateDisplayRuleGroupWithRules(ItemDisplays.KeyAssets["BurnNearby"],
@@ -1177,9 +1188,9 @@ namespace PogoMod.Survivors.Pogo
             itemDisplayRules.Add(ItemDisplays.CreateDisplayRuleGroupWithRules(ItemDisplays.KeyAssets["Cleanse"],
                 ItemDisplays.CreateDisplayRule(ItemDisplays.LoadDisplay("DisplayWaterPack"),
                     "Chest",
-                    new Vector3(0F, -0.46747F, 0.10289F),
-                    new Vector3(0F, 0F, 0F),
-                    new Vector3(0.14409F, 0.14409F, 0.14409F)
+                    new Vector3(0F, -0.00227F, -0.13666F),
+                    new Vector3(6.74809F, 183.046F, 1.31122F),
+                    new Vector3(0.175F, 0.175F, 0.175F)
                     )
                 ));
             itemDisplayRules.Add(ItemDisplays.CreateDisplayRuleGroupWithRules(ItemDisplays.KeyAssets["CommandMissile"],
@@ -1193,8 +1204,8 @@ namespace PogoMod.Survivors.Pogo
             itemDisplayRules.Add(ItemDisplays.CreateDisplayRuleGroupWithRules(ItemDisplays.KeyAssets["CrippleWard"],
                 ItemDisplays.CreateDisplayRule(ItemDisplays.LoadDisplay("DisplayEffigy"),
                     "Head",
-                    new Vector3(0.00488F, 0.38396F, 0.01933F),
-                    new Vector3(0F, 180F, 0F),
+                    new Vector3(0.00488F, 0.03777F, -0.17672F),
+                    new Vector3(347.1897F, 180F, 0F),
                     new Vector3(0.55447F, 0.55447F, 0.55447F)
                     )
                 ));
@@ -1209,23 +1220,23 @@ namespace PogoMod.Survivors.Pogo
             itemDisplayRules.Add(ItemDisplays.CreateDisplayRuleGroupWithRules(ItemDisplays.KeyAssets["DeathProjectile"],
                 ItemDisplays.CreateDisplayRule(ItemDisplays.LoadDisplay("DisplayDeathProjectile"),
                     "Chest",
-                    new Vector3(-0.18455F, 0.3F, 0.13112F),
-                    new Vector3(337.85F, 322.8569F, 0F),
-                    new Vector3(0.08076F, 0.08076F, 0.08076F)
+                    new Vector3(0.14234F, -0.21507F, -0.18946F),
+                    new Vector3(5.92411F, 169.7061F, 342.7529F),
+                    new Vector3(0.15F, 0.15F, 0.15F)
                     )
                 ));
             itemDisplayRules.Add(ItemDisplays.CreateDisplayRuleGroupWithRules(ItemDisplays.KeyAssets["DroneBackup"],
                 ItemDisplays.CreateDisplayRule(ItemDisplays.LoadDisplay("DisplayRadio"),
                     "Chest",
-                    new Vector3(0.0489F, 0.24141F, 0.15258F),
-                    new Vector3(0F, 180F, 180F),
-                    new Vector3(-0.28899F, -0.28899F, -0.28899F)
+                    new Vector3(0.14328F, -0.11181F, -0.0049F),
+                    new Vector3(344.2375F, 121.3032F, 340.4598F),
+                    new Vector3(0.4F, 0.4F, 0.4F)
                     )
                 ));
             itemDisplayRules.Add(ItemDisplays.CreateDisplayRuleGroupWithRules(ItemDisplays.KeyAssets["EliteEarthEquipment"],
                 ItemDisplays.CreateDisplayRule(ItemDisplays.LoadDisplay("DisplayEliteMendingAntlers"),
                     "Head",
-                    new Vector3(0F, 0.33928F, 0.09633F),
+                    new Vector3(0F, 0.26789F, -0.07551F),
                     new Vector3(0F, 0F, 0F),
                     new Vector3(0.6377F, 0.6377F, 0.6377F)
                     )
@@ -1233,51 +1244,51 @@ namespace PogoMod.Survivors.Pogo
             itemDisplayRules.Add(ItemDisplays.CreateDisplayRuleGroupWithRules(ItemDisplays.KeyAssets["EliteFireEquipment"],
                 ItemDisplays.CreateDisplayRule(ItemDisplays.LoadDisplay("DisplayEliteHorn"),
                     "Head",
-                    new Vector3(-0.07218F, 0.31161F, 0.10695F),
-                    new Vector3(0F, 180F, 180F),
+                    new Vector3(-0.07218F, 0.24505F, 0.10534F),
+                    new Vector3(351.1953F, 179.286F, 149.4119F),
                     new Vector3(-0.06753F, -0.06753F, -0.06753F)
                     ),
                 ItemDisplays.CreateDisplayRule(ItemDisplays.LoadDisplay("DisplayEliteHorn"),
                     "Head",
-                    new Vector3(0.07218F, 0.31161F, 0.10695F),
-                    new Vector3(0F, 0F, 0F),
+                    new Vector3(0.0596F, 0.24586F, 0.10536F),
+                    new Vector3(11.89723F, 0.55079F, 326.5483F),
                     new Vector3(0.06753F, 0.06753F, 0.06753F)
                     )
                 ));
             itemDisplayRules.Add(ItemDisplays.CreateDisplayRuleGroupWithRules(ItemDisplays.KeyAssets["EliteHauntedEquipment"],
                 ItemDisplays.CreateDisplayRule(ItemDisplays.LoadDisplay("DisplayEliteStealthCrown"),
                     "Head",
-                    new Vector3(0F, 0.30512F, -0.00019F),
+                    new Vector3(0F, 0.23989F, -0.00176F),
                     new Vector3(90F, 180F, 0F),
-                    new Vector3(0.04245F, 0.04245F, 0.04245F)
+                    new Vector3(0.04F, 0.04F, 0.04F)
                     )
                 ));
             itemDisplayRules.Add(ItemDisplays.CreateDisplayRuleGroupWithRules(ItemDisplays.KeyAssets["EliteIceEquipment"],
                 ItemDisplays.CreateDisplayRule(ItemDisplays.LoadDisplay("DisplayEliteIceCrown"),
                     "Head",
-                    new Vector3(0F, 0.43621F, -0.00008F),
-                    new Vector3(270F, 0F, 0F),
-                    new Vector3(0.02854F, 0.02854F, 0.02854F)
+                    new Vector3(0F, 0.31166F, -0.00309F),
+                    new Vector3(277.5701F, 179.9999F, 180.0001F),
+                    new Vector3(0.025F, 0.025F, 0.025F)
                     )
                 ));
             itemDisplayRules.Add(ItemDisplays.CreateDisplayRuleGroupWithRules(ItemDisplays.KeyAssets["EliteLightningEquipment"],
                 ItemDisplays.CreateDisplayRule(ItemDisplays.LoadDisplay("DisplayEliteRhinoHorn"),
                     "Head",
-                    new Vector3(-0.07F, 0.29271F, 0.12919F),
-                    new Vector3(39.97074F, 129.2507F, 141.8243F),
-                    new Vector3(-0.1288F, -0.1288F, -0.1288F)
+                    new Vector3(-0.00345F, 0.26332F, 0.07376F),
+                    new Vector3(325.0977F, 4.03581F, 352.0529F),
+                    new Vector3(0.16F, 0.16F, 0.16F)
                     ),
                 ItemDisplays.CreateDisplayRule(ItemDisplays.LoadDisplay("DisplayEliteRhinoHorn"),
                     "Head",
-                    new Vector3(0.07F, 0.29271F, 0.12919F),
-                    new Vector3(39.00001F, 230.7493F, 218.1757F),
-                    new Vector3(-0.1288F, -0.1288F, -0.1288F)
+                    new Vector3(-0.00195F, 0.24449F, 0.15188F),
+                    new Vector3(314.2533F, 357.8721F, 358.271F),
+                    new Vector3(0.2F, 0.2F, 0.2F)
                     )
                 ));
             itemDisplayRules.Add(ItemDisplays.CreateDisplayRuleGroupWithRules(ItemDisplays.KeyAssets["EliteLunarEquipment"],
                 ItemDisplays.CreateDisplayRule(ItemDisplays.LoadDisplay("DisplayEliteLunar,Eye"),
                     "Head",
-                    new Vector3(0F, 0.20738F, 0.34874F),
+                    new Vector3(0F, 0.12912F, 0.23751F),
                     new Vector3(0F, 0F, 0F),
                     new Vector3(0.16167F, 0.16167F, 0.16167F)
                     )
@@ -1285,47 +1296,47 @@ namespace PogoMod.Survivors.Pogo
             itemDisplayRules.Add(ItemDisplays.CreateDisplayRuleGroupWithRules(ItemDisplays.KeyAssets["ElitePoisonEquipment"],
                 ItemDisplays.CreateDisplayRule(ItemDisplays.LoadDisplay("DisplayEliteUrchinCrown"),
                     "Head",
-                    new Vector3(0F, 0.21301F, -0.00014F),
-                    new Vector3(0F, 0F, 0F),
-                    new Vector3(0.04485F, 0.04485F, 0.04485F)
+                    new Vector3(0F, 0.23766F, 0.00045F),
+                    new Vector3(270.4006F, 359.9874F, 0.01282F),
+                    new Vector3(0.04F, 0.04F, 0.04F)
                     )
                 ));
             itemDisplayRules.Add(ItemDisplays.CreateDisplayRuleGroupWithRules(ItemDisplays.KeyAssets["EliteVoidEquipment"],
                 ItemDisplays.CreateDisplayRule(ItemDisplays.LoadDisplay("DisplayAffixVoid"),
                     "Head",
-                    new Vector3(0F, 0.27148F, 0.00026F),
-                    new Vector3(0F, 180F, 0F),
-                    new Vector3(0.2234F, 0.2234F, 0.2234F)
+                    new Vector3(0F, 0.18373F, 0.07523F),
+                    new Vector3(281.1483F, 0.00006F, 180F),
+                    new Vector3(0.2F, 0.2F, 0.2F)
                     )
                 ));
             itemDisplayRules.Add(ItemDisplays.CreateDisplayRuleGroupWithRules(ItemDisplays.KeyAssets["FireBallDash"],
                 ItemDisplays.CreateDisplayRule(ItemDisplays.LoadDisplay("DisplayEgg"),
                     "Chest",
-                    new Vector3(0F, 0F, 0F),
-                    new Vector3(0F, 0F, 0F),
-                    new Vector3(0F, 0F, 0F)
+                    new Vector3(0.21708F, -0.21853F, 0.26624F),
+                    new Vector3(307.646F, 208.5567F, 158.0741F),
+                    new Vector3(0.3F, 0.3F, 0.3F)
                     )
                 ));
             itemDisplayRules.Add(ItemDisplays.CreateDisplayRuleGroupWithRules(ItemDisplays.KeyAssets["Fruit"],
                 ItemDisplays.CreateDisplayRule(ItemDisplays.LoadDisplay("DisplayFruit"),
                     "Base",
-                    new Vector3(-0.10174F, 0.13266F, 0.09001F),
-                    new Vector3(82.19051F, 0F, 0F),
+                    new Vector3(-0.0631F, -0.17773F, 0.04752F),
+                    new Vector3(39.53217F, 86.46424F, 84.4554F),
                     new Vector3(0.3509F, 0.3509F, 0.3509F)
                     )
                 ));
             itemDisplayRules.Add(ItemDisplays.CreateDisplayRuleGroupWithRules(ItemDisplays.KeyAssets["GainArmor"],
                 ItemDisplays.CreateDisplayRule(ItemDisplays.LoadDisplay("DisplayElephantFigure"),
-                    "Chest",
-                    new Vector3(0F, 0F, 0F),
-                    new Vector3(0F, 0F, 0F),
-                    new Vector3(0F, 0F, 0F)
+                    "CalfL",
+                    new Vector3(-0.21334F, 0.2582F, 0.03092F),
+                    new Vector3(71.80514F, 356.8267F, 87.97798F),
+                    new Vector3(0.8F, 0.8F, 0.8F)
                     )
                 ));
             itemDisplayRules.Add(ItemDisplays.CreateDisplayRuleGroupWithRules(ItemDisplays.KeyAssets["Gateway"],
                 ItemDisplays.CreateDisplayRule(ItemDisplays.LoadDisplay("DisplayVase"),
-                    "HandL",
-                    new Vector3(-0.04156F, 0.00007F, -0.11241F),
+                    "Chest",
+                    new Vector3(0.00304F, 0.18562F, -0.21785F),
                     new Vector3(90F, 180F, 0F),
                     new Vector3(0.22015F, 0.22015F, 0.22015F)
                     )
@@ -1333,15 +1344,15 @@ namespace PogoMod.Survivors.Pogo
             itemDisplayRules.Add(ItemDisplays.CreateDisplayRuleGroupWithRules(ItemDisplays.KeyAssets["GoldGat"],
                 ItemDisplays.CreateDisplayRule(ItemDisplays.LoadDisplay("DisplayGoldGat"),
                     "Chest",
-                    new Vector3(0.16136F, 0.45423F, -0.07928F),
-                    new Vector3(8.46069F, 115.0343F, 326.7957F),
-                    new Vector3(0.06569F, 0.06569F, 0.06569F)
+                    new Vector3(0.29504F, 0.44144F, -0.38593F),
+                    new Vector3(29.91891F, 84.32085F, 301.3222F),
+                    new Vector3(0.15F, 0.15F, 0.15F)
                     )
                 ));
             itemDisplayRules.Add(ItemDisplays.CreateDisplayRuleGroupWithRules(ItemDisplays.KeyAssets["GummyClone"],
                 ItemDisplays.CreateDisplayRule(ItemDisplays.LoadDisplay("DisplayGummyClone"),
-                    "LowerArmL",
-                    new Vector3(-0.00062F, 0.20584F, 0.02179F),
+                    "CalfR",
+                    new Vector3(0.00362F, 0.58742F, 0.01685F),
                     new Vector3(13.64345F, 125.9495F, 0F),
                     new Vector3(0.20012F, 0.20012F, 0.20012F)
                     )
@@ -1349,25 +1360,25 @@ namespace PogoMod.Survivors.Pogo
             itemDisplayRules.Add(ItemDisplays.CreateDisplayRuleGroupWithRules(ItemDisplays.KeyAssets["IrradiatingLaser"],
                 ItemDisplays.CreateDisplayRule(ItemDisplays.LoadDisplay("DisplayIrradiatingLaser"),
                     "Chest",
-                    new Vector3(0F, 0F, 0F),
-                    new Vector3(0F, 0F, 0F),
-                    new Vector3(0F, 0F, 0F)
+                    new Vector3(-0.1507F, 0.30441F, -0.0779F),
+                    new Vector3(326.7607F, 345.5274F, 30.32052F),
+                    new Vector3(0.172F, 0.172F, 0.172F)
                     )
                 ));
             itemDisplayRules.Add(ItemDisplays.CreateDisplayRuleGroupWithRules(ItemDisplays.KeyAssets["Jetpack"],
                 ItemDisplays.CreateDisplayRule(ItemDisplays.LoadDisplay("DisplayBugWings"),
                     "Chest",
-                    new Vector3(0F, 0.20217F, -0.18699F),
-                    new Vector3(0F, 0F, 0F),
+                    new Vector3(0F, 0.2132F, -0.04201F),
+                    new Vector3(322.8122F, -0.00011F, 0.00001F),
                     new Vector3(0.14742F, 0.14742F, 0.14742F)
                     )
                 ));
             itemDisplayRules.Add(ItemDisplays.CreateDisplayRuleGroupWithRules(ItemDisplays.KeyAssets["LifestealOnHit"],
                 ItemDisplays.CreateDisplayRule(ItemDisplays.LoadDisplay("DisplayLifestealOnHit"),
-                    "UpperArmL",
-                    new Vector3(-0.03001F, 0.20213F, -0.12175F),
-                    new Vector3(0F, 0F, 0F),
-                    new Vector3(0.07137F, 0.07137F, 0.07137F)
+                   "Stomach",
+                    new Vector3(-0.23453F, 0.03533F, 0.01059F),
+                    new Vector3(336.5651F, 95.35621F, 264.4277F),
+                    new Vector3(0.08F, 0.08F, 0.08F)
                     )
                 ));
             itemDisplayRules.Add(ItemDisplays.CreateDisplayRuleGroupWithRules(ItemDisplays.KeyAssets["Lightning"],
@@ -1381,90 +1392,90 @@ namespace PogoMod.Survivors.Pogo
                 ));
             itemDisplayRules.Add(ItemDisplays.CreateDisplayRuleGroupWithRules(ItemDisplays.KeyAssets["LunarPortalOnUse"],
                 ItemDisplays.CreateDisplayRule(ItemDisplays.LoadDisplay("DisplayLunarPortalOnUse"),
-                    "Chest",
-                    new Vector3(0.65876F, 0.40515F, -0.22782F),
-                    new Vector3(0F, 0F, 0F),
+                    "Base",
+                    new Vector3(0.49698F, 0.26002F, 0.7488F),
+                    new Vector3(78.08119F, 55.41177F, 57.52744F),
                     new Vector3(1F, 1F, 1F)
                     )
                 ));
             itemDisplayRules.Add(ItemDisplays.CreateDisplayRuleGroupWithRules(ItemDisplays.KeyAssets["Meteor"],
                 ItemDisplays.CreateDisplayRule(ItemDisplays.LoadDisplay("DisplayMeteor"),
                     "Base",
-                    new Vector3(-0.74222F, 0.26422F, 0.45832F),
+                    new Vector3(-0.74222F, 0.26422F, 0.76691F),
                     new Vector3(0F, 0F, 0F),
                     new Vector3(0.68939F, 0.68939F, 0.68939F)
                     )
                 ));
             itemDisplayRules.Add(ItemDisplays.CreateDisplayRuleGroupWithRules(ItemDisplays.KeyAssets["Molotov"],
                 ItemDisplays.CreateDisplayRule(ItemDisplays.LoadDisplay("DisplayMolotov"),
-                    "Chest",
-                    new Vector3(-0.09988F, -0.22047F, 0.13965F),
-                    new Vector3(348.619F, 347.4249F, 2.52046F),
-                    new Vector3(0.20169F, 0.20169F, 0.20169F)
+                    "ThighL",
+                    new Vector3(0.14551F, 0.07678F, -0.00225F),
+                    new Vector3(18.15746F, 209.6198F, 183.9065F),
+                    new Vector3(0.25F, 0.25F, 0.25F)
                     )
                 ));
             itemDisplayRules.Add(ItemDisplays.CreateDisplayRuleGroupWithRules(ItemDisplays.KeyAssets["MultiShopCard"],
                 ItemDisplays.CreateDisplayRule(ItemDisplays.LoadDisplay("DisplayExecutiveCard"),
                     "Chest",
-                    new Vector3(-0.06847F, -0.08431F, 0.12512F),
-                    new Vector3(357.4704F, 73.80464F, 104.9206F),
+                    new Vector3(0.13193F, 0.28226F, 0.13035F),
+                    new Vector3(6.464F, 104.1467F, 72.63767F),
                     new Vector3(0.50539F, 0.50539F, 0.50539F)
                     )
                 ));
             itemDisplayRules.Add(ItemDisplays.CreateDisplayRuleGroupWithRules(ItemDisplays.KeyAssets["QuestVolatileBattery"],
                 ItemDisplays.CreateDisplayRule(ItemDisplays.LoadDisplay("DisplayBatteryArray"),
-                    "Base",
-                    new Vector3(0F, 0.2767F, 0.39491F),
-                    new Vector3(270F, 0.00001F, 0F),
-                    new Vector3(0.23905F, 0.23905F, 0.23905F)
+                    "Chest",
+                    new Vector3(0F, 0.14276F, -0.25852F),
+                    new Vector3(349.381F, -0.00018F, 0.00008F),
+                    new Vector3(0.4F, 0.4F, 0.4F)
                     )
                 ));
             itemDisplayRules.Add(ItemDisplays.CreateDisplayRuleGroupWithRules(ItemDisplays.KeyAssets["Recycle"],
                 ItemDisplays.CreateDisplayRule(ItemDisplays.LoadDisplay("DisplayRecycler"),
-                    "Base",
-                    new Vector3(0.002F, 0.19563F, 0.05182F),
-                    new Vector3(0.57862F, 90.02995F, 92.96487F),
-                    new Vector3(0.06948F, 0.06948F, 0.06948F)
+                    "Chest",
+                    new Vector3(0.002F, -0.14767F, -0.10352F),
+                    new Vector3(359.7892F, 89.4603F, 338.6458F),
+                    new Vector3(0.1F, 0.1F, 0.1F)
                     )
                 ));
             itemDisplayRules.Add(ItemDisplays.CreateDisplayRuleGroupWithRules(ItemDisplays.KeyAssets["Saw"],
                 ItemDisplays.CreateDisplayRule(ItemDisplays.LoadDisplay("DisplaySawmerangFollower"),
                     "Base",
-                    new Vector3(0.65491F, 0.40074F, 0.48852F),
-                    new Vector3(0F, 0F, 0F),
-                    new Vector3(0.09081F, 0.09081F, 0.09081F)
+                    new Vector3(-0.78475F, 0.20096F, 0.92172F),
+                    new Vector3(359.868F, 179.6774F, 180.0007F),
+                    new Vector3(0.15F, 0.15F, 0.15F)
                     )
                 ));
             itemDisplayRules.Add(ItemDisplays.CreateDisplayRuleGroupWithRules(ItemDisplays.KeyAssets["Scanner"],
                 ItemDisplays.CreateDisplayRule(ItemDisplays.LoadDisplay("DisplayScanner"),
                     "UpperArmL",
-                    new Vector3(0.00981F, 0.17733F, -0.02008F),
-                    new Vector3(30.14785F, 154.6489F, 270F),
-                    new Vector3(0.22813F, 0.22813F, 0.22813F)
+                    new Vector3(0.02278F, 0.17024F, -0.03086F),
+                    new Vector3(17.07704F, 153.0925F, 264.0455F),
+                    new Vector3(0.3F, 0.3F, 0.3F)
                     )
                 ));
             itemDisplayRules.Add(ItemDisplays.CreateDisplayRuleGroupWithRules(ItemDisplays.KeyAssets["TeamWarCry"],
                 ItemDisplays.CreateDisplayRule(ItemDisplays.LoadDisplay("DisplayTeamWarCry"),
                     "Base",
-                    new Vector3(0.00149F, 0.24417F, 0.11363F),
-                    new Vector3(270F, 180.7489F, 0F),
+                    new Vector3(0.13847F, -0.17778F, 0.00823F),
+                    new Vector3(60.78023F, 108.2805F, 107.0431F),
                     new Vector3(0.06962F, 0.06962F, 0.06962F)
                     )
                 ));
             itemDisplayRules.Add(ItemDisplays.CreateDisplayRuleGroupWithRules(ItemDisplays.KeyAssets["Tonic"],
                 ItemDisplays.CreateDisplayRule(ItemDisplays.LoadDisplay("DisplayTonic"),
-                    "Base",
-                    new Vector3(0.0809F, -0.11534F, -0.04564F),
-                    new Vector3(63.87238F, 62.57079F, 59.96919F),
-                    new Vector3(0.31909F, 0.31909F, 0.31909F)
+                    "ThighL",
+                    new Vector3(0.11612F, 0.07004F, -0.04802F),
+                    new Vector3(1.52979F, 93.40291F, 164.4546F),
+                    new Vector3(0.3F, 0.3F, 0.3F)
                     )
                 ));
             itemDisplayRules.Add(ItemDisplays.CreateDisplayRuleGroupWithRules(ItemDisplays.KeyAssets["VendingMachine"],
                 ItemDisplays.CreateDisplayRule(ItemDisplays.LoadDisplay("DisplayVendingMachine"),
-                    "Chest",
-                    new Vector3(0F, 0.43159F, 0.00001F),
-                    new Vector3(0F, 0F, 0F),
-                    new Vector3(0.42555F, 0.42555F, 0.42555F)
+                    "Pelvis",
+                    new Vector3(0.16892F, -0.03141F, -0.02793F),
+                    new Vector3(309.1987F, 113.6312F, 256.3498F),
+                    new Vector3(0.2F, 0.2F, 0.2F)
                     )
                 ));
         }
