@@ -43,6 +43,8 @@ namespace PogoMod.Survivors.Pogo.SkillStates
 
                 if (this.AttemptEnemyStep(out HurtBox enemy))
                 {
+                    EntityStateMachine.FindByCustomName(characterBody.gameObject, "Body").SetNextStateToMain();
+
                     // TODO: Make damage scale with height fallen or something
 
                     //base.PlayAnimation("Body", "JumpEnemy");
@@ -76,6 +78,7 @@ namespace PogoMod.Survivors.Pogo.SkillStates
                     //}
 
                     GenericCharacterMain.ApplyJumpVelocity(base.characterMotor, base.characterBody, 1.5f, 1.5f, false);
+
                     return;
                 }
             }
