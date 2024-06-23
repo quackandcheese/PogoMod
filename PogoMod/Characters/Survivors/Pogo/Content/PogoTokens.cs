@@ -58,13 +58,13 @@ namespace PogoMod.Survivors.Pogo
             #endregion
 
             #region Utility
-            Language.Add(prefix + "UTILITY_BOOMSTICK_NAME", "Blast Off");
-            Language.Add(prefix + "UTILITY_BOOMSTICK_DESCRIPTION", $"Charge up an <style=cIsDamage>explosive</style> shotgun blast from both legs downwards that <style=cIsUtility>launches you up upwards</style> and deals <style=cIsDamage>9x{100f * PogoStaticValues.shotgunDamageCoefficient}%-{100f * PogoStaticValues.shotgunDamageCoefficientMax}% damage</style> to enemies underneath.");
+            Language.Add(prefix + "UTILITY_KICK_NAME", "Dropkick");
+            Language.Add(prefix + "UTILITY_KICK_DESCRIPTION", $"Perform a <style=cIsUtility>dropkick</style> in the direction you are looking, knocking back and dealing <style=cIsDamage>{100f * PogoStaticValues.kickDamageCoefficient}% damage</style> to enemies in path.");
             #endregion
 
             #region Special
-            Language.Add(prefix + "SPECIAL_KICK_NAME", "Dropkick");
-            Language.Add(prefix + "SPECIAL_KICK_DESCRIPTION", $"Perform a <style=cIsUtility>dropkick</style> in the direction you are looking, knocking back and dealing <style=cIsDamage>{100f * PogoStaticValues.kickDamageCoefficient}% damage</style> to enemies in path.");
+            Language.Add(prefix + "SPECIAL_SURGE_NAME", "Power Surge");
+            Language.Add(prefix + "SPECIAL_SURGE_DESCRIPTION", $"<style=cIsHealth>Consume</style> your jump combo, adding an additional <style=cIsDamage>10% damage</style> to your <style=cIsUtility>fingerguns</style> for each jump in the combo. Every second, 10% of the additional damage is <style=cIsHealth>depleted and lost</style>. <style=cIsUtility>Successful pogos off enemies reset the cooldown</style>.");
             #endregion
 
             #region Achievements

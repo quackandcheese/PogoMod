@@ -51,13 +51,13 @@ namespace PogoMod.Survivors.Pogo.SkillStates
 
                     if (pogoController.withinPerfectJumpTiming)
                     {
-                        pogoController.pogoCounter = Mathf.Clamp(pogoController.pogoCounter + 1, 0, pogoController.pogoCounterMax);
+                        pogoController.pogoCounter++;
 
-                        float bonus = 1f + (pogoController.extraBoostPerPogo * pogoController.pogoCounter);
+                        float bonus = 1f + (pogoController.extraBoostPerPogo * Mathf.Clamp(pogoController.pogoCounter, 0, pogoController.pogoCounterMax));
                         horizontalBonus = bonus;
                         verticalBonus = bonus;
 
-                        if (pogoController.pogoCounter == pogoController.pogoCounterMax)
+                        if (pogoController.pogoCounter >= pogoController.pogoCounterMax)
                         {
                             pogoController.currentPogoDamageCoefficient = pogoController.pogoDamageCoefficient;
                         }

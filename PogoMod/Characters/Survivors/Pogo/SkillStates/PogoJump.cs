@@ -65,7 +65,7 @@ namespace PogoMod.Survivors.Pogo.SkillStates
                     blastAttack.radius = radius;
                     blastAttack.baseForce = 100f * damageCoefficient;
                     blastAttack.bonusForce = Vector3.up * 500f;
-                    blastAttack.baseDamage = characterBody.damage * damageCoefficient * pogoController.currentPogoDamageCoefficient;
+                    blastAttack.baseDamage = characterBody.damage * damageCoefficient * pogoController.currentPogoDamageCoefficient * pogoController.pogoComboCoefficient;
                     blastAttack.falloffModel = BlastAttack.FalloffModel.SweetSpot;
                     blastAttack.crit = Util.CheckRoll(characterBody.crit, characterBody.master);
                     blastAttack.damageColorIndex = DamageColorIndex.Item;
@@ -78,6 +78,8 @@ namespace PogoMod.Survivors.Pogo.SkillStates
                     //}
 
                     GenericCharacterMain.ApplyJumpVelocity(base.characterMotor, base.characterBody, 1.5f, 1.5f, false);
+
+                    pogoController.pogoComboCoefficient = 1f;
 
                     return;
                 }
