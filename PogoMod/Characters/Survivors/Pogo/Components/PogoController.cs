@@ -30,5 +30,10 @@ namespace PogoMod.Survivors.Pogo.Components
             animator = modelLocator.modelTransform.GetComponent<Animator>();
             armAimAnimator = animator.gameObject.AddComponent<ArmAimAnimator>();
         }
+
+        private void Update()
+        {
+            pogoComboCoefficient = Mathf.Max(1f, pogoComboCoefficient - (1f * Time.deltaTime));
+        }
     }
 }

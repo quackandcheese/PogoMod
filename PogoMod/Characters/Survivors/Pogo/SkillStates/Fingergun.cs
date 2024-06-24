@@ -252,7 +252,7 @@ namespace PogoMod.Survivors.Pogo.SkillStates
                     bulletCount = 1,
                     aimVector = aimRay.direction,
                     origin = aimRay.origin,
-                    damage = damageCoefficient * (damageStat / 2) * pogoController.currentPogoDamageCoefficient,
+                    damage = damageCoefficient * (damageStat / 2) * pogoController.currentPogoDamageCoefficient * pogoController.pogoComboCoefficient,
                     damageColorIndex = DamageColorIndex.Default,
                     damageType = DamageType.Generic,
                     falloffModel = BulletAttack.FalloffModel.None,

@@ -13,6 +13,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using static RoR2.TeleporterInteraction;
 using EntityStates.Captain.Weapon;
+using RoR2.UI;
 
 namespace PogoMod.Survivors.Pogo
 {
@@ -310,7 +311,7 @@ namespace PogoMod.Survivors.Pogo
                 interruptPriority = EntityStates.InterruptPriority.Skill,
 
                 baseMaxStock = 1,
-                baseRechargeInterval = 5f,
+                baseRechargeInterval = 15f,
 
                 isCombatSkill = true,
                 mustKeyPress = false,
@@ -409,7 +410,13 @@ namespace PogoMod.Survivors.Pogo
 
         private void AddHooks()
         {
+            HUD.onHudTargetChangedGlobal += HUDSetup; ;
             R2API.RecalculateStatsAPI.GetStatCoefficients += RecalculateStatsAPI_GetStatCoefficients;
+        }
+
+        internal static void HUDSetup(HUD hud)
+        {
+            throw new NotImplementedException();
         }
 
         private void RecalculateStatsAPI_GetStatCoefficients(CharacterBody sender, R2API.RecalculateStatsAPI.StatHookEventArgs args)

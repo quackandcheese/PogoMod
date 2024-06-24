@@ -17,9 +17,9 @@ namespace PogoMod.Survivors.Pogo
 
             Modules.Content.AddEntityState(typeof(RightFingergun));
 
-            Modules.Content.AddEntityState(typeof(PogoBoomstick));
-
             Modules.Content.AddEntityState(typeof(Dropkick));
+
+            Modules.Content.AddEntityState(typeof(PowerSurge));
         }
     }
 }

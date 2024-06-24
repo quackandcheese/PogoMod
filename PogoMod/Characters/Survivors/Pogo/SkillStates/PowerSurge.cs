@@ -2,6 +2,7 @@
 using System;
 using System.Collections.Generic;
 using System.Text;
+using UnityEngine;
 
 namespace PogoMod.Survivors.Pogo.SkillStates
 {
@@ -13,7 +14,9 @@ namespace PogoMod.Survivors.Pogo.SkillStates
         {
             base.OnEnter();
 
-            pogoController.pogoComboCoefficient = 1f + (pogoController.pogoCounter / 100);
+            pogoController.pogoComboCoefficient += (float)pogoController.pogoCounter / 1.0f;
+            Debug.Log(pogoController.pogoCounter);
+            Debug.Log(pogoController.pogoComboCoefficient);
 
             pogoController.pogoCounter = 0;
         }
