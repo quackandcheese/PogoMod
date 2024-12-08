@@ -7,6 +7,7 @@ namespace PogoMod.Survivors.Pogo
     {
         // armor buff gained during roll
         public static BuffDef armorBuff;
+        public static BuffDef pogoPogoBuff;
 
         public static void Init(AssetBundle assetBundle)
         {
@@ -15,7 +16,8 @@ namespace PogoMod.Survivors.Pogo
                 Color.white,
                 false,
                 false);
-
+            pogoPogoBuff = Modules.Content.CreateAndAddBuff("PogoBuff", assetBundle.LoadAsset<Sprite>("texPogostickIcon"),
+                PogoAssets.pogoColor, true, false);
         }
     }
 }

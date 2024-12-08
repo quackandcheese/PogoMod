@@ -41,7 +41,7 @@ namespace PogoMod
             // used when you want to properly set up language folders
             Modules.Language.Init();
 
-            PogoAssets.Init(Assets.LoadAssetBundle("pogobundle"));
+            PogoAssets.Init(Asset.LoadAssetBundle("pogobundle"));
             StartCoroutine(PogoAssets.mainAssetBundle.UpgradeStubbedShadersAsync());
 
             // character initialization

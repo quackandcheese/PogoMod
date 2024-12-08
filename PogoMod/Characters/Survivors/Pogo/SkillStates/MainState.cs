@@ -52,6 +52,7 @@ namespace PogoMod.Survivors.Pogo.SkillStates
                     if (pogoController.withinPerfectJumpTiming)
                     {
                         pogoController.pogoCounter++;
+                        characterBody.AddBuff(PogoBuffs.pogoPogoBuff);
 
                         float bonus = 1f + (pogoController.extraBoostPerPogo * Mathf.Clamp(pogoController.pogoCounter, 0, pogoController.pogoCounterMax));
                         horizontalBonus = bonus;
@@ -65,6 +66,7 @@ namespace PogoMod.Survivors.Pogo.SkillStates
                     else
                     {
                         pogoController.pogoCounter = 0;
+                        characterBody.SetBuffCount(PogoBuffs.pogoPogoBuff.buffIndex, 0);
                     }
 
                     GenericCharacterMain.ApplyJumpVelocity(base.characterMotor, base.characterBody, horizontalBonus, verticalBonus, false);

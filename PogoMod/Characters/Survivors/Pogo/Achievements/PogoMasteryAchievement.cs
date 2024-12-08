@@ -4,7 +4,7 @@ using PogoMod.Modules.Achievements;
 namespace PogoMod.Survivors.Pogo.Achievements
 {
     //automatically creates language tokens "ACHIEVMENT_{identifier.ToUpper()}_NAME" and "ACHIEVMENT_{identifier.ToUpper()}_DESCRIPTION" 
-    [RegisterAchievement(identifier, unlockableIdentifier, null, null)]
+    [RegisterAchievement(identifier, unlockableIdentifier, null, 0)]
     public class PogoMasteryAchievement : BaseMasteryAchievement
     {
         public const string identifier = PogoSurvivor.POGO_PREFIX + "masteryAchievement";

@@ -44,10 +44,10 @@ namespace PogoMod.Survivors.Pogo
             subtitleNameToken = POGO_PREFIX + "SUBTITLE",
 
             characterPortrait = assetBundle.LoadAsset<Texture>("texHenryIcon"),
-            bodyColor = Color.white,
+            bodyColor = PogoAssets.pogoColor,
             sortPosition = 100,
 
-            crosshair = Assets.LoadCrosshair("Standard"),
+            crosshair = Asset.LoadCrosshair("Standard"),
             podPrefab = LegacyResourcesAPI.Load<GameObject>("Prefabs/NetworkedObjects/SurvivorPod"),
 
             maxHealth = 110f,
@@ -258,7 +258,7 @@ namespace PogoMod.Survivors.Pogo
                 "PogoRightFingergun",
                 POGO_PREFIX + "PRIMARY_FINGERGUN_NAME",
                 POGO_PREFIX + "PRIMARY_FINGERGUN_DESCRIPTION",
-                assetBundle.LoadAsset<Sprite>("texLeftFingergunIcon"),
+                assetBundle.LoadAsset<Sprite>("texRightFingergunIcon"),
                 new EntityStates.SerializableEntityStateType(typeof(SkillStates.RightFingergun)),
                 "Weapon2",
                 true

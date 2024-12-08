@@ -19,6 +19,7 @@ namespace PogoMod.Survivors.Pogo.SkillStates
             Debug.Log(pogoController.pogoComboCoefficient);
 
             pogoController.pogoCounter = 0;
+            characterBody.SetBuffCount(PogoBuffs.pogoPogoBuff.buffIndex, 0);
         }
         public override void FixedUpdate()
         {

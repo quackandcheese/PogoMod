@@ -10,7 +10,7 @@ namespace PogoMod.Characters.Survivors.Pogo.SkillDefs
 {
     public class RightHandTrackerSkillDef : SkillDef
     {
-        public override BaseSkillInstanceData OnAssigned([NotNull] GenericSkill skillSlot)
+        public override BaseSkillInstanceData OnAssigned(GenericSkill skillSlot)
         {
             return new InstanceData
             {
@@ -18,18 +18,18 @@ namespace PogoMod.Characters.Survivors.Pogo.SkillDefs
             };
         }
 
-        private static bool HasTarget([NotNull] GenericSkill skillSlot)
+        private static bool HasTarget(GenericSkill skillSlot)
         {
             RightHandTracker rightHandTracker = ((InstanceData)skillSlot.skillInstanceData).rightHandTracker;
             return (rightHandTracker != null) ? rightHandTracker.TrackTarget() : null;
         }
 
-        public override bool CanExecute([NotNull] GenericSkill skillSlot)
+        public override bool CanExecute(GenericSkill skillSlot)
         {
             return HasTarget(skillSlot) && base.CanExecute(skillSlot);
         }
 
-        public override bool IsReady([NotNull] GenericSkill skillSlot)
+        public override bool IsReady(GenericSkill skillSlot)
         {
             return base.IsReady(skillSlot) && HasTarget(skillSlot);
         }

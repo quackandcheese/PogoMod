@@ -13,6 +13,7 @@ namespace PogoMod.Survivors.Pogo
     public static class PogoAssets
     {
         internal static AssetBundle mainAssetBundle;
+        internal static Color pogoColor = new Color(255f / 255f, 171f / 255f, 241f / 255f);
 
         // particle effects
         public static GameObject swordSwingEffect;
@@ -99,7 +100,7 @@ namespace PogoMod.Survivors.Pogo
         private static void CreateBombProjectile()
         {
             //highly recommend setting up projectiles in editor, but this is a quick and dirty way to prototype if you want
-            bombProjectilePrefab = Assets.CloneProjectilePrefab("CommandoGrenadeProjectile", "HenryBombProjectile");
+            bombProjectilePrefab = Asset.CloneProjectilePrefab("CommandoGrenadeProjectile", "HenryBombProjectile");
 
             //remove their ProjectileImpactExplosion component and start from default values
             UnityEngine.Object.Destroy(bombProjectilePrefab.GetComponent<ProjectileImpactExplosion>());
