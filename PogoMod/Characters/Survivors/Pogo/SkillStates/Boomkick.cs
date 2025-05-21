@@ -1,4 +1,5 @@
 ﻿using EntityStates;
+using PogoMod.Characters.Survivors.Pogo.Components;
 using PogoMod.Survivors.Pogo;
 using RoR2;
 using System;
@@ -85,19 +86,18 @@ namespace PogoMod.Survivors.Pogo.SkillStates
         //    }
         //}
 
-        public override void AuthorityModifyOverlapAttack(OverlapAttack overlapAttack)
+        public override void OnMeleeHitAuthority()
         {
-            base.AuthorityModifyOverlapAttack(overlapAttack);
-            overlapAttack.damage = this.damageCoefficient * this.damageStat + this.bonusDamage;
-            overlapAttack.forceVector = base.characterMotor.velocity + base.GetAimRay().direction * kickForce;
-            if (base.fixedAge + Time.fixedDeltaTime >= this.duration)
+            foreach (HurtBox enemyHit in hitResults)
             {
-                HitBoxGroup hitBoxGroup = base.FindHitBoxGroup("KickHitboxGroup");
-                if (hitBoxGroup)
+                EnemyRicochet ricochet;
+                if (enemyHit.healthComponent.TryGetComponent<EnemyRicochet>(out ricochet))
                 {
-                    this.hitBoxGroup = hitBoxGroup;
-                    overlapAttack.hitBoxGroup = hitBoxGroup;
+                    ricochet.attacker = base.gameObject;
+                    continue;
                 }
+                ricochet = enemyHit.healthComponent.gameObject.AddComponent<EnemyRicochet>();
+                ricochet.attacker = base.gameObject;
             }
         }
 

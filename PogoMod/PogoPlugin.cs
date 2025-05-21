@@ -25,10 +25,12 @@ namespace PogoMod
         public const string DEVELOPER_PREFIX = "QUACKANDCHEESE";
 
         public static PogoPlugin instance;
+        internal static BepInEx.Logging.ManualLogSource logger;
 
         void Awake()
         {
             instance = this;
+            logger = Logger;
 
             Log.Init(Logger);
 
