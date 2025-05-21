@@ -15,7 +15,7 @@ namespace PogoMod.Modules.BaseStates
 
         protected string hitboxGroupName = "SwordGroup";
 
-        protected DamageType damageType = DamageType.Generic;
+        protected DamageTypeCombo damageType = DamageType.Generic;
         protected float damageCoefficient = 3.5f;
         protected float procCoefficient = 1f;
         protected float pushForce = 300f;
@@ -38,11 +38,11 @@ namespace PogoMod.Modules.BaseStates
         protected GameObject swingEffectPrefab;
         protected GameObject hitEffectPrefab;
         protected NetworkSoundEventIndex impactSound = NetworkSoundEventIndex.Invalid;
+        protected OverlapAttack attack;
 
         public float duration;
         private bool hasFired;
         private float hitPauseTimer;
-        private OverlapAttack attack;
         protected bool inHitPause;
         private bool hasHopped;
         protected float stopwatch;
@@ -72,6 +72,13 @@ namespace PogoMod.Modules.BaseStates
             attack.hitBoxGroup = FindHitBoxGroup(hitboxGroupName);
             attack.isCrit = RollCrit();
             attack.impactSound = impactSound;
+
+            ModifyOverlapAttack(attack);
+        }
+
+        protected virtual void ModifyOverlapAttack(OverlapAttack attack)
+        {
+
         }
 
         protected virtual void PlayAttackAnimation()
@@ -121,7 +128,7 @@ namespace PogoMod.Modules.BaseStates
             }
         }
 
-        private void FireAttack()
+        protected virtual void FireAttack()
         {
             if (isAuthority)
             {
@@ -149,7 +156,7 @@ namespace PogoMod.Modules.BaseStates
         {
             base.FixedUpdate();
 
-            hitPauseTimer -= Time.fixedDeltaTime;
+            hitPauseTimer -= Time.deltaTime;
 
             if (hitPauseTimer <= 0f && inHitPause)
             {
@@ -158,7 +165,7 @@ namespace PogoMod.Modules.BaseStates
 
             if (!inHitPause)
             {
-                stopwatch += Time.fixedDeltaTime;
+                stopwatch += Time.deltaTime;
             }
             else
             {

@@ -140,6 +140,7 @@ namespace PogoMod.Survivors.Pogo
         public void AddHitboxes()
         {
             //example of how to create a HitBoxGroup. see summary for more details
+            Prefabs.SetupHitBoxGroup(characterModelObject, "MeleeHitboxGroup", "MeleeHitbox");
             Prefabs.SetupHitBoxGroup(characterModelObject, "KickHitboxGroup", "KickHitbox");
         }
 
@@ -237,11 +238,11 @@ namespace PogoMod.Survivors.Pogo
             //the primary skill is created using a constructor for a typical primary
             //it is also a SteppedSkillDef. Custom Skilldefs are very useful for custom behaviors related to casting a skill. see ror2's different skilldefs for reference
             SkillDef primarySkillDef1 = Skills.CreateSkillDef(new SkillDefInfo(
-                "PogoLeftFingergun",
-                POGO_PREFIX + "PRIMARY_FINGERGUN_NAME",
-                POGO_PREFIX + "PRIMARY_FINGERGUN_DESCRIPTION",
+                "PogoMeleeCombo",
+                POGO_PREFIX + "PRIMARY_MELEE_NAME",
+                POGO_PREFIX + "PRIMARY_MELEE_DESCRIPTION",
                 assetBundle.LoadAsset<Sprite>("texLeftFingergunIcon"),
-                new EntityStates.SerializableEntityStateType(typeof(SkillStates.LeftFingergun)),
+                new EntityStates.SerializableEntityStateType(typeof(SkillStates.MeleeCombo)),
                 "Weapon",
                 true
             ));
@@ -279,7 +280,7 @@ namespace PogoMod.Survivors.Pogo
                 skillDescriptionToken = POGO_PREFIX + "UTILITY_KICK_DESCRIPTION",
                 skillIcon = assetBundle.LoadAsset<Sprite>("texDropkickIcon"),
 
-                activationState = new EntityStates.SerializableEntityStateType(typeof(Dropkick)),
+                activationState = new EntityStates.SerializableEntityStateType(typeof(Boomkick)),
                 //setting this to the "weapon2" EntityStateMachine allows us to cast this skill at the same time primary, which is set to the "weapon" EntityStateMachine
                 activationStateMachineName = "Body",
                 interruptPriority = EntityStates.InterruptPriority.Skill,

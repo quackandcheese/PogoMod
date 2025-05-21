@@ -20,7 +20,7 @@ namespace PogoMod.Survivors.Pogo
         {
             string prefix = PogoSurvivor.POGO_PREFIX;
 
-            string desc = "Pogo is a fast-paced cyborg combatant focused on verticality and movement, wielding cybernetic fingerguns and shotgun-pogosticks for legs.<color=#CCD3E0>" + Environment.NewLine + Environment.NewLine
+            string desc = "Pogo is a fast-paced cyborg combatant focused on verticality and mid-air combat, wielding hookshots for arms and shotgun-pogosticks for legs.<color=#CCD3E0>" + Environment.NewLine + Environment.NewLine
              + "< ! > Pogostick can be comboed to gain big height and stomp on enemies." + Environment.NewLine + Environment.NewLine
              + "< ! > Fingerguns let you shoot at two separate enemies whilst kicking or jumping on any other enemies in your path." + Environment.NewLine + Environment.NewLine
              + "< ! > Roll has a lingering armor buff that helps to use it aggressively." + Environment.NewLine + Environment.NewLine
@@ -31,7 +31,7 @@ namespace PogoMod.Survivors.Pogo
             string lore = "PLACEHOLDER";
 
             Language.Add(prefix + "NAME", "Pogo");
-            Language.Add(prefix + "SUBTITLE", "Cybernetic Piston");
+            Language.Add(prefix + "SUBTITLE", "Bunny Brawler");
 
             Language.Add(prefix + "DESCRIPTION", desc);
             Language.Add(prefix + "LORE", lore);
@@ -49,22 +49,23 @@ namespace PogoMod.Survivors.Pogo
             #endregion
 
             #region Primary
-            Language.Add(prefix + "PRIMARY_FINGERGUN_NAME", "Fingergun");
-            Language.Add(prefix + "PRIMARY_FINGERGUN_DESCRIPTION", Tokens.agilePrefix + $" Lock onto a target and shoot them for <style=cIsDamage>{100f * PogoStaticValues.fingergunDamageCoefficient}% damage</style> per bullet. You can still <style=cIsDamage>look around use other abilities while enemy is targeted</style>.");
+            Language.Add(prefix + "PRIMARY_MELEE_NAME", "Kungfu");
+            Language.Add(prefix + "PRIMARY_MELEE_DESCRIPTION", $" Strike the target four consecutive times for <style=cIsDamage>{100f * PogoStaticValues.fingergunDamageCoefficient}% damage</style> per strike.");
             #endregion
 
             #region Secondary
-            // Is the same as primary
+            Language.Add(prefix + "SECONDARY_HOOKSHOT_NAME", "Hookshot");
+            Language.Add(prefix + "SECONDARY_HOOKSHOT_DESCRIPTION", $" Pull in an enemy, repositioning it in front of you <style=cIsDamage>{100f * PogoStaticValues.fingergunDamageCoefficient}% damage</style> per strike.");
             #endregion
 
             #region Utility
-            Language.Add(prefix + "UTILITY_KICK_NAME", "Dropkick");
-            Language.Add(prefix + "UTILITY_KICK_DESCRIPTION", $"Perform a <style=cIsUtility>dropkick</style> in the direction you are looking, knocking back and dealing <style=cIsDamage>{100f * PogoStaticValues.kickDamageCoefficient}% damage</style> to enemies in path.");
+            Language.Add(prefix + "UTILITY_KICK_NAME", "Reposition");
+            Language.Add(prefix + "UTILITY_KICK_DESCRIPTION", $"<style=cIsUtility>Reposition</style> above a targeted enemy.");
             #endregion
 
             #region Special
-            Language.Add(prefix + "SPECIAL_SURGE_NAME", "Power Surge");
-            Language.Add(prefix + "SPECIAL_SURGE_DESCRIPTION", $"<style=cIsHealth>Consume</style> your jump combo, adding an additional <style=cIsDamage>10% damage</style> to your <style=cIsUtility>fingerguns</style> for each jump in the combo. Every second, 10% of the additional damage is <style=cIsHealth>depleted and lost</style>. <style=cIsUtility>Successful pogos off enemies reset the cooldown</style>.");
+            Language.Add(prefix + "SPECIAL_SURGE_NAME", "Dropkick");
+            Language.Add(prefix + "SPECIAL_SURGE_DESCRIPTION", $"Sweeping kick + shotgun blast combo that deals <style=cIsDamage>{100f * PogoStaticValues.shotgunDamageCoefficient}% damage</style> and knocks back enemies caught in its range. If a knocked back enemy hits a surface or other enemy, it deals <style=cIsDamage>{100f * PogoStaticValues.collisionDamageCoefficient}% damage</style>.");
             #endregion
 
             #region Achievements
