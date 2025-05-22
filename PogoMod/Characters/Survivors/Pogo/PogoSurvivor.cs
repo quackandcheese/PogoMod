@@ -282,14 +282,16 @@ namespace PogoMod.Survivors.Pogo
 
                 activationState = new EntityStates.SerializableEntityStateType(typeof(Boomkick)),
                 //setting this to the "weapon2" EntityStateMachine allows us to cast this skill at the same time primary, which is set to the "weapon" EntityStateMachine
-                activationStateMachineName = "Body",
+                activationStateMachineName = "Weapon2",
                 interruptPriority = EntityStates.InterruptPriority.Skill,
 
                 baseMaxStock = 1,
-                baseRechargeInterval = 5f,
+                baseRechargeInterval = 4f,
 
                 isCombatSkill = true,
                 mustKeyPress = false,
+                cancelSprintingOnActivation = false,
+                
             });
 
             Skills.AddUtilitySkills(bodyPrefab, utilitySkillDef1);

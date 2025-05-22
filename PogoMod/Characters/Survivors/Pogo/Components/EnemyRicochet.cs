@@ -21,23 +21,93 @@ namespace PogoMod.Characters.Survivors.Pogo.Components
         public GameObject attacker;
         public CharacterBody attackerBody;
         private CharacterBody body;
+
         private CharacterMotor characterMotor;
+        private RigidbodyMotor rigidMotor;
+        private Rigidbody rigidBody;
+        private MonoBehaviour disabledMotor;
+
         private MotorType motorType = MotorType.NONE;
+
 
         private void Start()
         {
             body = GetComponent<CharacterBody>();
             attackerBody = attacker.GetComponent<CharacterBody>();
-            if (TryGetComponent(out characterMotor))
-            {
-                On.RoR2.CharacterMotor.OnMovementHit += CharacterMotor_OnMovementHit;
-            }
+
+            CheckMotor();
 
             PogoPlugin.logger.LogInfo("Ricochet init");
         }
+
+        // LIFTED FROM https://github.com/TheTimeSweeper/Cloudburst/blob/main/Cloudburst/Characters/Wyatt/Components/SpikingComponent.cs
+        // with some modifications
+        private void CheckMotor()
+        {
+            characterMotor = base.gameObject.GetComponent<CharacterMotor>();
+            if (characterMotor != null)
+            {
+                motorType = MotorType.CHARACTERMOTOR;
+                //characterMotor.velocity = Vector3.zero;
+                characterMotor.disableAirControlUntilCollision = true;
+
+                On.RoR2.CharacterMotor.OnMovementHit += CharacterMotor_OnMovementHit;
+                return;
+            }
+
+            rigidMotor = base.gameObject.GetComponent<RigidbodyMotor>();
+            if (rigidMotor != null)
+            {
+                motorType = MotorType.RIGIDBODYMOTOR;
+                //rigidMotor.moveVector = Vector3.zero;
+                return;
+            }
+
+            rigidBody = base.gameObject.GetComponent<Rigidbody>();
+            if (rigidBody != null)
+            {
+                motorType = MotorType.RIGIDBODY;
+
+                disabledMotor = FindOtherMotor();
+                if (disabledMotor != null)
+                {
+                    disabledMotor.enabled = false;
+                }
+
+               // rigidBody.velocity = Vector3.zero;
+                return;
+            }
+            //no spikable motors found
+            Destroy(this);
+        }
+
+        private MonoBehaviour FindOtherMotor()
+        {
+            if (TryGetComponent(out HoverVehicleMotor hoverMotor))
+            {
+                return hoverMotor;
+            }
+            if (TryGetComponent(out WheelVehicleMotor wheelMotor))
+            {
+                return wheelMotor;
+            }
+            if (TryGetComponent(out RailMotor railMotor))
+            {
+                return railMotor;
+            }
+            return null;
+        }
+
         private void OnDestroy()
         {
-            On.RoR2.CharacterMotor.OnMovementHit -= CharacterMotor_OnMovementHit;
+            if (characterMotor)
+            {
+                On.RoR2.CharacterMotor.OnMovementHit -= CharacterMotor_OnMovementHit;
+            }
+            if (disabledMotor != null)
+            {
+                disabledMotor.enabled = true;
+            }
         }
         private void CharacterMotor_OnMovementHit(On.RoR2.CharacterMotor.orig_OnMovementHit orig, CharacterMotor self, Collider hitCollider, Vector3 hitNormal, Vector3 hitPoint, ref KinematicCharacterController.HitStabilityReport hitStabilityReport)
         {
@@ -106,7 +176,7 @@ namespace PogoMod.Characters.Survivors.Pogo.Components
 
         private void CreateBlast(Vector3 position, Vector3 velocity)
         {
-            float blastRadius = 10;
+/*            float blastRadius = 10;
             if (NetworkServer.active)
             {
                 if (velocity.magnitude < 10)
@@ -160,7 +230,7 @@ namespace PogoMod.Characters.Survivors.Pogo.Components
                     //CCUtilities.AddUpwardForceToBody(characterBody.gameObject, 10);                    
                 }
             }
-            HG.CollectionPool<CharacterBody, List<CharacterBody>>.ReturnCollection(hitBodies);
+            HG.CollectionPool<CharacterBody, List<CharacterBody>>.ReturnCollection(hitBodies);*/
         }
     }
 }

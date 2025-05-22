@@ -41,25 +41,25 @@ namespace PogoMod.Survivors.Pogo.SkillStates
 
 
 
-            this.hitPauseDuration = 0.3f;
+            this.hitPauseDuration = 0.1f;
             this.hitBoxGroupName = "KickHitboxGroup";
 
             base.OnEnter();
 
             if (base.isAuthority)
             {
-                base.gameObject.layer = LayerIndex.fakeActor.intVal;
-                base.characterMotor.Motor.RebuildCollidableLayers();
-                base.characterMotor.Motor.ForceUnground();
-                launchVelocity = CalculateLaunchVelocity(base.characterMotor.velocity, GetAimRay().direction);
-                base.characterMotor.velocity = launchVelocity;
-                base.characterDirection.forward = base.characterMotor.velocity.normalized;
+                //base.gameObject.layer = LayerIndex.fakeActor.intVal;
+                //base.characterMotor.Motor.RebuildCollidableLayers();
+                //base.characterMotor.Motor.ForceUnground();
+                //launchVelocity = CalculateLaunchVelocity(base.characterMotor.velocity, GetAimRay().direction);
+                //base.characterMotor.velocity = launchVelocity;
+                //base.characterDirection.forward = base.characterMotor.velocity.normalized;
             }
         }
 
         public override float CalcDuration()
         {
-            return 0.45f;
+            return 0.3f;
         }
 
         public override void PlayAnimation()
@@ -103,7 +103,7 @@ namespace PogoMod.Survivors.Pogo.SkillStates
 
         public override void OnExit()
         {
-            base.characterMotor.velocity *= speedCoefficientOnExit;
+            //base.characterMotor.velocity *= speedCoefficientOnExit;
 
             base.gameObject.layer = LayerIndex.defaultLayer.intVal;
             base.characterMotor.Motor.RebuildCollidableLayers();
