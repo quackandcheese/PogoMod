@@ -28,13 +28,13 @@ namespace PogoMod.Survivors.Pogo.SkillStates
                     pogoController.jumpQueued = false;
 
                     int waxQuailCount = base.characterBody.inventory.GetItemCount(RoR2Content.Items.JumpBoost);
-                    float horizontalBonus = 1f;
-                    float verticalBonus = 1f;
+                    float horizontalBonus = 1.4f;
+                    float verticalBonus = 1.4f;
                     if (base.characterMotor.jumpCount >= base.characterBody.baseJumpCount)
                     {
                         hopooFeather = true;
-                        horizontalBonus = 1.5f;
-                        verticalBonus = 1.5f;
+                        horizontalBonus *= 1.5f;
+                        verticalBonus *= 1.5f;
                     }
                     // TODO: Fix bonus stuff with wax quail
                     else if ((float)waxQuailCount > 0f && base.characterBody.isSprinting)
@@ -55,8 +55,8 @@ namespace PogoMod.Survivors.Pogo.SkillStates
                         characterBody.AddBuff(PogoBuffs.pogoPogoBuff);
 
                         float bonus = 1f + (pogoController.extraBoostPerPogo * Mathf.Clamp(pogoController.pogoCounter, 0, pogoController.pogoCounterMax));
-                        horizontalBonus = bonus;
-                        verticalBonus = bonus;
+                        horizontalBonus *= bonus;
+                        verticalBonus *= bonus;
 
                         if (pogoController.pogoCounter >= pogoController.pogoCounterMax)
                         {

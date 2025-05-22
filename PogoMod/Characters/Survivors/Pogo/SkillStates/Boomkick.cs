@@ -54,6 +54,10 @@ namespace PogoMod.Survivors.Pogo.SkillStates
                 //launchVelocity = CalculateLaunchVelocity(base.characterMotor.velocity, GetAimRay().direction);
                 //base.characterMotor.velocity = launchVelocity;
                 //base.characterDirection.forward = base.characterMotor.velocity.normalized;
+
+                Vector3 direction = this.GetAimRay().direction;
+                direction.y = Mathf.Max(direction.y, direction.y * 0.5f);
+                this.FindModelChild("MeleePivot").rotation = Util.QuaternionSafeLookRotation(direction);
             }
         }
 
