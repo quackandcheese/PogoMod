@@ -16,5 +16,7 @@ namespace PogoMod.Survivors.Pogo
         public const float kickDamageCoefficient = 1.4f;
         public const float collisionDamageCoefficient = 2.0f;
         public const float meleeDamageCoefficient = 1.6f;
+        public const float meleeHitHop = 4f;
+        public const float knockUpForce = 10f;
     }
 }

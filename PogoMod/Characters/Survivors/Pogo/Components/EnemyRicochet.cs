@@ -1,19 +1,33 @@
-﻿using RoR2;
+﻿using PogoMod.Modules;
+using PogoMod.Survivors.Pogo;
+using RoR2;
 using System;
 using System.Collections.Generic;
 using System.Text;
 using UnityEngine;
+using UnityEngine.Networking;
 
 namespace PogoMod.Characters.Survivors.Pogo.Components
 {
     public class EnemyRicochet : MonoBehaviour
     {
+        public enum MotorType
+        {
+            NONE,
+            CHARACTERMOTOR,
+            RIGIDBODYMOTOR,
+            RIGIDBODY
+        }
         public GameObject attacker;
+        public CharacterBody attackerBody;
         private CharacterBody body;
         private CharacterMotor characterMotor;
-        private void Awake()
+        private MotorType motorType = MotorType.NONE;
+
+        private void Start()
         {
             body = GetComponent<CharacterBody>();
+            attackerBody = attacker.GetComponent<CharacterBody>();
             if (TryGetComponent(out characterMotor))
             {
                 On.RoR2.CharacterMotor.OnMovementHit += CharacterMotor_OnMovementHit;
@@ -77,7 +91,7 @@ namespace PogoMod.Characters.Survivors.Pogo.Components
                 DamageInfo damageInfo = new DamageInfo
                 {
                     attacker = attacker,
-                    damage = 10f, // Example damage value
+                    damage = attackerBody.damage * damage, // Example damage value
                     damageType = DamageType.Generic,
                     position = contactPoint,
                     force = velocity//10f //Example force value
@@ -85,7 +99,68 @@ namespace PogoMod.Characters.Survivors.Pogo.Components
                 enemy.healthComponent.TakeDamage(damageInfo);
             }
 
+            CreateBlast(contactPoint, velocity);
+
             Destroy(this);
+        }
+
+        private void CreateBlast(Vector3 position, Vector3 velocity)
+        {
+            float blastRadius = 10;
+            if (NetworkServer.active)
+            {
+                if (velocity.magnitude < 10)
+                    return;
+                float blastDamage = velocity.magnitude * 0.2f;
+                //Log.Warning("amountFell: " + amountFell + "damage: " + blastDamage);
+
+                //EffectManager.SpawnEffect(WyattEffects.tiredOfTheDingDingDing, new EffectData
+                //{
+                //    scale = blastRadius,
+                //    rotation = Quaternion.identity,
+                //    origin = position,
+                //}, true);
+
+                BlastAttack blastAttack = new BlastAttack
+                {
+                    position = position,
+                    //baseForce = 3000,
+                    attacker = attacker,
+                    inflictor = attacker,
+                    teamIndex = attackerBody.teamComponent.teamIndex,
+                    baseDamage = attackerBody.damage * blastDamage, //3,
+                    attackerFiltering = AttackerFiltering.NeverHitSelf,
+                    //bonusForce = new Vector3(0, -3000, 0),
+                    damageType = new DamageTypeCombo(DamageType.Stun1s, DamageTypeExtended.Generic, DamageSource.Secondary), //| DamageTypeCore.spiked,
+                    crit = attackerBody.RollCrit(),
+                    damageColorIndex = DamageColorIndex.WeakPoint,
+                    falloffModel = BlastAttack.FalloffModel.SweetSpot,
+                    //impactEffect = BandaidConvert.Resources.Load<GameObject>("prefabs/effects/impacteffects/PulverizedEffect").GetComponent<EffectIndex>(),
+                    procCoefficient = 1,
+                    radius = blastRadius
+                };
+                //R2API.DamageAPI.AddModdedDamageType(blastAttack, WyattDamageTypes.antiGravDamage);
+                blastAttack.Fire();
+            }
+
+            Util.PlaySound("Play_grandParent_attack1_boulderLarge_impact", gameObject);
+
+            List<CharacterBody> hitBodies = HG.CollectionPool<CharacterBody, List<CharacterBody>>.RentCollection();
+            PogoUtilities.CharacterOverlapSphereAll(ref hitBodies, transform.position, blastRadius, LayerIndex.CommonMasks.bullet);
+
+            for (int i = 0; i < hitBodies.Count; i++)
+            {
+                CharacterBody characterBody = hitBodies[i];
+
+                bool canHit = PogoUtilities.ShouldKnockup(characterBody, attackerBody.teamComponent.teamIndex);
+                if (canHit && characterBody.gameObject != gameObject && characterBody.gameObject != attacker)
+                {
+                    PogoUtilities.AddUpwardImpulseToBody(characterBody.gameObject, PogoStaticValues.knockUpForce);// 10);
+                    //CCUtilities.AddExplosionForce(characterBody.characterMotor, characterBody.characterMotor.mass * 25, transform.position, 25, 5, false);
+                    //CCUtilities.AddUpwardForceToBody(characterBody.gameObject, 10);                    
+                }
+            }
+            HG.CollectionPool<CharacterBody, List<CharacterBody>>.ReturnCollection(hitBodies);
         }
     }
 }

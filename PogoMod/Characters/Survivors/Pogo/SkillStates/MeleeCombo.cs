@@ -14,7 +14,7 @@ namespace PogoMod.Survivors.Pogo.SkillStates
             damageCoefficient = PogoStaticValues.meleeDamageCoefficient;
             procCoefficient = 1f;
             pushForce = 300f;
-            bonusForce = Vector3.zero;
+            bonusForce = new Vector3(0, PogoStaticValues.meleeHitHop, 0);
             baseDuration = 0.45f;
 
             //0-1 multiplier of baseduration, used to time when the hitbox is out (usually based on the run time of the animation)
@@ -27,7 +27,7 @@ namespace PogoMod.Survivors.Pogo.SkillStates
 
             hitStopDuration = 0.012f;
             attackRecoil = 0.5f;
-            hitHopVelocity = 4f;
+            hitHopVelocity = PogoStaticValues.meleeHitHop;
 
             swingSoundString = "PogoSwordSwing";
             hitSoundString = "";
@@ -68,6 +68,22 @@ namespace PogoMod.Survivors.Pogo.SkillStates
         protected override void OnHitEnemyAuthority()
         {
             base.OnHitEnemyAuthority();
+
+            for (int i = 0; i < hitResults.Count; i++)
+            {
+                HurtBox hurtBox = hitResults[i];
+
+                CharacterMotor component = hurtBox.healthComponent.GetComponent<CharacterMotor>();
+                if (component)
+                {
+                    component.velocity /= 2;
+                }
+                Rigidbody component2 = hurtBox.healthComponent.GetComponent<Rigidbody>();
+                if (component2)
+                {
+                    component2.velocity /= 2;
+                }
+            }
         }
 
         public override void OnExit()

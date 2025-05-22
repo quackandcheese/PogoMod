@@ -97,7 +97,7 @@ namespace PogoMod.Survivors.Pogo.SkillStates
                     continue;
                 }
                 ricochet = enemyHit.healthComponent.gameObject.AddComponent<EnemyRicochet>();
-                ricochet.attacker = base.gameObject;
+                ricochet.attacker = characterBody.gameObject;
             }
         }
 

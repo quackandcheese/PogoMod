@@ -50,6 +50,8 @@ namespace PogoMod.Modules.BaseStates
         private HitStopCachedState hitStopCachedState;
         private Vector3 storedVelocity;
 
+        protected List<HurtBox> hitResults = new List<HurtBox>();
+
         public override void OnEnter()
         {
             base.OnEnter();
@@ -132,7 +134,7 @@ namespace PogoMod.Modules.BaseStates
         {
             if (isAuthority)
             {
-                if (attack.Fire())
+                if (attack.Fire(hitResults))
                 {
                     OnHitEnemyAuthority();
                 }
