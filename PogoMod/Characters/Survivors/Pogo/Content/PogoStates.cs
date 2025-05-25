@@ -1,4 +1,5 @@
-﻿using PogoMod.Modules.BaseContent.BaseStates;
+﻿using PogoMod.Characters.Survivors.Pogo.SkillStates;
+using PogoMod.Modules.BaseContent.BaseStates;
 using PogoMod.Survivors.Pogo.SkillStates;
 
 namespace PogoMod.Survivors.Pogo
@@ -15,6 +16,8 @@ namespace PogoMod.Survivors.Pogo
             Modules.Content.AddEntityState(typeof(PogoJump));
 
             Modules.Content.AddEntityState(typeof(RightFingergun));
+
+            Modules.Content.AddEntityState(typeof(Reposition));
 
             Modules.Content.AddEntityState(typeof(Dropkick));
             Modules.Content.AddEntityState(typeof(Boomkick));

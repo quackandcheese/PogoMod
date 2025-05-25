@@ -59,13 +59,13 @@ namespace PogoMod.Survivors.Pogo
             #endregion
 
             #region Utility
-            Language.Add(prefix + "UTILITY_KICK_NAME", "Reposition");
-            Language.Add(prefix + "UTILITY_KICK_DESCRIPTION", $"<style=cIsUtility>Reposition</style> above a targeted enemy.");
+            Language.Add(prefix + "UTILITY_REPOSITION_NAME", "Reposition");
+            Language.Add(prefix + "UTILITY_REPOSITION_DESCRIPTION", $"<style=cIsUtility>Reposition</style> above a targeted enemy.");
             #endregion
 
             #region Special
-            Language.Add(prefix + "SPECIAL_SURGE_NAME", "Dropkick");
-            Language.Add(prefix + "SPECIAL_SURGE_DESCRIPTION", $"Sweeping kick + shotgun blast combo that deals <style=cIsDamage>{100f * PogoStaticValues.shotgunDamageCoefficient}% damage</style> and knocks back enemies caught in its range. If a knocked back enemy hits a surface or other enemy, it deals <style=cIsDamage>{100f * PogoStaticValues.collisionDamageCoefficient}% damage</style>.");
+            Language.Add(prefix + "SPECIAL_KICK_NAME", "Dropkick");
+            Language.Add(prefix + "SPECIAL_KICK_DESCRIPTION", $"Sweeping kick + shotgun blast combo that deals <style=cIsDamage>{100f * PogoStaticValues.shotgunDamageCoefficient}% damage</style> and knocks back enemies caught in its range. If a knocked back enemy hits a surface or other enemy, it deals <style=cIsDamage>{100f * PogoStaticValues.collisionDamageCoefficient}% damage</style>.");
             #endregion
 
             #region Achievements

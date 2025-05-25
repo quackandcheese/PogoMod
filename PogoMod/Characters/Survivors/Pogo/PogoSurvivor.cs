@@ -14,6 +14,7 @@ using UnityEngine;
 using static RoR2.TeleporterInteraction;
 using EntityStates.Captain.Weapon;
 using RoR2.UI;
+using PogoMod.Characters.Survivors.Pogo.SkillStates;
 
 namespace PogoMod.Survivors.Pogo
 {
@@ -275,20 +276,20 @@ namespace PogoMod.Survivors.Pogo
             //here's a skilldef of a typical movement skill.
             SkillDef utilitySkillDef1 = Skills.CreateSkillDef(new SkillDefInfo
             {
-                skillName = "PogoKick",
-                skillNameToken = POGO_PREFIX + "UTILITY_KICK_NAME",
-                skillDescriptionToken = POGO_PREFIX + "UTILITY_KICK_DESCRIPTION",
+                skillName = "PogoReposition",
+                skillNameToken = POGO_PREFIX + "UTILITY_REPOSITION_NAME",
+                skillDescriptionToken = POGO_PREFIX + "UTILITY_REPOSITION_DESCRIPTION",
                 skillIcon = assetBundle.LoadAsset<Sprite>("texDropkickIcon"),
 
-                activationState = new EntityStates.SerializableEntityStateType(typeof(Boomkick)),
+                activationState = new EntityStates.SerializableEntityStateType(typeof(Reposition)),
                 //setting this to the "weapon2" EntityStateMachine allows us to cast this skill at the same time primary, which is set to the "weapon" EntityStateMachine
-                activationStateMachineName = "Weapon2",
+                activationStateMachineName = "Body",
                 interruptPriority = EntityStates.InterruptPriority.Skill,
 
                 baseMaxStock = 1,
                 baseRechargeInterval = 4f,
 
-                isCombatSkill = true,
+                isCombatSkill = false,
                 mustKeyPress = false,
                 cancelSprintingOnActivation = false,
                 
@@ -304,20 +305,23 @@ namespace PogoMod.Survivors.Pogo
             //a basic skill. some fields are omitted and will just have default values
             SkillDef specialSkillDef1 = Skills.CreateSkillDef(new SkillDefInfo
             {
-                skillName = "PogoSurge",
-                skillNameToken = POGO_PREFIX + "SPECIAL_SURGE_NAME",
-                skillDescriptionToken = POGO_PREFIX + "SPECIAL_SURGE_DESCRIPTION",
-                skillIcon = assetBundle.LoadAsset<Sprite>("texPowerSurgeIcon"),
+                skillName = "PogoKick",
+                skillNameToken = POGO_PREFIX + "SPECIAL_KICK_NAME",
+                skillDescriptionToken = POGO_PREFIX + "SPECIAL_KICK_DESCRIPTION",
+                skillIcon = assetBundle.LoadAsset<Sprite>("texDropkickIcon"),
 
-                activationState = new EntityStates.SerializableEntityStateType(typeof(PowerSurge)),
-                activationStateMachineName = "Surge",
+                activationState = new EntityStates.SerializableEntityStateType(typeof(Boomkick)),
+                //setting this to the "weapon2" EntityStateMachine allows us to cast this skill at the same time primary, which is set to the "weapon" EntityStateMachine
+                activationStateMachineName = "Weapon2",
                 interruptPriority = EntityStates.InterruptPriority.Skill,
 
                 baseMaxStock = 1,
-                baseRechargeInterval = 15f,
+                baseRechargeInterval = 4f,
 
                 isCombatSkill = true,
                 mustKeyPress = false,
+                cancelSprintingOnActivation = false,
+
             });
 
             Skills.AddSpecialSkills(bodyPrefab, specialSkillDef1);
