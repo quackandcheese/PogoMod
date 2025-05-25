@@ -17,7 +17,6 @@ namespace PogoMod.Characters.Survivors.Pogo.SkillStates
         private CharacterMotor motor;
         private Vector3 startPosition;
         private HurtBox lockedTarget;
-        private float stopwatch = 0.0f;
 
         private Vector3 vxz;
 
@@ -66,21 +65,35 @@ namespace PogoMod.Characters.Survivors.Pogo.SkillStates
         public override void FixedUpdate()
         {
             base.FixedUpdate();
-
-            stopwatch += Time.fixedDeltaTime;
-
-            motor.velocity = new Vector3(vxz.x, motor.velocity.y, vxz.z);
-
-            if (stopwatch >= duration || !lockedTarget)
+            if (fixedAge >= duration || !lockedTarget)
             {
                 outer.SetNextStateToMain();
+            }
+
+            // Keep XZ velocity constant and add homing.
+            Vector3 toTargetXZ = lockedTarget.transform.position - base.characterBody.corePosition;
+            toTargetXZ.y = 0f;
+
+            if (toTargetXZ != Vector3.zero)
+            {
+                Vector3 desiredDir = toTargetXZ.normalized;
+                Vector3 currentDir = new Vector3(motor.velocity.x, 0f, motor.velocity.z).normalized;
+
+                float homingStrength = 5f; // tweak this
+                Vector3 newDir = Vector3.RotateTowards(currentDir, desiredDir, homingStrength * Time.fixedDeltaTime, 0f);
+
+                float timeLeft = Mathf.Max(duration - fixedAge, Time.fixedDeltaTime);
+                float distanceXZ = toTargetXZ.magnitude;
+                float speed = distanceXZ / timeLeft;
+
+                motor.velocity = new Vector3(newDir.x * speed, motor.velocity.y, newDir.z * speed);
             }
         }
 
         public override void OnExit()
         {
             base.OnExit();
-            //if (motor) motor.velocity = Vector3.zero;
+            if (motor) motor.velocity = Vector3.zero;
         }
 
         private HurtBox FindTarget()
