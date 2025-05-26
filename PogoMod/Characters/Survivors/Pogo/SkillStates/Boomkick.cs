@@ -1,6 +1,8 @@
 ﻿using EntityStates;
 using PogoMod.Characters.Survivors.Pogo.Components;
+using PogoMod.Modules;
 using PogoMod.Survivors.Pogo;
+using R2API;
 using RoR2;
 using System;
 using System.Collections.Generic;
@@ -16,30 +18,14 @@ namespace PogoMod.Survivors.Pogo.SkillStates
 
         protected Vector3 launchVelocity;
         private float bonusDamage = 0f;
-        private float kickForce = 4500f;
 
         public override void OnEnter()
         {
             this.damageCoefficient = PogoStaticValues.kickDamageCoefficient;
 
             Vector3 aimDirection = base.GetAimRay().direction.normalized;
-            Vector2 spread = UnityEngine.Random.insideUnitCircle * characterBody.spreadBloomAngle * Mathf.Deg2Rad;
 
-            // Build a local coordinate system around the aim direction
-            Vector3 right = Vector3.Cross(Vector3.up, aimDirection).normalized;
-            if (right == Vector3.zero)
-                right = Vector3.Cross(Vector3.forward, aimDirection).normalized;
-            Vector3 up = Vector3.Cross(aimDirection, right);
-
-            // Apply spread around the aim direction
-            Vector3 spreadDirection = aimDirection
-                                      + spread.x * right
-                                      + spread.y * up;
-            spreadDirection.Normalize();
-
-            forceVector = spreadDirection * kickForce;
-
-
+            //forceVector = aimDirection * PogoStaticValues.kickForce;
 
             this.hitPauseDuration = 0.1f;
             this.hitBoxGroupName = "KickHitboxGroup";
@@ -60,7 +46,10 @@ namespace PogoMod.Survivors.Pogo.SkillStates
                 this.FindModelChild("MeleePivot").rotation = Util.QuaternionSafeLookRotation(direction);
             }
         }
-
+        public override void AuthorityModifyOverlapAttack(OverlapAttack overlapAttack)
+        {
+            DamageAPI.AddModdedDamageType(overlapAttack, DamageTypes.PogoBoomkick);
+        }
         public override float CalcDuration()
         {
             return 0.3f;
@@ -89,21 +78,6 @@ namespace PogoMod.Survivors.Pogo.SkillStates
         //        base.characterBody.isSprinting = true;
         //    }
         //}
-
-        public override void OnMeleeHitAuthority()
-        {
-            foreach (HurtBox enemyHit in hitResults)
-            {
-                EnemyRicochet ricochet;
-                if (enemyHit.healthComponent.TryGetComponent<EnemyRicochet>(out ricochet))
-                {
-                    ricochet.attacker = base.gameObject;
-                    continue;
-                }
-                ricochet = enemyHit.healthComponent.gameObject.AddComponent<EnemyRicochet>();
-                ricochet.attacker = characterBody.gameObject;
-            }
-        }
 
         public override void OnExit()
         {

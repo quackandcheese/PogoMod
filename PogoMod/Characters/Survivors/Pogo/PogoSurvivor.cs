@@ -111,6 +111,8 @@ namespace PogoMod.Survivors.Pogo
 
             base.InitializeCharacter();
 
+            DamageTypes.RegisterDamageTypes();
+
             PogoConfig.Init();
             PogoStates.Init();
             PogoTokens.Init();

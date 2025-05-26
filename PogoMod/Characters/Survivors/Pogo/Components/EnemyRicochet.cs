@@ -148,7 +148,7 @@ namespace PogoMod.Characters.Survivors.Pogo.Components
                 position = contactPoint,
                 force = ricochetDirection * velocity.magnitude//10f //Example force value
             };
-            body.healthComponent.TakeDamage(collisionDamage);
+            body.healthComponent.TakeDamageForce(collisionDamage, true, true);
             GlobalEventManager.instance.OnHitEnemy(collisionDamage, body.healthComponent.gameObject);
             GlobalEventManager.instance.OnHitAll(collisionDamage, body.healthComponent.gameObject);
             PogoPlugin.logger.LogInfo("Damage: " + damage);
@@ -166,7 +166,9 @@ namespace PogoMod.Characters.Survivors.Pogo.Components
                     position = contactPoint,
                     force = velocity//10f //Example force value
                 };
-                enemy.healthComponent.TakeDamage(damageInfo);
+                enemy.healthComponent.TakeDamageForce(damageInfo, true, true);
+                GlobalEventManager.instance.OnHitEnemy(damageInfo, enemy.healthComponent.gameObject);
+                GlobalEventManager.instance.OnHitAll(damageInfo, enemy.healthComponent.gameObject);
             }
 
             CreateBlast(contactPoint, velocity);

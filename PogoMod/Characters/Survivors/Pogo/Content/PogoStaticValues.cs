@@ -1,4 +1,5 @@
 ﻿using System;
+using UnityEngine;
 
 namespace PogoMod.Survivors.Pogo
 {
@@ -18,5 +19,6 @@ namespace PogoMod.Survivors.Pogo
         public const float meleeDamageCoefficient = 1.6f;
         public const float meleeHitHop = 4f;
         public const float knockUpForce = 10f;
+        public const float kickForce = 50f;
     }
 }
