@@ -21,8 +21,6 @@ namespace PogoMod.Survivors.Pogo
 
             Modules.Content.AddEntityState(typeof(Dropkick));
             Modules.Content.AddEntityState(typeof(Boomkick));
-
-            Modules.Content.AddEntityState(typeof(PowerSurge));
         }
     }
 }
